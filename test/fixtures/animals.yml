@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  animal_subid: MyString
+  animal_area_pkid: 1
+  animal_kind: 1
+  animal_sex: 1
+  animal_age: 1
+  animal_sterilization: 1
+  animal_foundplace: MyString
+  is_searchable: false
+  animal_status: 1
+  user: one
+
+two:
+  name: MyString
+  animal_subid: MyString
+  animal_area_pkid: 1
+  animal_kind: 1
+  animal_sex: 1
+  animal_age: 1
+  animal_sterilization: 1
+  animal_foundplace: MyString
+  is_searchable: false
+  animal_status: 1
+  user: two
