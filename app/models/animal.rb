@@ -5,5 +5,6 @@ class Animal < ApplicationRecord
   enum animal_sex: {"公":1, "母": 2, "未輸入":3}
   enum animal_sterilization: {"是": 1, "否": 2, "未輸入": 3}
   enum animal_status: {"未公告":1, "開放認養":2, "已認養":3, "其他":4, "死亡":5,}
+  enum adopt_status: {"未上架": 1, "待領養": 2, "已領養": 3}
   has_many_attached :images
 end
