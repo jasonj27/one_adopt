@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :animals
   has_many :favorites
+  has_many :reservations
   has_many :sent_messages, :class_name => 'Message', :foreign_key => 'from_id'
   has_many :received_messages, :class_name => 'Message', :foreign_key => 'to_id'
   has_many :sender_reservations, :class_name => 'Reservation', :foreign_key => 'sender_id'

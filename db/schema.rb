@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_16_055329) do
+ActiveRecord::Schema.define(version: 2019_12_16_060348) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,6 +72,15 @@ ActiveRecord::Schema.define(version: 2019_12_16_055329) do
     t.index ["to_id"], name: "index_messages_on_to_id"
   end
 
+  create_table "reservation_pets", force: :cascade do |t|
+    t.bigint "animal_id", null: false
+    t.bigint "reservation_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["animal_id"], name: "index_reservation_pets_on_animal_id"
+    t.index ["reservation_id"], name: "index_reservation_pets_on_reservation_id"
+  end
+
   create_table "reservations", force: :cascade do |t|
     t.integer "status"
     t.datetime "datetime"
@@ -108,6 +117,8 @@ ActiveRecord::Schema.define(version: 2019_12_16_055329) do
   add_foreign_key "favorites", "users"
   add_foreign_key "messages", "users", column: "from_id"
   add_foreign_key "messages", "users", column: "to_id"
+  add_foreign_key "reservation_pets", "animals"
+  add_foreign_key "reservation_pets", "reservations"
   add_foreign_key "reservations", "users", column: "receiver_id"
   add_foreign_key "reservations", "users", column: "sender_id"
 end
