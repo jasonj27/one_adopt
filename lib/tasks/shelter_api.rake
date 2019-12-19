@@ -54,7 +54,7 @@ namespace :access do
         # on_sell: true
          
       )
-      a.album_file.attach(io: open(result['album_file']), filename: "#{result['animal_subid']}.jpg")
+      a.album_file.attach(io: open('http://asms.coa.gov.tw/amlapp/upload/pic/3e694abe-62f2-44fd-84f6-5c7f435ba3b2_org.JPG'), filename: "testtest.jpg")
 
       
     end
