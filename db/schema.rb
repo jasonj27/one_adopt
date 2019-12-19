@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_16_100940) do
+ActiveRecord::Schema.define(version: 2019_12_18_161823) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,8 @@ ActiveRecord::Schema.define(version: 2019_12_16_100940) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "adopt_status"
+    t.integer "animal_shelter_pkid"
+    t.string "album_file"
     t.index ["user_id"], name: "index_animals_on_user_id"
   end
 
@@ -107,6 +109,7 @@ ActiveRecord::Schema.define(version: 2019_12_16_100940) do
     t.string "sender_tel"
     t.string "sender_add"
     t.text "available_time"
+    t.integer "animal_shelter_pkid"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
