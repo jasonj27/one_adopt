@@ -12,4 +12,5 @@ class User < ApplicationRecord
   has_many :receiver_reservations, :class_name => 'Reservation', :foreign_key => 'receiver_id'
   # @user.sent_messages
   # @user.received_messages
+  validates :name, presence: true
 end
