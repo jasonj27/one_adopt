@@ -31,19 +31,49 @@
     width: 350px;
 }
 
+#loginlogo{
+    animation: fill 2s ease forwards 2.5s;
+}
+#loginlogo path:nth-child(1){
+    stroke-dasharray: 74;
+    stroke-dashoffset: 74;
+    animation: lineanim 2s ease forwards;
+}
+#loginlogo path:nth-child(2){
+    stroke-dasharray: 108;
+    stroke-dashoffset: 108;
+    animation: lineanim 2s ease forwards 0.3s;
 
-#logo path:nth-child(1){
-    stroke-dasharray: 3px;
 }
-#logo path:nth-child(2){
-    stroke-dasharray: 3px;
+#loginlogo path:nth-child(3){
+    stroke-dasharray: 173;
+    stroke-dashoffset: 173;
+    animation: lineanim 2s ease forwards 0.6s;
+
 }
-#logo path:nth-child(3){
-    stroke-dasharray: 3px;
+#loginlogo path:nth-child(4){
+    stroke-dasharray: 59;
+    stroke-dashoffset: 59;
+    animation: lineanim 2s ease forwards 0.9s;
+
 }
-#logo path:nth-child(4){
-    stroke-dasharray: 3px;
+#loginlogo path:nth-child(5){
+    stroke-dasharray: 105;
+    stroke-dashoffset: 105;
+    animation: lineanim 2s ease forwards 1.2s;
+
 }
-#logo path:nth-child(5){
-    stroke-dasharray: 3px;
+
+@keyframes lineanim{
+    to{
+        stroke-dashoffset: 0;
+    }
+}
+@keyframes fill{
+    from{
+        fill: transparent
+    }
+    to{
+        fill: orange;
+    }
 }
