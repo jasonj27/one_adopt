@@ -1,0 +1,59 @@
+.col {
+  text-align: center;
+  border: 1px solid orange;
+  border-radius: 3%;
+  padding: 10px;
+  margin-bottom: 20px;
+  background-color: white;
+  -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+          box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.col a {
+  color: gray;
+}
+
+.col .field {
+  color: gray;
+  margin-top: 3;
+  margin-bottom: 3;
+}
+
+.col .field input {
+  background-color: #f8f9fa;
+}
+
+.col .btn-warning {
+  width: 173px;
+  height: 35px;
+  border-radius: 3%;
+}
+
+.col .submit {
+  color: white;
+}
+
+.row {
+  width: 350px;
+}
+
+#logo path:nth-child(1) {
+  stroke-dasharray: 3px;
+}
+
+#logo path:nth-child(2) {
+  stroke-dasharray: 3px;
+}
+
+#logo path:nth-child(3) {
+  stroke-dasharray: 3px;
+}
+
+#logo path:nth-child(4) {
+  stroke-dasharray: 3px;
+}
+
+#logo path:nth-child(5) {
+  stroke-dasharray: 3px;
+}
+/*# sourceMappingURL=style.css.map */
