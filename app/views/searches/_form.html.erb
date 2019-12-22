@@ -12,8 +12,20 @@
                 options_for_select(Animal::ANIMAL_AGE_CLASS),
                 { include_blank: "年紀" },
                 { class: 'form-control mt-4' }) %>
-
+  <%= f.select(:animal_sterilization,
+                options_for_select(Animal::ANIMAL_STERILIZATION_CLASS),
+                { include_blank: "結紮" },
+                { class: 'form-control advSearchCondition mt-4' }) %>
+  <%= f.select(:animal_area_pkid,
+                options_for_select(Animal::ANIMAL_AREA_PKID_CLASS),
+                { include_blank: "縣市" },
+                { class: 'form-control advSearchCondition mt-4' }) %>
+                
   <div class="text-center">
     <%= f.submit "進行配對", class: 'w-100 btn btn-primary mt-4' %>
   </div>
 <% end %>
+
+<div class="text-center">
+  <button id="advSearchButton" class="w-100 btn btn-primary mt-4">進階搜尋</button>
+</div>

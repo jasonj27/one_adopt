@@ -1,8 +1,14 @@
 class SearchesController < ApplicationController
   layout 'search'
   
+  def show
+    @animal = Animal.find(params[:id])
+  end
+
   def simple
-    search_conditions = Animal.search_kind(params[:animal_kind]).search_sex(params[:animal_sex]).search_age(params[:animal_age])
+    search_conditions = Animal.search_kind(params[:animal_kind])
+                              .search_sex(params[:animal_sex])
+                              .search_age(params[:animal_age])
 
     data_array = []
     search_conditions.each do |search_condition|
@@ -39,5 +45,13 @@ class SearchesController < ApplicationController
       session[:a_list] << @simple_search[0].id
       session[:a_list] = [] if session[:a_list].count > ((data_array.count) - 1)
     end
+  end
+
+  def advance
+    @search_conditions = Animal.search_kind(params[:animal_kind])
+                               .search_sex(params[:animal_sex])
+                               .search_age(params[:animal_age])
+                               .search_sterilization(params[:animal_sterilization])
+                               .search_area_pkid(params[:animal_area_pkid])
   end
 end

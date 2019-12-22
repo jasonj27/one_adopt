@@ -1,0 +1,26 @@
+<div>
+  <h1 class="d-inline">
+    <%= link_to searches_path do %>
+      <i class="fas fa-arrow-left"></i>
+    <% end %>
+    ADVSearch</h1>
+</div>
+
+<div class="row">
+  <% @search_conditions.each do |s| %>
+    <div class="col-md-6 mt-4 w-50">
+      <div class="card searchimg">
+      <%= link_to search_path(s) do%>
+        <%= image_tag s.images.first.variant(resize: "500x400!") , class: "card-img-top img-fluid"%>
+      <% end %>
+        <div class="card-body">
+          <p class="card-text d-flex justify-content-between"><%= s.animal_kind%><%= link_to  '#' do%>
+            <i class="far fa-heart"></i>
+          <% end %></p>
+          <p class="card-text"><%= s.user.name%></p>
+        </div>
+      </div>
+    </div>
+    
+  <% end %>
+</div>
