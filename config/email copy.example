@@ -1,0 +1,8 @@
+development:
+  address: "smtp.gmail.com"
+  port: 587
+  domain: "gmail.com"
+  authentication: "plain"
+  user_name: "your email"
+  password: "your email password"
+  enable_starttls_auto: true
