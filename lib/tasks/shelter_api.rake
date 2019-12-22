@@ -73,7 +73,7 @@ namespace :access do
     if result['album_file'] == nil || result['album_file'] == "" && result['animal_kind'] == "狗"
       result['album_file'] = "https://picsum.photos/id/237/500/500"
     elsif result['album_file'] == nil || result['album_file'] == "" && result['animal_kind'] == "貓"
-      result['album_file'] = "https://picsum.photos/id/237/500/500"
+      result['album_file'] = "https://picsum.photos/id/40/500/500"
     else
      result['album_file']
     end
