@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resource :pages, only: [:index]  #for landingpage
 
-  resource :search, only: [:index, :show] do #for search function
+  resources :searches, only: [:index, :show] do #for search function
     collection do
       get :simple
     end

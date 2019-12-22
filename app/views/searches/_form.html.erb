@@ -1,0 +1,19 @@
+<%= form_with url: '/searches/simple', local: true, method: :get, class: "formSearch" do |f| %>
+
+  <%= f.select(:animal_kind,
+                options_for_select(Animal::ANIMAL_KIND_CLASS),
+                { include_blank: "種類"},
+                { class: 'form-control mt-4' }) %>
+  <%= f.select(:animal_sex,
+                options_for_select(Animal::ANIMAL_SEX_CLASS),
+                { include_blank: "性別" },
+                { class: 'form-control mt-4' }) %>
+  <%= f.select(:animal_age,
+                options_for_select(Animal::ANIMAL_AGE_CLASS),
+                { include_blank: "年紀" },
+                { class: 'form-control mt-4' }) %>
+
+  <div class="text-center">
+    <%= f.submit "進行配對", class: 'w-100 btn btn-primary mt-4' %>
+  </div>
+<% end %>

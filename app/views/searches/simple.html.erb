@@ -1,0 +1,25 @@
+<%= user_signed_in? %>
+<div>
+  <h1 class="d-inline">
+    <%= link_to searches_path do %>
+      <i class="fas fa-arrow-left"></i>
+    <% end %>
+    Simple Search</h1>
+</div>
+<% @simple_search.each do |s| %>
+  <div class="card searchimg" >
+    <%= image_tag s.images.first.variant(resize: "500x400!") , class: "card-img-top"%>
+    <div class="card-body text-center">
+      <h5 class="card-title"><%= s.animal_subid %></h5>
+      <p class="card-text"><%= s.user.name %></p>
+      <p class="card-text">年紀：<%= s.animal_age %></p>
+    </div>
+  </div>
+  <div class="text-center mt-4">
+    <%= link_to '收藏', '#', class: 'btn btn-primary w-25'%>
+    <%= link_to '下一隻', simple_searches_path(animal_kind: params[:animal_kind],
+                                            animal_age: params[:animal_age],
+                                            animal_sex: params[:animal_sex],),
+                                            id:"next", class:"btn btn-secondary w-25",:"data-turbolinks" => false %>
+  </div>
+<% end %>

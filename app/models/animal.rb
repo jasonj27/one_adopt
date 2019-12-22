@@ -10,4 +10,14 @@ class Animal < ApplicationRecord
   enum animal_sterilization: {"是": 1, "否": 2, "未輸入": 3}
   enum animal_status: {"未公告":1, "開放認養":2, "已經認養":3, "其他":4, "死亡":5,}
   enum adopt_status: {"未上架": 1, "待領養": 2, "已領養": 3}
+
+  # search_form_select
+  ANIMAL_KIND_CLASS = [["貓咪","貓"],["狗狗","狗"],["兔子","兔"],["老鼠","鼠"]]
+  ANIMAL_SEX_CLASS = [["男生","公"],["女生","母"],["未知","還未輸入"]]
+  ANIMAL_AGE_CLASS = [["0~7 years old","幼年"],["> 7 years old","成年"],["未知",""]]
+
+  # scope
+  scope :search_kind, -> (animal_kind) { animal_kind.present? ? where(animal_kind: animal_kind) : all }
+  scope :search_sex, -> (animal_sex) { animal_sex.present? ? where(animal_sex: animal_sex) : all  }
+  scope :search_age, -> (animal_age) { animal_age.present? ? where(animal_age: animal_age) : all }
 end
