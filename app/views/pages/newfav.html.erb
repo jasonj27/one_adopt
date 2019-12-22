@@ -1,0 +1,29 @@
+<h1 class="title">Animal</h1>
+
+
+
+
+
+
+	<% @animals.each do |animal|%>
+
+		<%= animal.name %>
+		<%= animal.animal_kind %>
+		<%= animal.animal_sex %>
+		<div data-controller="favorite" 
+		data-favorite-id="<%= params[:id] %>"> 
+		<!--(連結到favorite_controller.js)-->
+			<a href="#" data-action="favorite#toggle"  class="btn btn-warning btn-sm" >
+				<i class="fas fa-heart" data-target="favorite.icon"></i>
+			</a>
+		</div>
+		<br>
+		<br>
+	<% end%>
+
+
+
+
+
+
+ 
