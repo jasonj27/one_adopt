@@ -1,0 +1,12 @@
+<h1>HOHOHO</h1>
+<%= form_with(model: @reservation) do |f| %>
+
+<%= f.label :sender_id, 'Sender' %> <br>
+<%= f.text_field :sender_id %> <br>
+<%= f.label :receiver_id, 'Receiver' %> <br>
+<%= f.text_field :receiver_id %> <br>
+<%= f.label :datetime, 'Time' %> <br>
+<%= f.text_field :datetime %> <br>
+
+<%= f.submit 'Send' %>
+<% end %>

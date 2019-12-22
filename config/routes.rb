@@ -29,6 +29,9 @@ Rails.application.routes.draw do
   resources :favorites #for favorite function
 
   resources :reservations do  #for reservation function
+    collection do
+      get :testfav
+    end
     member do
       delete :cancel
     end
