@@ -1,18 +1,13 @@
-<% if flash[:notice] %>
-    <h2 style="color: red;">
-    <%= flash[:notuce]%>
-    </h2>
-<%end %>
-<h1>首頁</h1>
+<div class="container">
+  <div class="row login">
+    <div class="col">
+      <h1>PET</h1>
+        <%= link_to('I have an account 已有帳號', new_user_session_path) %>
+        <%= link_to("Create an account 建立帳號", new_user_registration_path) %>
+        <% if user_signed_in? %>
+          <%= link_to('logout', destroy_user_session_path, method: :delete)%>
+        <% end%>	
+    </div>
+  </div>
+</div>
 
-
-
-<% if user_signed_in? %>
-    <li>
-    <%= link_to('logout', destroy_user_session_path, method: :delete)%>
-    </li>
-<% else %>
-    <li>
-    <%= link_to('login', new_user_session_path) %>
-    </li>
-<% end%>
