@@ -7,7 +7,6 @@
   border: 1px solid orange;
   border-radius: 3%;
   padding: 10px;
-  margin-bottom: 20px;
   background-color: white;
   -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
           box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
@@ -37,7 +36,7 @@
   color: white;
 }
 
-#loginlogo {
+#loginlogo, #signuplogo, #petlogo {
   -webkit-animation: fill 2s ease forwards 2.5s;
           animation: fill 2s ease forwards 2.5s;
 }
@@ -75,6 +74,69 @@
   stroke-dashoffset: 105;
   -webkit-animation: lineanim 2s ease forwards 1.2s;
           animation: lineanim 2s ease forwards 1.2s;
+}
+
+#signuplogo path:nth-child(1) {
+  stroke-dasharray: 123;
+  stroke-dashoffset: 123;
+  -webkit-animation: lineanim 2s ease forwards;
+          animation: lineanim 2s ease forwards;
+}
+
+#signuplogo path:nth-child(2) {
+  stroke-dasharray: 59;
+  stroke-dashoffset: 59;
+  -webkit-animation: lineanim 2s ease forwards 0.3s;
+          animation: lineanim 2s ease forwards 0.3s;
+}
+
+#signuplogo path:nth-child(3) {
+  stroke-dasharray: 173;
+  stroke-dashoffset: 173;
+  -webkit-animation: lineanim 2s ease forwards 0.6s;
+          animation: lineanim 2s ease forwards 0.6s;
+}
+
+#signuplogo path:nth-child(4) {
+  stroke-dasharray: 105;
+  stroke-dashoffset: 105;
+  -webkit-animation: lineanim 2s ease forwards 0.9s;
+          animation: lineanim 2s ease forwards 0.9s;
+}
+
+#signuplogo path:nth-child(5) {
+  stroke-dasharray: 105;
+  stroke-dashoffset: 105;
+  -webkit-animation: lineanim 2s ease forwards 1.2s;
+          animation: lineanim 2s ease forwards 1.2s;
+}
+
+#signuplogo path:nth-child(6) {
+  stroke-dasharray: 145;
+  stroke-dashoffset: 145;
+  -webkit-animation: lineanim 2s ease forwards 1.5s;
+          animation: lineanim 2s ease forwards 1.5s;
+}
+
+#petlogo path:nth-child(1) {
+  stroke-dasharray: 149;
+  stroke-dashoffset: 149;
+  -webkit-animation: lineanim 2s ease forwards 0.3s;
+          animation: lineanim 2s ease forwards 0.3s;
+}
+
+#petlogo path:nth-child(2) {
+  stroke-dasharray: 154;
+  stroke-dashoffset: 154;
+  -webkit-animation: lineanim 2s ease forwards 0.6s;
+          animation: lineanim 2s ease forwards 0.6s;
+}
+
+#petlogo path:nth-child(3) {
+  stroke-dasharray: 112;
+  stroke-dashoffset: 112;
+  -webkit-animation: lineanim 2s ease forwards 0.9s;
+          animation: lineanim 2s ease forwards 0.9s;
 }
 
 @-webkit-keyframes lineanim {

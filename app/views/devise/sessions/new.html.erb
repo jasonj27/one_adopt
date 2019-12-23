@@ -25,7 +25,8 @@
       </div>
       <% end %>
 
-      <%= render "devise/shared/links" %>
+      <%= link_to "<i class='fab fa-google'></i>".html_safe, user_google_oauth2_omniauth_authorize_path %>
+      <%= link_to "<i class='fab fa-facebook-f'></i>".html_safe, user_facebook_omniauth_authorize_path %>
     </div>
   </div>
 </div>
