@@ -15,12 +15,6 @@ export default class extends Controller {
   	evt.preventDefault() //預設<a>連結停下來,不再轉頁
 
 
-  	console.log(this.element.dataset['animalid'])
-  	//newfav data-favorite-id已抓不到
-  	// 影片時間在15:45
-
-
-
  		const token = document.querySelector("meta[name=csrf-token]")||{ content: 'no-csrf-token'}
 
 		var ax = axios.create({  //搜尋axios head common的寫法
@@ -32,22 +26,28 @@ export default class extends Controller {
 		})
 
 
+
+  	let id = this.data.get('id')
+  	let icon = this.iconTarget
+
  		ax.post(`/api/animals/${id}/favorite`,{})
+
  			.then(function(response){
- 				console.log(response)
+ 				let favorited = response.data.favorited
+
+ 				if(favorited){
+ 					icon.classList.remove('far')
+ 					icon.classList.add('fas')
+ 				}else{
+ 					icon.classList.remove('fas')
+ 					icon.classList.add('far')
+ 				}
  			})
  			.catch(function(error){
- 				console.log(error)
+ 				console.log(error)  //什麼情況會error?
  			})
+ 			// return  ax.post
   }
 }
 
 
-// let icon = this.iconTarget
-// if (icon.classList.contains("fas")){
-//   		icon.classList.remove("fas")
-//   		icon.classList.add("far")
-// }else{
-//   		icon.classList.remove("far")
-//   		icon.classList.add("fas")
-// }

@@ -2,19 +2,21 @@
 
 
 
-
-
-
 	<% @animals.each do |animal|%>
 
 		<%= animal.name %>
 		<%= animal.animal_kind %>
 		<%= animal.animal_sex %>
+
 		<div data-controller="favorite" 
-		data-favorite-id="<%= params[:id] %>"> 
+		data-favorite-id="<%= animal.id %>"> 
 		<!--(連結到favorite_controller.js)-->
 			<a href="#" data-action="favorite#toggle"  class="btn btn-warning btn-sm" >
-				<i class="fas fa-heart" data-target="favorite.icon"></i>
+
+
+					<i class="far fa-heart" data-target="favorite.icon"></i>
+
+
 			</a>
 		</div>
 		<br>
