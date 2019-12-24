@@ -1,0 +1,9 @@
+<% @sort_fav.each do |k,v|  %>
+  <%= k %>
+  <ol>
+    <% v['animals'].each do |item| %>
+    <li> <%= item[0] %> </li>
+    <% end %>
+  </ol>
+  <%= link_to "我要預約", new_reservation_path(:sender => (v['id'])) %> <br> <br>
+<% end %> 
