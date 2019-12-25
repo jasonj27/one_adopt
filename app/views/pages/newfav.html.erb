@@ -9,7 +9,7 @@
 		<%= animal.animal_sex %>
 
 		<div data-controller="favorite" 
-		data-favorite-id="<%= animal.id %>"> 
+		data-favorite-id="<%= animal.id %>" data-favorite-favorited="<%= animal.favorited_by?(current_user) %>"> 
 		<!--(連結到favorite_controller.js)-->
 			<a href="#" data-action="favorite#toggle"  class="btn btn-warning btn-sm" >
 

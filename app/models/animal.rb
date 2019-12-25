@@ -26,4 +26,8 @@ class Animal < ApplicationRecord
   scope :search_age, -> (animal_age) { animal_age.present? ? where(animal_age: animal_age) : all }
   scope :search_sterilization, -> (animal_sterilization) { animal_sterilization.present? ? where(animal_sterilization: animal_sterilization) : all }
   scope :search_area_pkid, -> (animal_area_pkid) { animal_area_pkid.present? ? where(animal_area_pkid: animal_area_pkid) : all }
+  def favorited_by?(user)
+    favorites.exists?(user: user)
+  end
+
 end

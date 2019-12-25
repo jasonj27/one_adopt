@@ -9,6 +9,9 @@ import axios from 'axios'
 export default class extends Controller {
   static targets = [ "icon" ]
 
+   connect() {
+    this.favorited = this.data.get('favorited');
+  }
 
 
   toggle(evt){
@@ -47,6 +50,14 @@ export default class extends Controller {
  				console.log(error)  //什麼情況會error?
  			})
  			// return  ax.post
+  }
+  set favorited(value) {
+    this.data.set('favorited', value.toString());
+    this.updateIcon();
+  }
+
+  updateIcon() {
+    this.iconTarget.classList.toggle('fas', this.data.get('favorited') === 'true')
   }
 }
 
