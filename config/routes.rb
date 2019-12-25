@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   root 'pages#index'
 
-  resource :page, only: [:index]  #for landingpage
+  resource :pages, only: [:index]  #for landingpage
 
   resource :search, only: [:index] #for search function
 
@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   resources :messages
 
   namespace :sender do
-    root 'page#index'
+    root 'pages#index'
     resources :reservations do
       member do
         delete :cancel
