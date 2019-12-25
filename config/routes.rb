@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {omniauth_callbacks: 'users/omniauth_callbacks'}
 
-  root 'page#index'
+  root 'pages#index'
 
   resource :page, only: [:index]  #for landingpage
 
