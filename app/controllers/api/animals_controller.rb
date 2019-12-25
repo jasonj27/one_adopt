@@ -14,9 +14,7 @@ class Api::AnimalsController < ApplicationController
 
   render json: { status:'ok', favorited: favorited } #true or false
 	
-		def favorited_by?(user)
-    		favorites.exist?(user: user)
-  	end
+
 	end
  
 end
