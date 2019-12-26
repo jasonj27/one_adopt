@@ -1,0 +1,47 @@
+<div>
+  <h1 class="d-inline">
+    <%= link_to :back do %>
+      <i class="fas fa-arrow-left"></i>
+    <% end %>
+    Show detail</h1>
+</div>
+
+<div class="col-md-12">
+  <div class="card searchimg" >
+    <%= image_tag @animal.images.first.variant(resize: "500x400!") , class: "card-img-top"%>
+    <div class="card-body">
+      <table class="table table-borderless text-center">
+        <tr>
+          <th scope="col"><div class="bg-primary">種類</div></th>
+          <td scope="col"><%= @animal.animal_kind %></td>
+          <th scope="col"><div class="bg-primary">性別</div></th>
+          <td scope="col"><%= @animal.animal_sex %></td>
+        </tr>
+        <tr>
+          <th scope="row"><div class="bg-primary">年紀</div></th>
+          <td><%= @animal.animal_age %></td>
+          <th><div class="bg-primary">結紮</div></th>
+          <td><%= @animal.animal_sterilization %></td>
+        </tr>
+        <tr>
+          <th scope="row"><div class="bg-primary">縣市</div></th>
+          <td><%= @animal.animal_area_pkid %></td>
+          <th></th>
+          <td></td>
+        </tr>
+      </table>
+      <div class="content text-center py-2">
+        <ul class="py-2">
+          <li><%= @animal.user.name %></li>
+          <li><%= @animal.user.sender_add %></li>
+          <li><%= @animal.user.sender_tel %></li>
+          <li>編號：<%= @animal.animal_subid %></li>
+        </ul>
+      </div>
+    </div>
+  
+    <div class="text-center mt-4">
+      <%= link_to '收藏', '#', class: 'btn btn-primary w-25'%>
+    </div>
+  </div>
+</div>

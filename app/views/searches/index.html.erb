@@ -1,0 +1,17 @@
+<div class="row">
+  <h1 class="d-inline">
+    <%= link_to root_path do %>
+      <i class="fas fa-arrow-left"></i>
+    <% end %>
+    Simple Search
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <%= render 'shared/carousel'%>
+    <%= render 'form'%>
+  </div>
+</div>
+
+<%= javascript_pack_tag 'search/advSearch'%>
+

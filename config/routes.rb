@@ -5,7 +5,12 @@ Rails.application.routes.draw do
 
   resource :pages, only: [:index]  #for landingpage
 
-  resource :search, only: [:index] #for search function
+  resources :searches, only: [:index, :show] do #for search function
+    collection do
+      get :simple
+      get :advance
+    end
+  end
 
   resources :favorites #for favorite function
 

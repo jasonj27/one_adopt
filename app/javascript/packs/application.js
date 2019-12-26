@@ -5,4 +5,4 @@ require("channels")
 
 import '../scripts/index.js'
 import '../stylesheets/index.js'
-
+import 'jquery'
