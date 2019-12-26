@@ -1,0 +1,29 @@
+<div class="container-fluid bg">
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-6 col-md-3">
+      <form class="form_login">
+			  <div class="form-group">
+          <svg id="petlogo" width="84" height="34" viewBox="0 0 84 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M23.064 10.336C23.064 13.12 22.104 15.44 20.184 17.296C18.296 19.12 15.4 20.032 11.496 20.032H5.064V34H0.695999V0.544003H11.496C15.272 0.544003 18.136 1.456 20.088 3.28C22.072 5.104 23.064 7.456 23.064 10.336ZM11.496 16.432C13.928 16.432 15.72 15.904 16.872 14.848C18.024 13.792 18.6 12.288 18.6 10.336C18.6 6.208 16.232 4.144 11.496 4.144H5.064V16.432H11.496Z" stroke="orange" stroke-width="2"/>
+            <path d="M37.6609 4.096V15.28H49.8529V18.88H37.6609V30.4H51.2929V34H33.2929V0.496002H51.2929V4.096H37.6609Z" stroke="orange" stroke-width="2"/>
+            <path d="M83.2943 0.544003V4.096H74.1742V34H69.8063V4.096H60.6382V0.544003H83.2943Z" stroke="orange" stroke-width="2"/>
+          </svg>
+			  </div>
+        <div class="form-group">
+          <%= link_to 'I have an account 已有帳號', new_user_session_path, class: "btn btn-warning btn-block text-white" %>
+        </div>
+        <div class="form-group">
+          <%= link_to 'Create an account 建立帳號', new_user_registration_path, class: "btn btn-warning btn-block text-white" %>
+        </div>
+        <div class="form-group">
+          <% if user_signed_in? %>
+            <%= link_to('logout', destroy_user_session_path, method: :delete)%>
+          <% end%>
+          <%= link_to "<i class='fab fa-google'></i>".html_safe, user_google_oauth2_omniauth_authorize_path %>
+          <%= link_to "<i class='fab fa-facebook-f'></i>".html_safe, user_facebook_omniauth_authorize_path %>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
