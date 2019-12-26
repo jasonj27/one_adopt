@@ -3,7 +3,20 @@ Rails.application.routes.draw do
 
   root 'pages#index'
 
-  resource :pages, only: [:index]  #for landingpage
+  resources :pages, only: [:index] do
+    collection do
+      get :newfav
+    end
+  end  #for landingpage
+
+
+  namespace :api do
+    resources :animals, only: [] do
+      member do
+        post :favorite # /api/animals/:id/favorite
+      end
+    end
+  end
 
   resources :searches, only: [:index, :show] do #for search function
     collection do
