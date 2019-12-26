@@ -33,7 +33,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resource :calander  #for reservation calander function
+  resources :calander  #for reservation calander function
   resources :messages
 
   namespace :sender do
@@ -43,7 +43,7 @@ Rails.application.routes.draw do
         delete :cancel
       end
     end
-    resource :calander
+    resources :calander
   end
 
 end

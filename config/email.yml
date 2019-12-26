@@ -4,5 +4,5 @@ development:
   domain: "gmail.com"
   authentication: "plain"
   user_name: "lccjw0001@gmail.com"
-  password: "lccjw123"
+  password: "lccjw54321"
   enable_starttls_auto: true
