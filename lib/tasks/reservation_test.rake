@@ -11,4 +11,8 @@ task :res_test => :environment do
   Favorite.create(user_id: '33', animal_id:'5')
   Favorite.create(user_id: '33', animal_id:'6')
   Favorite.create(user_id: '33', animal_id:'7')
+  Favorite.create(user_id: '33', animal_id:'8')
+  Favorite.create(user_id: '33', animal_id:'9')
+  Favorite.create(user_id: '33', animal_id:'10')
+  Favorite.create(user_id: '33', animal_id:'11')
 end

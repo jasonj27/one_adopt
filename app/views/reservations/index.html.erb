@@ -1,20 +1,25 @@
-<h1>aaa</h1>
+<h1>我的預約</h1>
+
+<%= link_to "最愛紀錄（假", testfav_reservations_path %> <br>
+
 
 <% @reservations.each do |res| %>
-<ul>
-  <li>
-  <%= res.sender.name %> <br>
-  <%= res.status %> <br>
+  <% if res.status != "canceled" %>
   <ul>
-    <% res.reservation_pets.each do |pet| %>
-      <li>
-        <%= pet.animal.name %>
-        <%= pet.animal.animal_kind %>
-        <%= pet.animal.animal_sex %>
-      </li>
-    <% end %>
-    <%= link_to '取消預約', cancel_reservation_path(res), method: :delete, data: {confirm: '確認取消!?'} %>
+    <li>
+    <%= res.sender.name %> <br>
+    <%= res.status %> <br>
+    <ul>
+      <% res.reservation_pets.each do |pet| %>
+        <li>
+          <%= pet.animal.name %>
+          <%= pet.animal.animal_kind %>
+          <%= pet.animal.animal_sex %>
+        </li>
+      <% end %>
+      <%= link_to '取消預約', cancel_reservation_path(res), method: :delete, data: {confirm: '確認取消!?'} %>
+    </ul>
+    </li>
   </ul>
-  </li>
-</ul>
+  <% end %>
 <% end %>

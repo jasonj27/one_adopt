@@ -1,5 +1,9 @@
 class ReservationsController < ApplicationController
   def testfav
+    if not user_signed_in?
+      redirect_to user_session_path
+    end
+
     @favorites = current_user.favorites.includes({animal: :user}, :animal)
     @sort_fav={}
     @favorites.each do |fav|
