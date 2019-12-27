@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_28_044433) do
+ActiveRecord::Schema.define(version: 2019_12_27_115954) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -106,11 +106,11 @@ ActiveRecord::Schema.define(version: 2019_12_28_044433) do
     t.boolean "is_sender", default: false
     t.string "sender_tel"
     t.string "sender_add"
-    t.text "available_time"
     t.string "provider"
     t.string "uid"
     t.string "image"
-    t.text "search_session", default: [], array: true
+    t.jsonb "available_time", default: {}, null: false
+    t.index ["available_time"], name: "index_users_on_available_time", using: :gin
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

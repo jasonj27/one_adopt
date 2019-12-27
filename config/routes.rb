@@ -47,6 +47,8 @@ Rails.application.routes.draw do
         delete :cancel
       end
     end
+    resources :animals
+    resource :user
     resource :calander
   end
 

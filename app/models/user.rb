@@ -26,5 +26,5 @@ class User < ApplicationRecord
       # user.skip_confirmation!
     end
   end
-  
+  store_accessor :available_time, :days, :w0, :w1, :w2, :w3, :w4, :w5, :w6
 end
