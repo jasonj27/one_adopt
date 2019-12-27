@@ -7,24 +7,24 @@
 </div>
 
 <div class="col-md-12">
-  <div class="card searchimg" >
-    <%= image_tag @animal.images.first.variant(resize: "500x400!") , class: "card-img-top"%>
+  <div class="card searchimg pt-5" >
+    <%= image_tag @animal.images.first.variant(resize: "500x400!") , class: "card-img-top w-75 m-auto"%>
     <div class="card-body">
-      <table class="table table-borderless text-center">
+      <table class="table table-borderless text-center w-75 m-auto">
         <tr>
-          <th scope="col"><div class="bg-primary">種類</div></th>
+          <th scope="col"><div class="bg-warning">種類</div></th>
           <td scope="col"><%= @animal.animal_kind %></td>
-          <th scope="col"><div class="bg-primary">性別</div></th>
+          <th scope="col"><div class="bg-warning">性別</div></th>
           <td scope="col"><%= @animal.animal_sex %></td>
         </tr>
         <tr>
-          <th scope="row"><div class="bg-primary">年紀</div></th>
+          <th scope="row"><div class="bg-warning">年紀</div></th>
           <td><%= @animal.animal_age %></td>
-          <th><div class="bg-primary">結紮</div></th>
+          <th><div class="bg-warning">結紮</div></th>
           <td><%= @animal.animal_sterilization %></td>
         </tr>
         <tr>
-          <th scope="row"><div class="bg-primary">縣市</div></th>
+          <th scope="row"><div class="bg-warning">縣市</div></th>
           <td><%= @animal.animal_area_pkid %></td>
           <th></th>
           <td></td>
@@ -40,8 +40,12 @@
       </div>
     </div>
   
-    <div class="text-center mt-4">
-      <%= link_to '收藏', '#', class: 'btn btn-primary w-25'%>
+    <div data-controller="favorite" 
+  data-favorite-id="<%= @animal.id %>" data-favorite-favorited="<%= @animal.favorited_by?(current_user) %>" class="text-center"> 
+    <!--(連結到favorite_controller.js)-->
+      <a href="#" data-action="favorite#toggle"  class="btn btn-warning w-25 mb-4" >
+        <i class="far fa-heart" data-target="favorite.icon"></i>
+      </a>
     </div>
   </div>
 </div>

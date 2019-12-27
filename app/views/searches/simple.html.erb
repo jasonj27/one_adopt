@@ -17,16 +17,15 @@
       <p class="card-text">年紀：<%= s.animal_age %></p>
     </div>
   </div>
-    <div data-controller="favorite" 
-		data-favorite-id="<%= s.id %>" data-favorite-favorited="<%= s.favorited_by?(current_user) %>" class="text-center mt-4"> 
-		  <!--(連結到favorite_controller.js)-->
-			<a href="#" data-action="favorite#toggle"  class="btn btn-warning w-25 mr-4" >
-				<i class="far fa-heart" data-target="favorite.icon"></i>
-			</a>
-      <%= link_to '下一隻', simple_searches_path(animal_kind: params[:animal_kind],
-                                            animal_age: params[:animal_age],
-                                            animal_sex: params[:animal_sex],),
-                                            id:"next", class:"btn btn-secondary w-25 ml-4",:"data-turbolinks" => false %>
-	  </div>
+  <div data-controller="favorite" 
+  data-favorite-id="<%= s.id %>" data-favorite-favorited="<%= s.favorited_by?(current_user) %>" class="text-center mt-4"> 
+    <!--(連結到favorite_controller.js)-->
+    <a href="#" data-action="favorite#toggle"  class="btn btn-warning w-25 mr-4" >
+      <i class="far fa-heart" data-target="favorite.icon"></i>
+    </a>
+    <%= link_to '下一隻', simple_searches_path(animal_kind: params[:animal_kind],
+                                          animal_age: params[:animal_age],
+                                          animal_sex: params[:animal_sex],),
+                                          id:"next", class:"btn btn-secondary w-25 ml-4",:"data-turbolinks" => false %>
   </div>
 <% end %>
