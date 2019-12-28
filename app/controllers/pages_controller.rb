@@ -9,4 +9,7 @@ class PagesController < ApplicationController
 		@animals = Animal.all
 	end
 
+	def landingpage
+		
+	end
 end
