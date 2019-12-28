@@ -15,7 +15,7 @@
       <option value="6">星期六</option>
       <option value="0">星期日</option>
     </select>
-    <input name="user[days]" type="hidden" id="user_days" />
+    <%= f.hidden_field :days%>
   </div>
   <%= f.label :w1, '星期一有空的時間' %>
   <div id="w1-select">
@@ -45,9 +45,9 @@
       <option value="22">10:00 PM</option>
       <option value="23">11:00 PM</option>
     </select>
-    <input name="user[w1]" type="hidden" id="user_w1" />
+    <%= f.hidden_field :w1%>
   </div>
-    <%= f.label :w2, '星期二有空的時間' %>
+  <%= f.label :w2, '星期二有空的時間' %>
   <div id="w2-select">
     <select>
       <option value="0">12:00 AM</option>
@@ -75,9 +75,9 @@
       <option value="22">10:00 PM</option>
       <option value="23">11:00 PM</option>
     </select>
-    <input name="user[w2]" type="hidden" id="user_w2" />
+    <%= f.hidden_field :w2%>
   </div>
-    <%= f.label :w3, '星期三有空的時間' %>
+  <%= f.label :w3, '星期三有空的時間' %>
   <div id="w3-select">
     <select>
       <option value="0">12:00 AM</option>
@@ -105,9 +105,9 @@
       <option value="22">10:00 PM</option>
       <option value="23">11:00 PM</option>
     </select>
-    <input name="user[w3]" type="hidden" id="user_w3" />
+    <%= f.hidden_field :w3%>
   </div>
-    <%= f.label :w4, '星期四有空的時間' %>
+  <%= f.label :w4, '星期四有空的時間' %>
   <div id="w4-select">
     <select>
       <option value="0">12:00 AM</option>
@@ -135,9 +135,9 @@
       <option value="22">10:00 PM</option>
       <option value="23">11:00 PM</option>
     </select>
-    <input name="user[w4]" type="hidden" id="user_w4" />
+    <%= f.hidden_field :w4%>
   </div>
-    <%= f.label :w5, '星期五有空的時間' %>
+  <%= f.label :w5, '星期五有空的時間' %>
   <div id="w5-select">
     <select>
       <option value="0">12:00 AM</option>
@@ -165,9 +165,9 @@
       <option value="22">10:00 PM</option>
       <option value="23">11:00 PM</option>
     </select>
-    <input name="user[w5]" type="hidden" id="user_w5" />
+    <%= f.hidden_field :w5%>
   </div>
-    <%= f.label :w6, '星期六有空的時間' %>
+  <%= f.label :w6, '星期六有空的時間' %>
   <div id="w6-select">
     <select>
       <option value="0">12:00 AM</option>
@@ -195,9 +195,9 @@
       <option value="22">10:00 PM</option>
       <option value="23">11:00 PM</option>
     </select>
-    <input name="user[w6]" type="hidden" id="user_w6" />
+    <%= f.hidden_field :w6%>
   </div>
-    <%= f.label :w0, '星期日有空的時間' %>
+  <%= f.label :w0, '星期日有空的時間' %>
   <div id="w0-select">
     <select>
       <option value="0">12:00 AM</option>
@@ -225,7 +225,7 @@
       <option value="22">10:00 PM</option>
       <option value="23">11:00 PM</option>
     </select>
-    <input name="user[w0]" type="hidden" id="user_w0" />
+    <%= f.hidden_field :w0%>
   </div>
   <%= f.submit "新增資料" %>
 <% end %>

@@ -57,7 +57,7 @@ $.fn.multiSelect = function(options){
         if(!$(e.target).is(wrap) && !$(e.target).is(listEl) && !$(e.target).is(selectedEl) && !$(e.target).is(mainEl) && !$(e.target).is(listEl.children()) && !$(e.target).is(selectedEl.children()) )
         {          
             if ( listEl.hasClass("multi-list-opened")){
-                console.log("html event");
+                // console.log("html event");
                 listEl.slideUp(function(){
                     listEl.removeClass('multi-list-opened');
                 });

@@ -24,6 +24,12 @@
             <li class="nav-item">
               <a class="nav-link" href="#">Link</a>
             </li>
+            <li class="nav-item">
+              <%= link_to "管理寵物", sender_animals_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
           </ul>
           <form class="form-inline my-2 my-lg-0">
             <%= link_to "登入", new_user_session_path, class: "btn btn-primary" if !user_signed_in? %>

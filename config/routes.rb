@@ -47,7 +47,9 @@ Rails.application.routes.draw do
         delete :cancel
       end
     end
-    resources :animals
+    resources :animals do
+      delete '/images/:image_id' => 'animals#destroy_image', as: :destroy_image, on: :member
+    end
     resource :user
     resource :calander
   end
