@@ -26,7 +26,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :favorites
+  resources :favorites do #for favorite function
+    collection do
+      delete :destroy_all
+    end
+  end
 
   resources :reservations do
     collection do

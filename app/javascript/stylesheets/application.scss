@@ -1,12 +1,17 @@
 @import 'bootstrap';
 
 *{
+	text-decoration: none;
   list-style: none;
   margin: 0;
   padding: 0;
 }
 a:hover{
   text-decoration: none;
+}
+
+.fz-12{
+	font-size: 12px;
 }
 .color-primary-pet{
   color: #e09300;
@@ -27,5 +32,21 @@ a:hover{
   background-color: #e06b5c;
 }
 .btn-delete-pet:hover{
-  color: #601407;
+	color: #601407;
 }
+.btn-delete-outline-pet{
+	color: #601407;
+	border-color: #e06b5c;
+}
+.btn-delete-outline-pet:hover{
+	color: #aaa;
+	text-decoration: none;
+}
+.btn-delete-dark-pet{
+	color: #fff;
+	background-color: #AC2F20;
+}
+.btn-delete-dark-pet:hover{
+	color: #601407;
+}
+
