@@ -17,8 +17,11 @@
         </div>
         <div class="form-group">
           <% if user_signed_in? %>
-            <%= link_to('logout', destroy_user_session_path, method: :delete)%>
-          <% end%>
+            <%= link_to('登出', destroy_user_session_path, method: :delete)%>
+          <% end %>
+          <% if user_signed_in? && @user[:is_sender] == false %>
+            <%= link_to('成為送養者', edit_user_registration_path)%>
+          <% end %>
           <%= link_to "<i class='fab fa-google'></i>".html_safe, user_google_oauth2_omniauth_authorize_path %>
           <%= link_to "<i class='fab fa-facebook-f'></i>".html_safe, user_facebook_omniauth_authorize_path %>
         </div>

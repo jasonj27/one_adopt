@@ -1,5 +1,4 @@
 class BaseController < ApplicationController
-
 	private
 	def permission_check!
 		if current_user.is_sender != 'true'

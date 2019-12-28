@@ -2,6 +2,7 @@ class PagesController < ApplicationController
 	before_action :authenticate_user!, except: [:login_page]
 	
 	def login_page
+		@user = current_user
 	end
 
 	def index
@@ -14,14 +15,4 @@ class PagesController < ApplicationController
 		@animals = Animal.all
 	end
 
-
-
-	private
-
-	def user_login
-		if not user_signed_in?
-			redirect_to login_page
-		end
-	end
-	
 end

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: {omniauth_callbacks: 'users/omniauth_callbacks'}
-
-  root 'pages#index'
+  devise_for :users, controllers: {omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'registrations'}
+  
+  root 'pages#login_page'
 
   resources :pages, only: [:index] do
     collection do

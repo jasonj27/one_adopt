@@ -15,6 +15,9 @@ class User < ApplicationRecord
   # @user.sent_messages
   # @user.received_messages
   validates :name, presence: true
+  
+
+  
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
@@ -26,5 +29,6 @@ class User < ApplicationRecord
       # user.skip_confirmation!
     end
   end
+  
   
 end
