@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {omniauth_callbacks: 'users/omniauth_callbacks'}
 
-  root 'pages#index'
+  root 'pages#landingpage'
 
   resources :pages, only: [:index] do
     collection do
       get :newfav
+      get :landingpage
     end
   end  #for landingpage
 
