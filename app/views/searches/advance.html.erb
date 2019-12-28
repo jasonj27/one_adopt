@@ -10,17 +10,22 @@
   <% @search_conditions.each do |s| %>
     <div class="col-md-6 mt-4 w-50">
       <div class="card searchimg">
-      <%= link_to search_path(s) do%>
-        <%= image_tag s.images.first.variant(resize: "500x400!") , class: "card-img-top img-fluid"%>
-      <% end %>
+        <%= link_to search_path(s) do%>
+          <%= image_tag s.images.first.variant(resize: "500x400!") , class: "card-img-top"%>
+        <% end %>
         <div class="card-body">
-          <p class="card-text d-flex justify-content-between"><%= s.animal_kind%><%= link_to  '#' do%>
-            <i class="far fa-heart"></i>
-          <% end %></p>
+          <p class="card-text d-flex justify-content-between">
+            <%= s.animal_kind%>
+            <span data-controller="favorite" data-favorite-id="<%= s.id %>" data-favorite-favorited="<%= s.favorited_by?(current_user) %>"> 
+              <!--(連結到favorite_controller.js)-->
+              <%= link_to "#", "data-action": "favorite#toggle", class: "text-warning" do %>
+                <i class="far fa-heart" data-target="favorite.icon"></i>
+              <% end %>
+            </span> 
+          </p>
           <p class="card-text"><%= s.user.name%></p>
         </div>
       </div>
     </div>
-    
   <% end %>
 </div>
