@@ -38,5 +38,6 @@ class SearchesController < ApplicationController
                                .search_age(params[:animal_age])
                                .search_sterilization(params[:animal_sterilization])
                                .search_area_pkid(params[:animal_area_pkid])
+                               .page(params[:page]).per(8)
   end
 end
