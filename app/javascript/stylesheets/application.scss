@@ -5,3 +5,26 @@
   margin: 0;
   padding: 0;
 }
+
+ul {
+  margin-bottom: 0;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid  #ccc;
+}
+.color-primary-pet{
+	color: #e09300;
+}
+.btn-primary-pet{
+  color: #e09300;
+  background-color: #ffe600;
+}
+.btn-primary-pet:hover{
+  color: #fff;
+}
+.btn-delete-pet{
+	color: #fff;
+	background-color: #e06b5c;
+}
+.btn-delete-pet:hover{
+	color: #601407;
+}
