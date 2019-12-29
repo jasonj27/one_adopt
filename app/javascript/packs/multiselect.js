@@ -81,11 +81,31 @@ $.fn.multiSelect = function(options) {
       }
     }
   });
+  if (inputEl.val() !== "") {
+    let selectedVal = inputEl.val().split(",");
+    this.find(".multiselect-selected").empty();
+
+    selectedVal.forEach(x => {
+      selectEl.find("option").each(function() {
+        let myOption = $(this);
+        if (x === myOption.val())
+          wrap
+            .find(".multiselect-selected")
+            .append(`<span>${myOption.html()}</span>`);
+        let myList = wrap.find(".multiselect-list");
+        myList.find("div").each(function() {
+          if (x === $(this).attr("data-val")) {
+            $(this).addClass("selected-option");
+          }
+        });
+      });
+    });
+    
+  }
   return this;
 };
 
-
-document.addEventListener('turbolinks:load', function(){
+document.addEventListener("turbolinks:load", function() {
   $("#days-select").multiSelect({
     label: "請選擇星期"
   });
@@ -110,4 +130,4 @@ document.addEventListener('turbolinks:load', function(){
   $("#w0-select").multiSelect({
     label: "請選擇星期日的時間"
   });
-})
+});

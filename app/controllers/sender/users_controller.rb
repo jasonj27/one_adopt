@@ -6,6 +6,9 @@ class Sender::UsersController < ApplicationController
   def update
     @user = User.find(current_user.id)
     if @user.update(user_params)
+      if current_user.is_sender == false
+        current_user.is_sender = true
+      end
       redirect_to sender_root_path, notice: '更新成功'
     else
       render :edit

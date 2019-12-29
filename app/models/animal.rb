@@ -2,7 +2,7 @@ class Animal < ApplicationRecord
   belongs_to :user
   has_many_attached :images
   has_many :reservation_pets
-  # has_many :favorites
+  has_many :favorites
   # has_many :users , through: :favorites
 
   enum animal_area_pkid:  {'臺北市': 2,'新北市': 3,'基隆市': 4,'宜蘭縣': 5,'桃園縣': 6,'新竹縣': 7,'新竹市': 8,'苗栗縣': 9,'臺中市': 10,'彰化縣': 11,'南投縣': 12,'雲林縣': 13,'嘉義縣': 14,'嘉義市': 15,'臺南市': 16,'高雄市': 17,'屏東縣': 18,'花蓮縣': 19,'臺東縣': 20,'澎湖縣': 21,'金門縣': 22,'連江縣': 23}
