@@ -1,6 +1,4 @@
-<div class="container">
-  <h1>編輯動物</h1>
-  <% if @animal.errors.any? %>
+<% if @animal.errors.any? %>
     <ul>
       <% @animal.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -48,4 +46,3 @@
     </div>
     <%= f.submit '送出資料' %>
   <% end %>
-</div>

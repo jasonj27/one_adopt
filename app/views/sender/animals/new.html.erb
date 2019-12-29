@@ -7,18 +7,14 @@
       <% end %>
     </ul>
   <% end %>
-  <strong>已上傳照片:</strong>
   <div>
-    <% if @animal.images.attached? && @animal.created_at.exist? %>
-      <% @animal.images.each do |image| %>
-        <%= image_tag image %>
-        <%= link_to '刪除', destroy_image_sender_animal_path(@animal, image), method: :delete %>
-      <% end %>
-    <% end %>
-  </div>
-
-  <%= form_with model: @animal, url: sender_animals_path(@animal), local: true do |f|%>
+  <%= form_with model: @animal, url: sender_animals_path, local: true do |f|%>
     <div class="form-group">
+      <% if @animal.images.attached? %>
+        <% @animal.images.each do |img| %>
+          <%= f.hidden_field :images, multiple: true, value: img.signed_id %>
+        <% end %>
+      <% end %>
       <%= f.label :images %>
       <%= f.file_field :images, multiple: true, class: "form-control-file" %>
     </div>

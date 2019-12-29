@@ -1,12 +1,22 @@
-<h1>HOHOHO</h1>
+<%= javascript_pack_tag 'picker' %>
+
+<h1>填寫預約資料</h1>
+
+<div class="available-date" data-time=[<%= @reservation.sender.days %>] ></div>
+<div class="available-time" id="w0" data-time=[<%= @reservation.sender.w0 %>] ></div>
+<div class="available-time" id="w1" data-time=[<%= @reservation.sender.w1 %>] ></div>
+<div class="available-time" id="w2" data-time=[<%= @reservation.sender.w2 %>] ></div>
+<div class="available-time" id="w3" data-time=[<%= @reservation.sender.w3 %>] ></div>
+<div class="available-time" id="w4" data-time=[<%= @reservation.sender.w4 %>] ></div>
+<div class="available-time" id="w5" data-time=[<%= @reservation.sender.w5 %>] ></div>
+<div class="available-time" id="w6" data-time=[<%= @reservation.sender.w6 %>] ></div>
+
 <%= form_with model: @reservation do |f| %>
 
-<%= f.label :sender_id, 'Sender' %> <br>
-<%= f.text_field :sender_id %> <br>
-<%= f.label :receiver_id, 'Receiver' %> <br>
-<%= f.text_field :receiver_id %> <br>
-<%= f.label :datetime, 'Time' %> <br>
-<%= f.text_field :datetime %> <br>
-
-<%= f.submit 'Send' %>
+  <%= f.hidden_field :sender_id, value: params['sender'] %> <br>
+  <%= f.label :date, '請先選擇預約日期' %> <br>
+  <%= f.text_field :date, id: "datepicker"%> <br>
+  <%= f.label :time, '請選擇預約時間' %> <br>
+  <%= f.text_field :time, id: "timepicker" %> <br> <br>
+  <%= f.submit '預約' %>
 <% end %>

@@ -41,7 +41,7 @@ class Sender::AnimalsController < ApplicationController
   def destroy_image
     @animal = Animal.find(params[:id])
     @animal.images.find(params[:image_id]).purge
-    # render :new
+    render :edit
   end
 
   private
