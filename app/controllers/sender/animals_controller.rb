@@ -47,7 +47,7 @@ class Sender::AnimalsController < ApplicationController
   private
 
   def animal_params
-    params.require(:animal).permit(:name, :animal_kind, :animal_sex, :animal_age, :animal_sterilization ,images: [],)
+    params.require(:animal).permit(:name, :animal_kind, :animal_sex, :animal_age, :animal_sterilization ,:adopt_status, images: [],)
   end
 
 end

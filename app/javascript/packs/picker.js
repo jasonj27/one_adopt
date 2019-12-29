@@ -10,6 +10,8 @@ document.addEventListener("turbolinks:load", function() {
   let date = $(".available-date").data("time");
 
   $("#datepicker").pickadate({
+    min: true,
+    container: '#date',
     firstDay: 1,
     disable: [true, ...date],
     onSet: function() {

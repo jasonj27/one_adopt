@@ -45,7 +45,11 @@ Rails.application.routes.draw do
     resources :reservations do
       member do
         delete :cancel
+        post :confirm
+        post :cancel_adopt
+        post :adopt
       end
+      resources :reservation_pets
     end
     resources :animals do
       delete '/images/:image_id' => 'animals#destroy_image', as: :destroy_image, on: :member

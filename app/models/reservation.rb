@@ -19,11 +19,11 @@ class Reservation < ApplicationRecord
       transitions form: [:pending, :confirmed], to: :canceled
     end
 
-    event :adpot do
+    event :adopt do
       transitions from: :confirmed, to: :adopt_success
     end
 
-    event :adopt_cancel do
+    event :adopt_canceled do
       transitions from: :confirmed, to: :adopt_fail
     end
   end
