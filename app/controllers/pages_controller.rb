@@ -1,8 +1,7 @@
 class PagesController < ApplicationController
-	
+	layout 'search', only: :index
+
 	def index
-		
-		# redirect_to newfav_pages_path
 	end
 
 	def newfav
@@ -10,6 +9,5 @@ class PagesController < ApplicationController
 	end
 
 	def landingpage
-		
 	end
 end
