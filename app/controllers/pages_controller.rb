@@ -1,12 +1,13 @@
 class PagesController < ApplicationController
-	
+	layout 'search', only: :index
+
 	def index
-		
-		# redirect_to newfav_pages_path
 	end
 
 	def newfav
 		@animals = Animal.all
 	end
 
+	def landingpage
+	end
 end
