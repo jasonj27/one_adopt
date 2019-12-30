@@ -15,41 +15,39 @@ export default class extends Controller {
 
 
   toggle(evt){
-  	evt.preventDefault() //預設<a>連結停下來,不再轉頁
+    evt.preventDefault()
 
 
- 		const token = document.querySelector("meta[name=csrf-token]")||{ content: 'no-csrf-token'}
+    const token = document.querySelector("meta[name=csrf-token]")||{ content: 'no-csrf-token'}
 
-		var ax = axios.create({  //搜尋axios head common的寫法
-		 headers: {
-		    common: {
-		      'X-CSRF-TOKEN': token.content
-		    }
-		  }
-		})
+    var ax = axios.create({ 
+      headers: {
+        common: {
+          'X-CSRF-TOKEN': token.content
+        }
+      }
+    })
 
 
+    let id = this.data.get('id')
+    let icon = this.iconTarget
 
-  	let id = this.data.get('id')
-  	let icon = this.iconTarget
+    ax.post(`/api/animals/${id}/favorite`,{})
 
- 		ax.post(`/api/animals/${id}/favorite`,{})
+      .then(function(response){
+        let favorited = response.data.favorited
 
- 			.then(function(response){
- 				let favorited = response.data.favorited
-
- 				if(favorited){
- 					icon.classList.remove('far')
- 					icon.classList.add('fas')
- 				}else{
- 					icon.classList.remove('fas')
- 					icon.classList.add('far')
- 				}
- 			})
- 			.catch(function(error){
- 				console.log(error)  //什麼情況會error?
- 			})
- 			// return  ax.post
+        if(favorited){
+          con.classList.remove('far')
+          icon.classList.add('fas')
+        }else{
+          icon.classList.remove('fas')
+          icon.classList.add('far')
+        }
+      })
+      .catch(function(error){
+        console.log(error)
+      })
   }
   set favorited(value) {
     this.data.set('favorited', value.toString());
@@ -60,5 +58,3 @@ export default class extends Controller {
     this.iconTarget.classList.toggle('fas', this.data.get('favorited') === 'true')
   }
 }
-
-
