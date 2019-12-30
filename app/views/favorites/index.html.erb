@@ -1,36 +1,36 @@
 
 <div class="container">
-	<div class="row">
-		<% @sort_fav.each do |k,v|  %>
-			<div class="col-sm-12 col-md-6 col-lg-4">
-				<div class="card w-80 center mx-auto my-4" style="width: 18rem;">
-					<div class="card-header font-weight-bold"><%= k %></div>
-					<div class="card-body">
-						<% v['animals'].each do |item| %>
-						<li>
-							<span class="color-primary-pet font-weight-bold">
-								<i class="fas fa-paw pr-1"></i><%= item[0] %>
-							</span>
-							<span><%= item[2] %></span>
-							<span><%= item[3] %></span>
-						</li>
-						<li>
-							<span class="color-primary-pet font-weight-bold">
-								<i class="fas fa-paw pr-1"></i><%= item[0] %>
-							</span>
-							<span><%= item[2] %></span>
-							<span><%= item[3] %></span>
-						</li>
-						<div class="py-2 mt-2">
-							<%= link_to "我要預約", new_reservation_path(:sender => (v['id'])),class: 'btn btn-primary-pet btn-sm mr-1' %>
-							<%= link_to "刪除", new_reservation_path(:sender => (v['id'])),class: 'btn btn-delete-pet btn-sm mr-1' %>	
-						</div>
-						<% end %>
-					</div>
-				</div>
-			</div>
-		<% end %> 
-	</div>
+  <div class="row">
+    <% @sort_fav.each do |k,v|  %>
+      <div class="col-sm-12 col-md-6 col-lg-4">
+        <div class="card w-80 center mx-auto my-4" style="width: 18rem;">
+          <div class="card-header font-weight-bold"><%= k %></div>
+          <div class="card-body">
+            <% v['animals'].each do |item| %>
+            <li>
+              <span class="color-primary-pet font-weight-bold">
+                <i class="fas fa-paw pr-1"></i><%= item[0] %>
+              </span>
+              <span><%= item[2] %></span>
+              <span><%= item[3] %></span>
+            </li>
+            <li>
+              <span class="color-primary-pet font-weight-bold">
+                <i class="fas fa-paw pr-1"></i><%= item[0] %>
+              </span>
+              <span><%= item[2] %></span>
+              <span><%= item[3] %></span>
+            </li>
+            <div class="py-2 mt-2">
+              <%= link_to "我要預約", new_reservation_path(:sender => (v['id'])),class: 'btn btn-primary-pet btn-sm mr-1' %>
+              <%= link_to "刪除", new_reservation_path(:sender => (v['id'])),class: 'btn btn-delete-pet btn-sm mr-1' %>	
+            </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %> 
+  </div>
 </div>
 
 
