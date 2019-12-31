@@ -1,0 +1,15 @@
+<h1>我的最愛</h1>
+
+<%= link_to "預約紀錄", reservations_path %> <br>
+
+<% @sort_fav.each do |k,v|  %>
+  <%= k %>
+  <ol>
+    <% v['animals'].each do |item| %>
+    <li> <%= item[0] %> <%= link_to '刪除收藏', favorite_path(item[1]), method: :delete, data: { confirm: '確認刪除?!' } %> </li>
+    <% end %>
+  </ol>
+  
+  <%= link_to "我要預約", new_reservation_path(:sender => (v['id'])) if !current_user.receiver_reservations.where(sender_id: v['id']).where(status: "pending").exists? %> <br> <br>
+<% end %> <br> <br>
+<%= @sort_fav %>

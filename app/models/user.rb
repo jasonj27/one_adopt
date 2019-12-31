@@ -6,8 +6,8 @@ class User < ApplicationRecord
   devise :omniauthable, omniauth_providers: %i[google_oauth2 facebook]
   has_many :animals
   has_many :favorites
-  has_many :animals , through: :favorites
-  has_many :reservations
+  # has_many :animals , through: :favorites
+  # has_many :reservations
   has_many :sent_messages, :class_name => 'Message', :foreign_key => 'from_id'
   has_many :received_messages, :class_name => 'Message', :foreign_key => 'to_id'
   has_many :sender_reservations, :class_name => 'Reservation', :foreign_key => 'sender_id'
@@ -26,5 +26,5 @@ class User < ApplicationRecord
       # user.skip_confirmation!
     end
   end
-  
+  store_accessor :available_time, :days, :w0, :w1, :w2, :w3, :w4, :w5, :w6
 end

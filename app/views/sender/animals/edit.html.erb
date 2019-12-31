@@ -1,0 +1,55 @@
+<div class="container">
+  <h1>編輯動物</h1>
+  <% if @animal.errors.any? %>
+    <ul>
+      <% @animal.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  <div>
+    <strong>已上傳照片:</strong>
+    <% if @animal.images.attached? %>
+      <% @animal.images.each do |image| %>
+        <%= image_tag image %>
+        <%= link_to '刪除', destroy_image_sender_animal_path(@animal, image), method: :delete %>
+      <% end %>
+    <% end %>
+  </div>
+  <%= form_with model: @animal, url: sender_animal_path(@animal), local: true do |f|%>
+    <div class="form-group">
+      <% if @animal.images.attached? %>
+        <% @animal.images.each do |img| %>
+          <%= f.hidden_field :images, multiple: true, value: img.signed_id %>
+        <% end %>
+      <% end %>
+      <%= f.label :images %>
+      <%= f.file_field :images, multiple: true, class: "form-control-file" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :name, "寵物姓名" %>
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :animal_kind, "寵物種類" %>
+      <%= f.select(:animal_kind, [['貓', '貓'], ['狗', '狗']], {}, { :class => 'form-control' }) %>
+    </div>
+    <div class="form-group">
+      <%= f.label :animal_sex, "寵物性別" %>
+      <%= f.select(:animal_sex, [['公', '公'], ['母', '母'],['不知道','還未輸入']], {}, { :class => 'form-control' }) %>
+    </div>
+    <div class="form-group">
+      <%= f.label :animal_age, "寵物年紀" %>
+      <%= f.select(:animal_age, [['幼年', '幼年'], ['成年', '成年']], {}, { :class => 'form-control' }) %>
+    </div>
+    <div class="form-group">
+      <%= f.label :animal_sterilization, "是否結紮" %>
+      <%= f.select(:animal_sterilization, [['是', '是'], ['否', '否'],['不知道','未輸入']], {}, { :class => 'form-control' }) %>
+    </div>
+    <div class="form-group">
+      <%= f.label :adopt_status, "是否可被搜尋" %>
+      <%= f.select(:adopt_status, [['可以', '待領養'], ['不可以', '未上架']], {}, { :class => 'form-control' }) %>
+    </div>
+    <%= f.submit '送出資料' %>
+  <% end %>
+</div>

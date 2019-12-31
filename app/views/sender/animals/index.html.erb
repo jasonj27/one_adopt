@@ -1,0 +1,20 @@
+<h1>animals</h1>
+
+<%= link_to "新增動物", new_sender_animal_path %>
+
+<% @animals.each do |animal|%>
+  <div>
+    <%= animal.name %>
+    <%= link_to "編輯動物資料", edit_sender_animal_path(animal) %>
+    <%= link_to "刪除動物資料", sender_animal_path(animal), method: :delete, data: {confirm: '
+    確定刪除？'} %>
+    <div>
+      <% if animal.images.attached? %>
+        <% animal.images.each do |image| %>
+          <%= image_tag image %>
+          <%# link_to '刪除', destroy_image_sender_animal_path(animal, image), method: :delete %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

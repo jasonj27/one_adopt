@@ -3,7 +3,7 @@ class Animal < ApplicationRecord
   has_many_attached :images
   has_many :reservation_pets
   has_many :favorites
-  has_many :users , through: :favorites
+  # has_many :users , through: :favorites
 
   enum animal_area_pkid:  {'臺北市': 2,'新北市': 3,'基隆市': 4,'宜蘭縣': 5,'桃園縣': 6,'新竹縣': 7,'新竹市': 8,'苗栗縣': 9,'臺中市': 10,'彰化縣': 11,'南投縣': 12,'雲林縣': 13,'嘉義縣': 14,'嘉義市': 15,'臺南市': 16,'高雄市': 17,'屏東縣': 18,'花蓮縣': 19,'臺東縣': 20,'澎湖縣': 21,'金門縣': 22,'連江縣': 23}
   enum animal_kind: {"貓":1, "狗":2}
@@ -28,6 +28,18 @@ class Animal < ApplicationRecord
   scope :search_area_pkid, -> (animal_area_pkid) { animal_area_pkid.present? ? where(animal_area_pkid: animal_area_pkid) : all }
   def favorited_by?(user)
     favorites.exists?(user: user)
+  end
+
+  def self.sex_options
+    a = self.animal_sexes.map do |k,_v|
+      if k == "還未輸入"
+      else
+        [k, _v]
+      end
+    end
+    a.compact!
+    p a
+    return a
   end
 
 end
