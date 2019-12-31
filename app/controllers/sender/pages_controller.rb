@@ -1,4 +1,4 @@
-class Sender::PagesController < ApplicationController
+class Sender::PagesController < BaseController
 
   layout 'sender'
 

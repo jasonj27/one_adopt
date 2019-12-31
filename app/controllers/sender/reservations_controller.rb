@@ -1,4 +1,4 @@
-class Sender::ReservationsController < ApplicationController
+class Sender::ReservationsController < BaseController
   
   layout 'sender'
 

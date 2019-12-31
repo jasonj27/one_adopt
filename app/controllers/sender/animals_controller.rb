@@ -1,4 +1,4 @@
-class Sender::AnimalsController < ApplicationController
+class Sender::AnimalsController < BaseController
 
   layout 'sender'
 
