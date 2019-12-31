@@ -12,7 +12,7 @@ class Api::AnimalsController < ApplicationController
       favorited = true
     end
 
-  render json: { status:'ok', favorited: favorited } #true or false
+  render json: { status:'ok', favorited: favorited }
 
   end
  

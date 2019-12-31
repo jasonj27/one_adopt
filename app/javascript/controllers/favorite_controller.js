@@ -1,8 +1,3 @@
-// data-cotroller = "favorite"  //favorite_controller.js
-// data-target = "favorite.output" //favorite_controller的output
-// data-action  //<a href="#" data-action="favorite#pushme">按我</>
-
-
 import { Controller } from "stimulus"
 import axios from 'axios' 
 
@@ -13,11 +8,8 @@ export default class extends Controller {
     this.favorited = this.data.get('favorited');
   }
 
-
   toggle(evt){
     evt.preventDefault()
-
-
     const token = document.querySelector("meta[name=csrf-token]")||{ content: 'no-csrf-token'}
 
     var ax = axios.create({ 
@@ -28,17 +20,15 @@ export default class extends Controller {
       }
     })
 
-
     let id = this.data.get('id')
     let icon = this.iconTarget
 
     ax.post(`/api/animals/${id}/favorite`,{})
-
       .then(function(response){
         let favorited = response.data.favorited
 
         if(favorited){
-          con.classList.remove('far')
+          icon.classList.remove('far')
           icon.classList.add('fas')
         }else{
           icon.classList.remove('fas')
