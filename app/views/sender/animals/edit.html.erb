@@ -8,7 +8,7 @@
     </ul>
   <% end %>
   <div>
-  <strong>已上傳照片:</strong>
+    <strong>已上傳照片:</strong>
     <% if @animal.images.attached? %>
       <% @animal.images.each do |image| %>
         <%= image_tag image %>
@@ -45,6 +45,10 @@
     <div class="form-group">
       <%= f.label :animal_sterilization, "是否結紮" %>
       <%= f.select(:animal_sterilization, [['是', '是'], ['否', '否'],['不知道','未輸入']], {}, { :class => 'form-control' }) %>
+    </div>
+    <div class="form-group">
+      <%= f.label :adopt_status, "是否可被搜尋" %>
+      <%= f.select(:adopt_status, [['可以', '待領養'], ['不可以', '未上架']], {}, { :class => 'form-control' }) %>
     </div>
     <%= f.submit '送出資料' %>
   <% end %>
