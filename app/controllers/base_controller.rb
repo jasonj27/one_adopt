@@ -1,4 +1,5 @@
 class BaseController < ApplicationController
+  before_action :permission_check!
 
   private
   def permission_check!
