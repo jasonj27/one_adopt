@@ -5,6 +5,25 @@
   margin: 0;
   padding: 0;
 }
+
+.instroduction-card{
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-clip: border-box;
+}
+.bg-img{
+  height: 100%;
+  /*width: 100%;*/
+  background-color: #add;
+}
+.text-primary-pet{
+  color: #e09300;
+}
+.letter-spacing{
+  letter-spacing: 4px;
+}
 a:hover{
   text-decoration: none;
 }
