@@ -1,37 +1,33 @@
-
-<div class="container">
-  <div class="row">
-    <% @sort_fav.each do |k,v|  %>
-      <div class="col-sm-12 col-md-6 col-lg-4">
-        <div class="card w-80 center mx-auto my-4" style="width: 18rem;">
-          <div class="card-header font-weight-bold"><%= k %></div>
-          <div class="card-body">
-            <% v['animals'].each do |item| %>
-            <li>
-              <span class="color-primary-pet font-weight-bold">
-                <i class="fas fa-paw pr-1"></i><%= item[0] %>
-              </span>
-              <span><%= item[2] %></span>
-              <span><%= item[3] %></span>
-            </li>
-            <li>
-              <span class="color-primary-pet font-weight-bold">
-                <i class="fas fa-paw pr-1"></i><%= item[0] %>
-              </span>
-              <span><%= item[2] %></span>
-              <span><%= item[3] %></span>
-            </li>
-            <div class="py-2 mt-2">
-              <%= link_to "我要預約", new_reservation_path(:sender => (v['id'])),class: 'btn btn-primary-pet btn-sm mr-1' %>
-              <%= link_to "刪除", new_reservation_path(:sender => (v['id'])),class: 'btn btn-delete-pet btn-sm mr-1' %>	
+<div class="wrap bg-pet">
+  <div class="d-flex justify-content-left align-items-center pt-4 pb-3 pl-3 bg-pet color-primary-pet">
+    <h5 class="title">
+    <i class="fas fa-chevron-left pr-2"></i>收藏</h5>
+  </div>
+  <div class="container">
+    <div class="row">
+      <% @sort_fav.each do |k,v|  %>
+        <div class="col-sm-12 col-md-6 col-lg-4">
+          <div class="card w-80 center mx-auto my-4" style="width: 18rem;">
+            <div class="card-header font-weight-bold"><%= k %></div>
+              <div class="card-body">
+                <% v['animals'].each do |item| %>
+                <li class="py-2">
+                  <span class="color-primary-pet font-weight-bold">
+                    <i class="fas fa-paw pr-1"></i><%= item[0] %>
+                    </span>
+                  <span><%= item[2] %></span>
+                  <span><%= item[3] %></span>
+                  <span><%= link_to '刪除收藏', favorite_path(item[1]), method: :delete, data: { confirm: '確認刪除?!' },class: 'btn-delete-outline-pet mr-1 fz-12 p-1 '%></span>
+                </li>
+              <% end %>
+              <div class="py-2 mt-2">
+                  <%= link_to "我要預約", new_reservation_path(:sender => (v['id'])),class: 'btn btn-primary-pet btn-sm mr-1' %>
+                  <%= link_to "刪除",'#',class: 'btn btn-delete-dark-pet btn-sm mr-1' %>
+              </div>
             </div>
-            <% end %>
           </div>
         </div>
-      </div>
-    <% end %> 
+      <% end %> 
+    </div>
   </div>
 </div>
-
-
-
