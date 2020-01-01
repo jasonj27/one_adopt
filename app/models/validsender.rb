@@ -5,7 +5,7 @@ class Validsender
   validates :sender_add, presence: true
   validates :sender_tel, presence: true  #/^09[0-9]{8}$/
 
-  def va?
+  def validsender?
     return false unless valid?
     true
   end
