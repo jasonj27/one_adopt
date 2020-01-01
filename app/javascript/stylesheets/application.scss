@@ -5,13 +5,6 @@
   margin: 0;
   padding: 0;
 }
-.instroduction-card{
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  word-wrap: break-word;
-  background-clip: border-box;
-}
 .bg-img{
   position: absolute;
   height: 100%;
@@ -25,6 +18,7 @@
   letter-spacing: 4px;
 }
 a:hover{
+  color: #aaa;
   text-decoration: none;
 }
 .color-primary-pet{
@@ -43,7 +37,19 @@ a:hover{
   width: 200px;
   height: 35px;
   color: #e09300;
-  background-color: #ffe600;
+  border: 1px solid #FFE600;
+}
+.btn-secondary-pet:hover{
+  color: #888;
+}
+.btn-dark-pet{
+  width: 200px;
+  height: 35px;
+  color: #fff;
+  background-color: #ccc;
+}
+.btn-dark-pet:hover{
+  color: #888;
 }
 .btn-delete-pet{
   color: #fff;
@@ -51,4 +57,15 @@ a:hover{
 }
 .btn-delete-pet:hover{
   color: #601407;
+}
+.card-pet{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border-radius: 0.5rem;
+  box-shadow: 2px 2px 3px rgba(0,0,0,.2);
 }

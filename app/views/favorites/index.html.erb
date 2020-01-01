@@ -1,8 +1,15 @@
 <div class="container">
   <div class="row">
+    <%= link_to pages_path do %>
+      <i class="far fa-arrow-alt-circle-left color-primary-pet h3 p-4"></i>
+    <% end %>
+    <% if @sort_fav.empty? %>
+      <p class="p-4">趕快去收藏</p>
+    <% end %>
+
     <% @sort_fav.each do |k,v|  %>
       <div class="col-sm-12 col-md-6 col-lg-4">
-        <div class="card w-75 center mx-auto my-4" style="width: 18rem;">
+        <div class="card-pet w-75 center mx-auto my-4" style="width: 18rem;">
           <div class="card-header font-weight-bold"><%= k %></div>
           <div class="card-body">
             <% v['animals'].each do |item| %>

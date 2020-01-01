@@ -4,18 +4,22 @@
   <% end %>
   <div class="row">
     <div class="instroduction-card w-80 center mx-auto mt-5 text-center">
-      <div class="card w-75 center mx-auto my-4" style="width: 18rem;">
+      <div class="card-pet w-75 center mx-auto my-4 pt-5 pb-3" style="width: 18rem;">
         <div class="card-body">
-          <h2 class="color-primary-pet font-weight-bold letter-spacing">貓狗大平台</h2>
+          <h2 class="color-primary-pet font-weight-bold letter-spacing pb-2">貓狗大平台</h2>
           <%= link_to 'I have an account 已有帳號', new_user_session_path, class: "btn btn-secondary-pet btn-sm mx-auto my-2" %>
           <%= link_to 'Create an account 建立帳號', new_user_registration_path, class: "btn btn-primary-pet btn-sm mx-auto my-2" %>
-          <div>
+          <div class="py-3">
+            <%= link_to "<i class='fab fa-google-plus'></i>".html_safe, user_google_oauth2_omniauth_authorize_path , class: 'color-primary-pet mx-2 h3' %>
+            <%= link_to "<i class='fab fa-facebook'></i>".html_safe, user_facebook_omniauth_authorize_path , class: 'color-primary-pet mx-2 h3' %>
+
             <% if user_signed_in? %>
-            <%= link_to('logout', destroy_user_session_path, method: :delete)%>
+                <%= link_to '登出', destroy_user_session_path, method: :delete, class:'btn btn-dark-pet btn-sm mx-auto my-3 rounded-pill'%>
             <% end%>
-            <%= link_to "<i class='fab fa-google'></i>".html_safe, user_google_oauth2_omniauth_authorize_path %>
-            <%= link_to "<i class='fab fa-facebook-f'></i>".html_safe, user_facebook_omniauth_authorize_path %>    
-        </div> 
+
+            </div> 
+          </div>
+        </div>
       </div>
     </div>
   </div>
