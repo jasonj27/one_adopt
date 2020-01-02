@@ -1,9 +1,9 @@
-class Sender::ReservationsController < ApplicationController
+class Sender::ReservationsController < BaseController
   
   layout 'sender'
 
   def index
-    @reservations = current_user.sender_reservations.includes(:receiver, {reservation_pets: :animal})
+    @reservations = current_user.sender_reservations.includes(:receiver, {reservation_pets: :animal}).order(:datetime)
   end
 
   def cancel

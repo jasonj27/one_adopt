@@ -44,8 +44,8 @@ User.create(name: '苗栗縣生態保育教育中心',email: 'AA0032@pet.com',en
 # User.create(name: '臺中市動物之家后里園區',email: 'AA0015@pet.com',encrypted_password: 'aa0001',sender_tel: '04-23850976',sender_add: '臺中市南屯區中台路601號',is_sender: true, password: '123456')
 
 
-Animal.create(name: '黃黃', animal_kind: '貓', animal_sex: '公', animal_age: '成年', animal_sterilization: '是', animal_foundplace: '基隆港', animal_status: '開放認養', animal_area_pkid: '基隆市', animal_subid:'EAAAG0000000001', user_id: '1')  
-Animal.create(name: '黑黑', animal_kind: '狗', animal_sex: '公', animal_age: '成年', animal_sterilization: '是', animal_foundplace: '苗栗縣銅鑼鄉', animal_status: '開放認養', animal_area_pkid: '苗栗縣', animal_subid:'EAAAG0000000002', user_id: '32')   
-Animal.create(name: '小紅', animal_kind: '貓', animal_sex: '母', animal_age: '成年', animal_sterilization: '否', animal_foundplace: '壽山', animal_status: '開放認養', animal_area_pkid: '高雄市', animal_subid:'EAAAG0000000003', user_id: '21')
-Animal.create(name: '小橘', animal_kind: '貓', animal_sex: '公', animal_age: '幼年', animal_sterilization: '是', animal_foundplace: '健康路', animal_status: '開放認養', animal_area_pkid: '臺南市', animal_subid:'EAAAG0000000003', user_id: '19')
+# Animal.create(name: '黃黃', animal_kind: '貓', animal_sex: '公', animal_age: '成年', animal_sterilization: '是', animal_foundplace: '基隆港', animal_status: '開放認養', animal_area_pkid: '基隆市', animal_subid:'EAAAG0000000001', user_id: '1')  
+# Animal.create(name: '黑黑', animal_kind: '狗', animal_sex: '公', animal_age: '成年', animal_sterilization: '是', animal_foundplace: '苗栗縣銅鑼鄉', animal_status: '開放認養', animal_area_pkid: '苗栗縣', animal_subid:'EAAAG0000000002', user_id: '32')   
+# Animal.create(name: '小紅', animal_kind: '貓', animal_sex: '母', animal_age: '成年', animal_sterilization: '否', animal_foundplace: '壽山', animal_status: '開放認養', animal_area_pkid: '高雄市', animal_subid:'EAAAG0000000003', user_id: '21')
+# Animal.create(name: '小橘', animal_kind: '貓', animal_sex: '公', animal_age: '幼年', animal_sterilization: '是', animal_foundplace: '健康路', animal_status: '開放認養', animal_area_pkid: '臺南市', animal_subid:'EAAAG0000000003', user_id: '19')
 

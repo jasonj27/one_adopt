@@ -38,6 +38,8 @@
         </div>
       </nav>
     </div>
+    <%= render 'shared/flash' if notice %>
+
     <%= yield %>
   </body>
 </html>

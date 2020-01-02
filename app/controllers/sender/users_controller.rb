@@ -1,17 +1,26 @@
 class Sender::UsersController < ApplicationController
+  layout "sender"
+
   def edit
     @user = User.find(current_user.id)
   end
 
   def update
-    @user = User.find(current_user.id)
-    if @user.update(user_params)
-      if !current_user.is_sender
+    form = Validsender.new(user_params)
+    if !current_user.is_sender
+      if form.validsender?
         current_user.update(is_sender: true)
+        redirect_to sender_root_path, notice: "恭喜成為送養者！"
+      else
+        render :edit
       end
-      redirect_to sender_root_path, notice: "更新成功"
-    else
-      render :edit
+    elsif current_user.is_sender
+      if form.validsender?
+        current_user.update(user_params)
+        redirect_to sender_root_path, notice: "更新成功！"
+      else
+        render :edit
+      end
     end
   end
 

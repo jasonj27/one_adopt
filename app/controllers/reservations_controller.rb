@@ -16,7 +16,7 @@ class ReservationsController < ApplicationController
   end
 
   def index
-    @reservations = current_user.receiver_reservations.includes(:sender, { reservation_pets: :animal })
+    @reservations = current_user.receiver_reservations.includes(:sender, { reservation_pets: :animal }).order(:datetime)
   end
 
   def new

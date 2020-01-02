@@ -1,2 +1,2 @@
-class Sender::ReservationPetsController < ApplicationController
+class Sender::ReservationPetsController < BaseController
 end
