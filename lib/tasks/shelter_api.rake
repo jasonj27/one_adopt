@@ -33,6 +33,8 @@ namespace :access do
       result['animal_age'] = "成年"
     when 'CHILD'
       result['animal_age'] = "幼年"
+    when ''
+      result['animal_age'] = "未知"
     end
 
     # 處理是否絕育
@@ -127,7 +129,8 @@ namespace :access do
         animal_foundplace: result['animal_foundplace'],
         animal_status: result['animal_status'],
         user_id: shelter[result['shelter_name']],
-        adopt_status: result['adopt_status']
+        adopt_status: result['adopt_status'],
+        gov_shelter: true
       )
     end
 
@@ -136,7 +139,8 @@ namespace :access do
     puts "id: #{animal_data.id}"
     puts "subid: #{animal_data.animal_subid}"
     puts "#{result['album_file']}"
-    
+    puts "#{animal_data.animal_age}"
+    puts "gov_shelter: #{animal_data.gov_shelter}"
     end
     puts "Finish!!!"
   end

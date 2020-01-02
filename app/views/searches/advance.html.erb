@@ -7,7 +7,7 @@
 </div>
 
 <div class="row">
-  <% @search_conditions.each do |s| %>
+  <% @search_params.each do |s| %>
     <div class="col-md-6 mt-4 w-50">
       <div class="card searchimg">
         <%= link_to search_path(s) do%>
@@ -28,5 +28,5 @@
       </div>
     </div>
   <% end %>
-  <%= paginate @search_conditions %>
+  <%= paginate @search_params %>
 </div>
