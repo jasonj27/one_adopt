@@ -8,21 +8,26 @@ class SearchesController < ApplicationController
   end
 
   def simple
-    search_conditions = Animal.where.not(adopt_status: "已領養")
-                              .search_kind(params[:animal_kind])
-                              .search_sex(params[:animal_sex])
-                              .search_age(params[:animal_age])
-                             
+      animals = Animal.where.not(adopt_status: "已領養")
+                            .search_kind(params[:animal_kind])
+                            .search_sex(params[:animal_sex])
+                            .search_age(params[:animal_age])
 
-    if search_conditions.empty?
+      ids = animals.joins(:favorites)
+                   .where("favorites.user_id = ?", current_user.id)
+                   .pluck(:id)
+
+      search_params = animals.where.not(id: ids)                            
+
+    if search_params.empty?
       redirect_to searches_path, notice: '沒有匹配的資料！'
     else
-      simple_sample(search_conditions)
+      simple_sample(search_params)
     end
   end
 
   def advance
-    search_conditions = Animal.where.not(adopt_status: "已領養")
+    search_params = Animal.where.not(adopt_status: "已領養")
                               .search_kind(params[:animal_kind])
                               .search_sex(params[:animal_sex])
                               .search_age(params[:animal_age])
@@ -31,18 +36,19 @@ class SearchesController < ApplicationController
                               .search_shelter(params[:animal_shelter])
                               .page(params[:page]).per(8)
     
-    if search_conditions.empty?
+    if search_params.empty?
       redirect_to searches_path, notice: '沒有匹配的資料！'
     else
-      @search_conditions = search_conditions
+      @search_params = search_params
     end
   end
 
   private
-  def simple_sample(search_conditions)
+  def simple_sample(search_params)
     data_array = []
-    search_conditions.each do |search_condition|
-      data_array << search_condition
+    search_params.each do |s|
+
+      data_array << s
     end
     @simple_search = data_array.sample(1)
 
