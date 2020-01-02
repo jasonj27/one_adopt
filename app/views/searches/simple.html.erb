@@ -1,23 +1,19 @@
-<div class="row">
-  <h1 class="d-inline">
-    <%= link_to searches_path, class: "text-dark" do %>
-      <i class="fas fa-arrow-left"></i>
-    <% end %>
-    Simple Search</h1>
-</div>
+<%= link_to searches_path do %>
+  <i class="far fa-arrow-alt-circle-left color-primary-pet h3 p-4"></i>
+<% end %>
 
 <% @simple_search.each do |s| %>
-  <div class="card searchimg pt-5">
+  <div class="card pt-5 pb-3 m-4">
     <%= image_tag s.images.first.variant(resize: "500x400!") , class: "card-img-top w-75 m-auto"%>
     <div class="card-body text-center">
-      <h5 class="card-title"><%= s.animal_subid %></h5>
-      <p class="card-text"><%= s.user.name %></p>
-      <p class="card-text">年紀：<%= s.animal_age %></p>
+      <h5 class="card-title h4 py-1 color-primary-pet"><%= s.animal_subid %></h5>
+      <p class="card-text py-1 mt-2"><%= s.user.name %></p>
+      <p class="card-text py-1">年紀：<%= s.animal_age %></p>
     </div>
   </div>
   <div data-controller="favorite" 
   data-favorite-id="<%= s.id %>" data-favorite-favorited="<%= s.favorited_by?(current_user) %>" class="text-center mt-4"> 
-    <!--(連結到favorite_controller.js)-->
+
     <%= link_to "#", "data-action": "favorite#toggle", class: "btn btn-warning w-25 mb-4" do %>
       <i class="far fa-heart" data-target="favorite.icon"></i>
     <% end %>

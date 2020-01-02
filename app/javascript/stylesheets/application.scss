@@ -6,6 +6,9 @@
   margin: 0;
   padding: 0;
 }
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
+  margin-bottom: 0rem;
+}
 .bg-img{
   position: absolute;
   height: 100%;
@@ -28,6 +31,15 @@ a:hover{
 .bg-pet{
   background-color: #fffbd8;
 }
+.bg-primary-pet{
+  background-color: #ffe600;
+}
+.btn-pet a:hover{
+  color: #ffe600;
+}
+.bgcolor-primary-pet{
+  background-color: #e09300;
+}
 .color-primary-pet{
   color: #e09300;
 }
@@ -40,11 +52,17 @@ a:hover{
 .btn-primary-pet:hover{
   color: #fff;
 }
+.btn-sm-primary-pet{
+  width: 100px;
+  height: 35px;
+  color: #e09300;
+  background-color: #ffe600;
+}
 .btn-secondary-pet{
   width: 200px;
   height: 35px;
   color: #e09300;
-  border: 1px solid #FFE600;
+  border: 1px solid #ffe600;
 }
 .btn-secondary-pet:hover{
   color: #888;
@@ -65,6 +83,9 @@ a:hover{
 .btn-delete-pet:hover{
   color: #601407;
 }
+.btn-pet:hover{
+  color: #ffe600;
+}
 .card-pet{
   position: relative;
   display: flex;
@@ -74,7 +95,7 @@ a:hover{
   background-color: #fff;
   background-clip: border-box;
   border-radius: 0.5rem;
-  box-shadow: 2px 2px 3px rgba(0,0,0,.2);
+  box-shadow: 1px 1px 3px rgba(0,0,0,.2);
 }
 .btn-delete-outline-pet{
   color: #601407;
@@ -90,4 +111,10 @@ a:hover{
 }
 .btn-delete-dark-pet:hover{
   color: #601407;
+}
+.border-none{
+  border-style:none
+}
+.btn-reservation:last{
+  display: block;
 }

@@ -1,5 +1,13 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12">
+      <%= image_pack_tag 'dog-3.jpg', class: 'img-fluid'%>   
+    </div>
+  
+  </div>
+</div>
 <%= form_with url: '/searches/simple', local: true, method: :get, class: "formSearch d-flex flex-column align-items-center" do |f| %>
-
+  
   <%= f.select(:animal_kind,
                 options_for_select(Animal::ANIMAL_KIND_CLASS),
                 { include_blank: "種類"},
