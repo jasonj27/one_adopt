@@ -31,6 +31,9 @@ a:hover{
 .bg-pet{
   background-color: #fffbd8;
 }
+.btn-pet a:hover{
+  color: #ffe600;
+}
 .bgcolor-primary-pet{
   background-color: #e09300;
 }
@@ -50,7 +53,7 @@ a:hover{
   width: 200px;
   height: 35px;
   color: #e09300;
-  border: 1px solid #FFE600;
+  border: 1px solid #ffe600;
 }
 .btn-secondary-pet:hover{
   color: #888;
@@ -70,6 +73,9 @@ a:hover{
 }
 .btn-delete-pet:hover{
   color: #601407;
+}
+.btn-pet:hover{
+  color: #ffe600;
 }
 .card-pet{
   position: relative;

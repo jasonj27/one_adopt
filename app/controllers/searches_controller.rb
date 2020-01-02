@@ -1,7 +1,5 @@
 class SearchesController < ApplicationController
   before_action :authenticate_user!
-
-  layout 'search'
   
   def show
     @animal = Animal.find(params[:id])
