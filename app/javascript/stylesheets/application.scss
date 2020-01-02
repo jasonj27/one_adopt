@@ -6,6 +6,9 @@
   margin: 0;
   padding: 0;
 }
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
+  margin-bottom: 0rem;
+}
 .bg-img{
   position: absolute;
   height: 100%;
@@ -27,6 +30,9 @@ a:hover{
 }
 .bg-pet{
   background-color: #fffbd8;
+}
+.bgcolor-primary-pet{
+  background-color: #e09300;
 }
 .color-primary-pet{
   color: #e09300;

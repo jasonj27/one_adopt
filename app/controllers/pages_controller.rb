@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  layout "search", only: :index
+
 
   def index
   end
