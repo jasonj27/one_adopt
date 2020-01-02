@@ -7,3 +7,6 @@ import '../scripts/index.js'
 import '../stylesheets/index.js'
 import 'jquery'
 import "controllers"
+
+const images = require.context("../images", true)
+const imagePath = (name) => images(name, true)
