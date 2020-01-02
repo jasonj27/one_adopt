@@ -11,36 +11,55 @@
     <%= javascript_pack_tag 'multiselect' %>
   </head>
   <body>
-    <div class="fluid-container">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-              <%= link_to "管理寵物", sender_animals_path, class: "nav-link" %>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-          </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <%= link_to "登入", new_user_session_path, class: "btn btn-primary" if !user_signed_in? %>
-            <%= link_to "登出", destroy_user_session_path, method: 'delete', class: "btn btn-primary" if user_signed_in? %>
-          </form>
-        </div>
-      </nav>
-    </div>
-    <%= render 'shared/flash' if notice %>
+    <nav class="navbar navbar-expand-lg navbar-light  bgcolor-primary-pet sticky-top">
+  
+      <%= link_to sender_root_path do %>
+        <h3 class="text-white font-weight-bold letter-spacing px-2"><i class="fas fa-paw"></i>貓狗大後台</h3>
+      <% end %>
 
+      <button class="navbar-toggler border-none" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <%= link_to edit_sender_user_path do %>
+              <div class="nav-link pl-2">管理預約資料</div>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to sender_animals_path do %>
+              <div class="nav-link pl-2">寵物管理</div>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to sender_reservations_path do %>
+              <div class="nav-link pl-2">預約管理</div>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to pages_path do %>
+              <div class="nav-link pl-2"><i class="far fa-laugh pr-1"></i>領養者頁面</div>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to destroy_user_session_path , method: 'delete' do %>
+              <div class="nav-link pl-2">登出</div>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <%= render 'shared/flash' if notice %>
     <%= yield %>
+    <footer>
+      <div class="color-primary-pet text-center font-weight-lighter">
+        <div class="d-flex flex-column ">
+          <i class="fas fa-paw py-3"></i> 
+          <small class="bg-light py-4 text-black-50"> © 2020 Copyright</small>
+        </div>
+      </div>
+   </footer>
   </body>
 </html>

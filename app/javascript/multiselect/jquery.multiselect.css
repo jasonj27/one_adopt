@@ -3,9 +3,11 @@
     min-height: 35px;
     display: block;
     max-width: 300px;
-    border: 1px solid #ccc;
+    border: 1px solid #ffe600;
+    border-radius: 0.25rem;
     padding: 5px;
     position: relative;
+    margin: auto;
 }
 
 .multiselect-selected {
@@ -23,7 +25,8 @@
     left: 0px;
     right: 0px;
     background: #eee;
-    border: 1px solid #ccc;
+    border: 1px solid #ffe600;
+    border-radius: 0.25rem;
     box-sizing: border-box;
     width: 100%;
     z-index: 999;
@@ -35,15 +38,18 @@
     cursor: pointer;
     box-sizing: border-box;
     width: 100%;
+    background-color: #fff;
 }
 
 .multiselect-list div:hover,
 .multiselect-list div.selected-option {
-    background: #ccc;
+    background: #fffbd8;
+    
 }
 .multiselect-selected span {
     padding: 5px;
-    background: #eee;
+    background: #e09300;
+    color: #fffbd8;
     margin: 2px 4px;
     display: inline-block;
     font-size: 12px;
