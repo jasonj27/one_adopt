@@ -1,20 +1,27 @@
-<h1>animals</h1>
-
-<%= link_to "新增動物", new_sender_animal_path %>
-
-<% @animals.each do |animal|%>
-  <div>
-    <%= animal.name %>
-    <%= link_to "編輯動物資料", edit_sender_animal_path(animal) %>
-    <%= link_to "刪除動物資料", sender_animal_path(animal), method: :delete, data: {confirm: '
-    確定刪除？'} %>
-    <div>
-      <% if animal.images.attached? %>
-        <% animal.images.each do |image| %>
-          <%= image_tag image %>
-          <%# link_to '刪除', destroy_image_sender_animal_path(animal, image), method: :delete %>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
+<%= link_to sender_root_path do %>
+  <i class="far fa-arrow-alt-circle-left color-primary-pet h3 p-4"></i>
 <% end %>
+<h2 class="color-primary-pet font-weight-bold letter-spacing pb-4 text-center">寵物管理</h2>
+<div class="row"><%= link_to "新增動物", new_sender_animal_path, class: "btn btn-secondary-pet mx-auto" %></div>
+<div class="row w-75 m-auto ">
+  <% @animals.each do |animal|%>
+    <div class="col-md-6 col-xl-3 mt-4 w-50">
+      <div class="card searchimg">
+        <% if animal.images.attached? %>
+          <%= image_tag animal.images.first.variant(resize: "500x400!"), class: "card-img-top" %>
+        <% end %>
+        <div class="card-body">
+          <p class="card-text d-flex justify-content-between">
+            姓名：<%= animal.name %>
+          </p>
+          <p class="card-text d-flex justify-content-between">
+            <%= link_to "編輯", edit_sender_animal_path(animal), class: 'btn btn-sm-primary-pet btn-sm mr-1' %>
+            <%= link_to "刪除", sender_animal_path(animal), method: :delete, data: {confirm: '
+            確定刪除？'}, class: 'btn btn-sm-delete-pet btn-sm mr-1' %>
+          </p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <%= paginate @animals %>
+</div>
