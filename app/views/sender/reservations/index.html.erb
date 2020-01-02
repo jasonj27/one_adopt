@@ -1,7 +1,7 @@
 <h1>預約管理</h1>
-
 <% @reservations.each do |res| %>
   <% if res.status != "canceled" && res.datetime >= Time.now %>
+  <h3>即將到來的預約</h3>
   <ul>
     <li>
     <%= res.receiver.name %> <br>
@@ -17,8 +17,6 @@
       <% end %>
       <%= link_to '取消預約', cancel_sender_reservation_path(res), method: :delete, data: {confirm: '確認取消!?'} %>
       <%= link_to '確認預約', confirm_sender_reservation_path(res),	method: :post, data: {confirm: '確認預約!?'} %>
-      <%= link_to '領養失敗', cancel_adopt_sender_reservation_path(res),	method: :post, data: {confirm: '領養失敗!?'} %>
-      <%= link_to '領養成功', adopt_sender_reservation_path(res, :receiver => (res.receiver.id)),	method: :post, data: {confirm: '新增領養資料!?'} %>
     </ul>
     </li>
   </ul>
@@ -38,8 +36,6 @@
           <%= pet.animal.animal_sex %>
         </li>
       <% end %>
-      <%= link_to '取消預約', cancel_sender_reservation_path(res), method: :delete, data: {confirm: '確認取消!?'} %>
-      <%= link_to '確認預約', confirm_sender_reservation_path(res),	method: :post, data: {confirm: '確認預約!?'} %>
       <%= link_to '領養失敗', cancel_adopt_sender_reservation_path(res),	method: :post, data: {confirm: '領養失敗!?'} %>
       <%= link_to '領養成功', adopt_sender_reservation_path(res, :receiver => (res.receiver.id)),	method: :post, data: {confirm: '新增領養資料!?'} %>
     </ul>

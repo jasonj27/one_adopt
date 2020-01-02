@@ -7,12 +7,19 @@ class Sender::UsersController < ApplicationController
 
   def update
     form = Validsender.new(user_params)
-    unless current_user.is_sender?
+    if !current_user.is_sender
       if form.validsender?
         current_user.update(is_sender: true)
-        redirect_to sender_root_path, notice: "更新成功"
+        redirect_to sender_root_path, notice: "恭喜成為送養者！"
       else
-        render :edit, notice: "更新失敗"
+        render :edit
+      end
+    elsif current_user.is_sender
+      if form.validsender?
+        current_user.update(user_params)
+        redirect_to sender_root_path, notice: "更新成功！"
+      else
+        render :edit
       end
     end
   end
