@@ -95,7 +95,7 @@ a:hover{
   background-color: #fff;
   background-clip: border-box;
   border-radius: 0.5rem;
-  box-shadow: 2px 2px 3px rgba(0,0,0,.2);
+  box-shadow: 1px 1px 3px rgba(0,0,0,.2);
 }
 .btn-delete-outline-pet{
   color: #601407;
@@ -111,4 +111,10 @@ a:hover{
 }
 .btn-delete-dark-pet:hover{
   color: #601407;
+}
+.border-none{
+  border-style:none
+}
+.btn-reservation:last{
+  display: block;
 }
