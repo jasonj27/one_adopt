@@ -1,30 +1,26 @@
-<div class="row">
-  <h1 class="d-inline">
-    <%= link_to :back, class: "text-dark" do %>
-      <i class="fas fa-arrow-left"></i>
-    <% end %>
-    Show detail</h1>
-</div>
+<%= link_to advance_searches_path do %>
+  <i class="far fa-arrow-alt-circle-left color-primary-pet h3 p-4"></i>
+<% end %>
 
 <div class="col-md-12">
-  <div class="card searchimg pt-5" >
+  <div class="card pt-5 pb-3 m-4" >
     <%= image_tag @animal.images.first.variant(resize: "500x400!") , class: "card-img-top w-75 m-auto"%>
     <div class="card-body">
       <table class="table table-borderless text-center w-75 m-auto">
         <tr>
-          <th scope="col"><div class="bg-warning">種類</div></th>
-          <td scope="col"><%= @animal.animal_kind %></td>
-          <th scope="col"><div class="bg-warning">性別</div></th>
-          <td scope="col"><%= @animal.animal_sex %></td>
+          <th scope=" col-sm-12"><div class="color-primary-pet bg-primary-pet">種類</div></th>
+          <td scope=" col-sm-12"><%= @animal.animal_kind %></td>
+          <th scope=" col-sm-12"><div class="color-primary-pet bg-primary-pet">性別</div></th>
+          <td scope=" col-sm-12"><%= @animal.animal_sex %></td>
         </tr>
         <tr>
-          <th scope="row"><div class="bg-warning">年紀</div></th>
+          <th scope=" col-sm-12"><div class="color-primary-pet bg-primary-pet">年紀</div></th>
           <td><%= @animal.animal_age %></td>
-          <th><div class="bg-warning">結紮</div></th>
+          <th><div class="color-primary-pet bg-primary-pet">結紮</div></th>
           <td><%= @animal.animal_sterilization %></td>
         </tr>
         <tr>
-          <th scope="row"><div class="bg-warning">縣市</div></th>
+          <th scope=" col-sm-12"><div class="color-primary-pet bg-primary-pet">縣市</div></th>
           <td><%= @animal.animal_area_pkid %></td>
           <th></th>
           <td></td>

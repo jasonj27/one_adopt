@@ -1,14 +1,10 @@
-<div class="row">
-  <h1 class="d-inline">
-    <%= link_to searches_path, class: "text-dark" do %>
-      <i class="fas fa-arrow-left"></i>
-    <% end %>
-    ADVSearch</h1>
-</div>
+<%= link_to searches_path do %>
+  <i class="far fa-arrow-alt-circle-left color-primary-pet h3 p-4"></i>
+<% end %>
 
-<div class="row">
+<div class="row w-75 m-auto ">
   <% @search_params.each do |s| %>
-    <div class="col-md-6 mt-4 w-50">
+    <div class="col-md-6 col-xl-3 mt-4 w-50">
       <div class="card searchimg">
         <%= link_to search_path(s) do%>
           <%= image_tag s.images.first.variant(resize: "500x400!") , class: "card-img-top"%>
@@ -16,8 +12,7 @@
         <div class="card-body">
           <p class="card-text d-flex justify-content-between">
             <%= s.animal_kind%>
-            <span data-controller="favorite" data-favorite-id="<%= s.id %>" data-favorite-favorited="<%= s.favorited_by?(current_user) %>"> 
-              <!--(連結到favorite_controller.js)-->
+            <span data-controller="favorite" data-favorite-id="<%= s.id %>" data-favorite-favorited="<%= s.favorited_by?(current_user) %>">
               <%= link_to "#", "data-action": "favorite#toggle", class: "text-warning" do %>
                 <i class="far fa-heart" data-target="favorite.icon"></i>
               <% end %>

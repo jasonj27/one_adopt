@@ -8,6 +8,7 @@
 
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'picker' %>
 
 </head>
 
@@ -42,6 +43,11 @@
         <li class="nav-item">
           <%= link_to edit_user_registration_path do %>
             <div class="nav-link pl-2">設定</div>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to edit_sender_user_path do %>
+            <div class="nav-link pl-2"><i class="far fa-laugh pr-1"></i>成為送養者</div>
           <% end %>
         </li>
         <li class="nav-item">
