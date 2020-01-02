@@ -11,6 +11,7 @@
 
   <body>
     <div class="container col-md-4">
+      <%= render "shared/flash" if notice %>
       <%= yield %>
       <footer class="row justify-content-center">
         <i class="fas fa-paw"></i>

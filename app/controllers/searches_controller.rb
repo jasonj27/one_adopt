@@ -8,15 +8,42 @@ class SearchesController < ApplicationController
   end
 
   def simple
-    search_conditions = Animal.search_kind(params[:animal_kind])
+    search_conditions = Animal.where.not(adopt_status: "已領養")
+                              .search_kind(params[:animal_kind])
                               .search_sex(params[:animal_sex])
                               .search_age(params[:animal_age])
+                             
 
+    if search_conditions.empty?
+      redirect_to searches_path, notice: '沒有匹配的資料！'
+    else
+      simple_sample(search_conditions)
+    end
+  end
+
+  def advance
+    search_conditions = Animal.where.not(adopt_status: "已領養")
+                              .search_kind(params[:animal_kind])
+                              .search_sex(params[:animal_sex])
+                              .search_age(params[:animal_age])
+                              .search_sterilization(params[:animal_sterilization])
+                              .search_area_pkid(params[:animal_area_pkid])
+                              .search_shelter(params[:animal_shelter])
+                              .page(params[:page]).per(8)
+    
+    if search_conditions.empty?
+      redirect_to searches_path, notice: '沒有匹配的資料！'
+    else
+      @search_conditions = search_conditions
+    end
+  end
+
+  private
+  def simple_sample(search_conditions)
     data_array = []
     search_conditions.each do |search_condition|
       data_array << search_condition
     end
-
     @simple_search = data_array.sample(1)
 
     current_user.search_session.map! { |x| x.to_i }
@@ -30,15 +57,5 @@ class SearchesController < ApplicationController
     current_user.search_session << @simple_search[0].id
     current_user.search_session = [] if current_user.search_session.count > ((data_array.count) - 1) 
     current_user.save
-  end
-
-  def advance
-    @search_conditions = Animal.search_kind(params[:animal_kind])
-                               .search_sex(params[:animal_sex])
-                               .search_age(params[:animal_age])
-                               .search_sterilization(params[:animal_sterilization])
-                               .search_area_pkid(params[:animal_area_pkid])
-                               .search_shelter(params[:animal_shelter])
-                               .page(params[:page]).per(8)
   end
 end
