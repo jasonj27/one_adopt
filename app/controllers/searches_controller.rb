@@ -28,13 +28,13 @@ class SearchesController < ApplicationController
 
   def advance
     search_params = Animal.where.not(adopt_status: "已領養")
-                              .search_kind(params[:animal_kind])
-                              .search_sex(params[:animal_sex])
-                              .search_age(params[:animal_age])
-                              .search_sterilization(params[:animal_sterilization])
-                              .search_area_pkid(params[:animal_area_pkid])
-                              .search_shelter(params[:animal_shelter])
-                              .page(params[:page]).per(8)
+                                .search_kind(params[:animal_kind])
+                                .search_sex(params[:animal_sex])
+                                .search_age(params[:animal_age])
+                                .search_sterilization(params[:animal_sterilization])
+                                .search_area_pkid(params[:animal_area_pkid])
+                                .search_shelter(params[:animal_shelter])
+                                .page(params[:page]).per(8)
     
     if search_params.empty?
       redirect_to searches_path, notice: '沒有匹配的資料！'
