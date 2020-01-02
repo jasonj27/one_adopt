@@ -1,4 +1,3 @@
-<%= javascript_pack_tag 'multiselect' %>
 <%= form_with model: @user,url: sender_user_path(@user) do |f|%>
   <%= f.label :sender_tel, '電話' %>
   <% if current_user.is_sender == true %>

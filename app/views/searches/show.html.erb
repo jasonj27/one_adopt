@@ -8,22 +8,41 @@
     <div class="card-body">
       <table class="table table-borderless text-center w-75 m-auto">
         <tr>
-          <th scope=" col-sm-12"><div class="color-primary-pet bg-primary-pet">種類</div></th>
-          <td scope=" col-sm-12"><%= @animal.animal_kind %></td>
-          <th scope=" col-sm-12"><div class="color-primary-pet bg-primary-pet">性別</div></th>
-          <td scope=" col-sm-12"><%= @animal.animal_sex %></td>
+            <th scope="col">
+              <div class="color-primary-pet bg-primary-pet
+              col">種類</div>
+            </th>
+            <td scope="col">
+              <%= @animal.animal_kind %>
+            </td>
+            <th scope="col">
+              <div class="color-primary-pet bg-primary-pet
+              col">性別</div>
+            </th>
+            <td scope="col"><%= @animal.animal_sex %>
+            </td>
         </tr>
         <tr>
-          <th scope=" col-sm-12"><div class="color-primary-pet bg-primary-pet">年紀</div></th>
-          <td><%= @animal.animal_age %></td>
-          <th><div class="color-primary-pet bg-primary-pet">結紮</div></th>
-          <td><%= @animal.animal_sterilization %></td>
+          <th scope="col">
+            <div class="color-primary-pet bg-primary-pet">年紀</div>
+          </th>
+          <td>
+            <%= @animal.animal_age %>
+            </td>
+          <th>
+            <div class="color-primary-pet bg-primary-pet">結紮</div>
+          </th>
+          <td>
+            <%= @animal.animal_sterilization %>
+          </td>
         </tr>
         <tr>
-          <th scope=" col-sm-12"><div class="color-primary-pet bg-primary-pet">縣市</div></th>
-          <td><%= @animal.animal_area_pkid %></td>
-          <th></th>
-          <td></td>
+          <th scope="col">
+            <div class="color-primary-pet bg-primary-pet">縣市</div>
+          </th>
+          <td>
+            <%= @animal.animal_area_pkid %>
+          </td>
         </tr>
       </table>
       <div class="content text-center py-2">

@@ -1,21 +1,42 @@
-<h1>填寫預約資料</h1>
+<div class="available-date" data-time=[<%= @reservation.sender.days %>] >
+</div>
+<div class="available-time" id="w0" data-time=[<%= @reservation.sender.w0 %>] >
+</div>
+<div class="available-time" id="w1" data-time=[<%= @reservation.sender.w1 %>] >
+</div>
+<div class="available-time" id="w2" data-time=[<%= @reservation.sender.w2 %>] >
+</div>
+<div class="available-time" id="w3" data-time=[<%= @reservation.sender.w3 %>] >
+</div>
+<div class="available-time" id="w4" data-time=[<%= @reservation.sender.w4 %>] >
+</div>
+<div class="available-time" id="w5" data-time=[<%= @reservation.sender.w5 %>] >
+</div>
+<div class="available-time" id="w6" data-time=[<%= @reservation.sender.w6 %>] >
+</div>
+<div id="date">
+</div>
 
-<div class="available-date" data-time=[<%= @reservation.sender.days %>] ></div>
-<div class="available-time" id="w0" data-time=[<%= @reservation.sender.w0 %>] ></div>
-<div class="available-time" id="w1" data-time=[<%= @reservation.sender.w1 %>] ></div>
-<div class="available-time" id="w2" data-time=[<%= @reservation.sender.w2 %>] ></div>
-<div class="available-time" id="w3" data-time=[<%= @reservation.sender.w3 %>] ></div>
-<div class="available-time" id="w4" data-time=[<%= @reservation.sender.w4 %>] ></div>
-<div class="available-time" id="w5" data-time=[<%= @reservation.sender.w5 %>] ></div>
-<div class="available-time" id="w6" data-time=[<%= @reservation.sender.w6 %>] ></div>
-<div id="date"></div>
+<div class="container col-12 mx-auto bg-img">
+	<%= link_to favorites_path do %>
+	<i class="far fa-arrow-alt-circle-left color-primary-pet h3 p-4"></i>
+	<% end %>
 
-<%= form_with model: @reservation do |f| %>
+	<div class="instroduction-card w-80 center mx-auto mt-5 text-center">
+		<div class="card-pet w-75 center mx-auto my-4 pt-5 pb-3" style="width: 18rem;">
+			<div class="card-body">
+				<h2 class="color-primary-pet font-weight-bold letter-spacing pb-2">填寫預約資料</h2>	
+				<%= form_with model: @reservation do |f| %>
+				<%= f.hidden_field :sender_id, value: params['sender'] %>
+				<%= f.label :date, '請先選擇預約日期' , class: 'text-secondary py-2'%>
+				<%= f.text_field :date, id: "datepicker", "data-value": "2015/04/20" , class: 'form-control mx-auto btn-secondary-pet mb-2'%>
+				<%= f.label :time, '請選擇預約時間' , class: 'text-secondary py-2'%>
+				<%= f.text_field :time, id: "timepicker" , class: 'form-control mx-auto btn-secondary-pet mb-2'%>
+				<%= f.submit '預約', class: 'btn btn-primary-pet btn-sm mx-auto my-2'%>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
 
-  <%= f.hidden_field :sender_id, value: params['sender'] %> <br>
-  <%= f.label :date, '請先選擇預約日期' %> <br>
-  <%= f.text_field :date, id: "datepicker", "data-value": "2015/04/20" %> <br>
-  <%= f.label :time, '請選擇預約時間' %> <br>
-  <%= f.text_field :time, id: "timepicker" %> <br> <br>
-  <%= f.submit '預約' %>
-<% end %>
+

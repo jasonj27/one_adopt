@@ -61,8 +61,11 @@
   <%= render 'shared/flash' if notice %>
   <%= yield %>
   <footer>
-    <div class="color-primary-pet text-center font-weight-lighter py-4">
-      <small> © 2020 Copyright</small>
+    <div class="color-primary-pet text-center font-weight-lighter">
+      <div class="d-flex flex-column">
+        <i class="fas fa-paw py-3"></i> 
+        <small class="bg-light py-4 text-black-50"> © 2020 Copyright</small>
+      </div>
     </div>
   </footer>
 </body>
