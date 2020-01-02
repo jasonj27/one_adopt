@@ -14,6 +14,10 @@ class FavoritesController < ApplicationController
 
   def destroy
     current_user.favorites.find_by(animal_id: "#{params[:id]}").destroy
-    redirect_to testfav_reservations_path
+    redirect_to favorites_path
+  end
+
+  def destroy_all
+  
   end
 end

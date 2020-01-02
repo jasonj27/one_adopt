@@ -20,6 +20,10 @@
                 options_for_select(Animal::ANIMAL_AREA_PKID_CLASS),
                 { include_blank: "縣市" },
                 { class: 'form-control advSearchCondition mt-4 w-75' }) %>
+  <%= f.select(:animal_shelter,
+                options_for_select(Animal::ANIMAL_SHELTER_CLASS),
+                { include_blank: "是否包含政府收容所?" },
+                { class: 'form-control advSearchCondition mt-4 w-75' }) %>
                 
     <%= f.submit "進行配對", class: 'w-75 btn btn-primary-pet mt-4' %>
 <% end %>
