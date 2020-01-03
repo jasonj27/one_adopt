@@ -1,45 +1,92 @@
-<h1>預約管理</h1>
-<% @reservations.each do |res| %>
-  <% if res.status != "canceled" && res.datetime >= Time.now %>
-  <h3>即將到來的預約</h3>
-  <ul>
-    <li>
-    <%= res.receiver.name %> <br>
-    <%= res.status %> <br>
-    <%= res.datetime %>
-    <ul>
-      <% res.reservation_pets.each do |pet| %>
-        <li>
-          <%= pet.animal.name %>
-          <%= pet.animal.animal_kind %>
-          <%= pet.animal.animal_sex %>
-        </li>
-      <% end %>
-      <%= link_to '取消預約', cancel_sender_reservation_path(res), method: :delete, data: {confirm: '確認取消!?'} %>
-      <%= link_to '確認預約', confirm_sender_reservation_path(res),	method: :post, data: {confirm: '確認預約!?'} %>
-    </ul>
-    </li>
-  </ul>
+<div class="container col-12 mx-auto bg-img">
+  <%= link_to sender_root_path do %>
+    <i class="far fa-arrow-alt-circle-left color-primary-pet h3 p-4"></i>
   <% end %>
-  <% if res.status != "canceled" && res.datetime <= Time.now %>
-  <h3>已超時的預約</h3>
-  <ul>
-    <li>
-    <%= res.receiver.name %> <br>
-    <%= res.status %> <br>
-    <%= res.datetime %>
-    <ul>
-      <% res.reservation_pets.each do |pet| %>
-        <li>
-          <%= pet.animal.name %>
-          <%= pet.animal.animal_kind %>
-          <%= pet.animal.animal_sex %>
-        </li>
+    <div class="text-center">
+      <h2 class="color-primary-pet font-weight-bold letter-spacing mb-2">貓狗大平台</h2>
+      <h5 class="text-light text-black-shadow letter-spacing">讓愛不流浪</h5>
+    </div>
+  <div class="row w-75 m-auto ">
+    <% @reservations.each do |res| %>
+      <% if res.status != "canceled" && res.datetime >= Time.now %>
+      <div class="col-12 col-md-12 col-xl-6 mt-4 w-50">
+        <div class="card-pet searchimg">
+          <div class="card-body bg-light">
+            <p class="card-text d-flex justify-content-between">
+              <section>
+                <h3 class="color-primary-pet font-weight-bold letter-spacing pb-2"><%= res.receiver.name %></h3>
+
+                <hr>
+                <% res.reservation_pets.each do |pet| %>
+                <div class="color-primary-pet text-uppercase pr-1 mx-2">
+                  <span class="text-secondary">•</span>
+                  <span class="px-2"><%= pet.animal.name %></span>
+                  <span class="px-2"><%= pet.animal.animal_kind %></span>
+                  <span class="px-2"><%= pet.animal.animal_sex %></span>
+                </div>
+                <% end %>
+                <hr>
+                <div class="color-primary-pet text-uppercase pr-1 m-2">
+                  <span class="text-secondary">•</span>
+                  <span class="px-2">狀態：<%= res.status %></span>
+                </div>
+                <hr>
+                <div class="pr-1 m-2">
+                  <span class="text-secondary">•</span>
+                  <span class="font-weight-lighter px-2"><%= res.datetime %></span>
+                </div>
+                <hr>
+                <div class="pt-4 pb-2 text-center">
+                  <%= link_to '確認預約', confirm_sender_reservation_path(res),	method: :post, data: {confirm: '確認預約!?'}, class: "btn btn-sm-primary-pet mx-1 my-2" %>
+                  <%= link_to '取消預約', cancel_sender_reservation_path(res), method: :delete, data: {confirm: '確認取消!?'},class: "btn btn-sm-delete-pet" %>
+                </div>
+              </section>
+            </p>
+          </div>
+        </div>
+      </div>
       <% end %>
-      <%= link_to '領養失敗', cancel_adopt_sender_reservation_path(res),	method: :post, data: {confirm: '領養失敗!?'} %>
-      <%= link_to '領養成功', adopt_sender_reservation_path(res, :receiver => (res.receiver.id)),	method: :post, data: {confirm: '新增領養資料!?'} %>
-    </ul>
-    </li>
-  </ul>
-  <% end %>
-<% end %>
+      <% if res.status != "canceled" && res.datetime <= Time.now %>
+      <div class="col-12 col-md-12 col-xl-6 mt-4 w-50">
+        <div class="card-pet searchimg">
+          <div class="card-body bg-light">
+            <p class="card-text d-flex justify-content-between">
+              <section>
+                <h3 class="color-primary-pet font-weight-bold letter-spacing pb-2"><%= res.receiver.name %></h3>
+
+                <hr>
+                <% res.reservation_pets.each do |pet| %>
+                <div class="color-primary-pet text-uppercase pr-1 mx-2">
+                  <span class="text-secondary">•</span>
+                  <span class="px-2"><%= pet.animal.name %></span>
+                  <span class="px-2"><%= pet.animal.animal_kind %></span>
+                  <span class="px-2"><%= pet.animal.animal_sex %></span>
+                </div>
+                <% end %>
+                <hr>
+                <div class="color-primary-pet text-uppercase pr-1 m-2">
+                  <span class="text-secondary">•</span>
+                  <span class="px-2">狀態：<%= res.status %></span>
+                </div>
+                <hr>
+                <div class="pr-1 m-2">
+                  <span class="text-secondary">•</span>
+                  <span class="font-weight-lighter px-2"><%= res.datetime %></span>
+                </div>
+                <hr>
+                <div class="pt-4 pb-2 text-center">
+                  <%= link_to '領養成功', adopt_sender_reservation_path(res, :receiver => (res.receiver.id)),	method: :post, data: {confirm: '新增領養資料!?'} %>
+                  <%= link_to '領養失敗', cancel_adopt_sender_reservation_path(res),	method: :post, data: {confirm: '領養失敗!?'} %>
+                </div>
+              </section>
+            </p>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+
+
