@@ -3,26 +3,30 @@
 
 <div class="container mx-auto">
   <div class="row row-cols-1 row-cols-sm-2">
-    
-    <%= link_to searches_path, class: 'my-3 py-3 border btn btn-pet color-primary-pet' do %>
+    <div class="col col-md-6">
+      <%= link_to searches_path, class: 'my-3 py-3 border btn w-100 color-primary-pet' do %>
       <i class="fas fa-search index-fontawesome"></i>
       <h3 class="btn d-flex flex-column color-primary-pet">搜尋</h3>
-    <% end %>
-    
-    <%= link_to favorites_path, class: 'my-3 py-3 border btn btn-pet color-primary-pet' do %>
+      <% end %>
+    </div>
+    <div class="col col-md-6">
+      <%= link_to favorites_path, class: 'my-3 py-3 border btn w-100 color-primary-pet' do %>
       <i class="far fa-heart index-fontawesome"></i>
       <h3 class="btn d-flex flex-column color-primary-pet">收藏動物</h3>
-    <% end %>
-    
-    <%= link_to reservations_path, class: 'my-3 py-3 border btn btn-pet color-primary-pet' do %>
+      <% end %>
+    </div>
+    <div class="col col-md-6">
+      <%= link_to reservations_path, class: 'my-3 py-3 border btn w-100 color-primary-pet' do %>
       <i class="far fa-calendar-alt index-fontawesome"></i>
       <h3 class="btn d-flex flex-column color-primary-pet">預約記錄</h3>
-    <% end %>
-    
-    <%= link_to messages_path, class: 'my-3 py-3 border btn btn-pet disabled' do %>
+      <% end %>
+    </div>
+    <div class="col col-md-6">
+      <%= link_to messages_path, class: 'my-3 py-3 border btn w-100 disabled' do %>
       <i class="far fa-envelope index-fontawesome"></i>
       <h3 class="btn d-flex flex-column">站內信件</h3>
-    <% end %>
+      <% end %>
+    </div>
 
   </div>
 </div>
