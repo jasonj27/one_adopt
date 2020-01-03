@@ -55,8 +55,7 @@
     </div>
   
     <div data-controller="favorite" 
-  data-favorite-id="<%= @animal.id %>" data-favorite-favorited="<%= @animal.favorited_by?(current_user) %>" class="text-center"> 
-    <!--(連結到favorite_controller.js)-->
+  data-favorite-id="<%= @animal.id %>" data-favorite-favorited="<%= @animal.favorited_by?(current_user) %>" class="text-center">
     <%= link_to "#", "data-action": "favorite#toggle", class: "btn btn-warning w-25 mb-4" do %>
       <i class="far fa-heart" data-target="favorite.icon"></i>
     <% end %>
