@@ -10,6 +10,8 @@ class Sender::UsersController < ApplicationController
     if !current_user.is_sender
       if form.validsender?
         current_user.update(is_sender: true)
+        current_user.update(user_params)
+
         redirect_to sender_root_path, notice: "恭喜成為送養者！"
       else
         render :edit
