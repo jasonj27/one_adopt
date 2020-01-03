@@ -75,8 +75,8 @@
                 </div>
                 <hr>
                 <div class="pt-4 pb-2 text-center">
-                  <%= link_to '領養成功', adopt_sender_reservation_path(res, :receiver => (res.receiver.id)),	method: :post, data: {confirm: '新增領養資料!?'} %>
-                  <%= link_to '領養失敗', cancel_adopt_sender_reservation_path(res),	method: :post, data: {confirm: '領養失敗!?'} %>
+                  <%= link_to '領養成功', adopt_sender_reservation_path(res, :receiver => (res.receiver.id)),	method: :post, data: {confirm: '新增領養資料!?'} , class: "btn btn-sm-primary-pet mx-1 my-2"%>
+                  <%= link_to '領養失敗', cancel_adopt_sender_reservation_path(res),	method: :post, data: {confirm: '領養失敗!?'} , class: "btn btn-sm-delete-pet mx-1 my-2"%>
                 </div>
               </section>
             </p>

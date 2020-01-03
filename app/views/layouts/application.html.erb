@@ -14,74 +14,76 @@
 </head>
 
 <body>
-  <% if !current_user.nil? %>
-    <nav class="navbar navbar-expand-lg navbar-light  bgcolor-primary-pet sticky-top">
-      
-      <%= link_to pages_path do %>
-        <h3 class="text-white font-weight-bold letter-spacing px-2"><i class="fas fa-paw"></i>貓狗大平台</h3>
-      <% end %>
-
-      <button class="navbar-toggler border-none" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <%= link_to searches_path do %>
-              <div class="nav-link pl-2">搜尋</div>
-            <% end %>
-          </li>
-          <li class="nav-item">
-            <%= link_to favorites_path do %>
-              <div class="nav-link pl-2">收藏動物</div>
-            <% end %>
-          </li>
-          <li class="nav-item">
-            <%= link_to reservations_path do %>
-              <div class="nav-link pl-2">預約記錄</div>
-            <% end %>
-          </li>
-          <li class="nav-item">
-            <%= link_to edit_user_registration_path do %>
-              <div class="nav-link pl-2">設定</div>
-            <% end %>
-          </li>
-          <li class="nav-item">
-            <% if current_user.is_sender %>
-              <%= link_to sender_animals_path do %>
-                <div class="nav-link pl-2">
-                  <i class="far fa-laugh pr-1"></i>送養管理
-                </div>
+  <div class="wrap">
+    <% if !current_user.nil? %>
+      <nav class="navbar navbar-expand-lg navbar-light  bgcolor-primary-pet sticky-top">
+        
+        <%= link_to pages_path do %>
+          <h3 class="text-white font-weight-bold letter-spacing px-2"><i class="fas fa-paw"></i>貓狗大平台</h3>
+        <% end %>
+  
+        <button class="navbar-toggler border-none" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <%= link_to searches_path do %>
+                <div class="nav-link pl-2">搜尋</div>
               <% end %>
-            <% else %>
-              <%= link_to edit_sender_user_path do %>
-                <div class="nav-link pl-2">
-                  <i class="far fa-laugh pr-1"></i>成為送養者
-                </div>
+            </li>
+            <li class="nav-item">
+              <%= link_to favorites_path do %>
+                <div class="nav-link pl-2">收藏動物</div>
               <% end %>
-            <% end %>
-              
-          </li>
-          <li class="nav-item">
-            <%= link_to destroy_user_session_path , method: 'delete' do %>
-              <div class="nav-link pl-2">登出</div>
-            <% end %>
-          </li>
-        </ul>
+            </li>
+            <li class="nav-item">
+              <%= link_to reservations_path do %>
+                <div class="nav-link pl-2">預約記錄</div>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to edit_user_registration_path do %>
+                <div class="nav-link pl-2 disabled">設定</div>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <% if current_user.is_sender %>
+                <%= link_to sender_root_path do %>
+                  <div class="nav-link pl-2">
+                    <i class="far fa-laugh pr-1"></i>送養管理
+                  </div>
+                <% end %>
+              <% else %>
+                <%= link_to edit_sender_user_path do %>
+                  <div class="nav-link pl-2">
+                    <i class="far fa-laugh pr-1"></i>成為送養者
+                  </div>
+                <% end %>
+              <% end %>
+                
+            </li>
+            <li class="nav-item">
+              <%= link_to destroy_user_session_path , method: 'delete' do %>
+                <div class="nav-link pl-2">登出</div>
+              <% end %>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    <% end %>
+    <%= render 'shared/flash' if notice %>
+    <%= yield %>
+<!--     <footer>
+      <div class="color-primary-pet text-center font-weight-lighter">
+        <div class="d-flex flex-column">
+          <i class="fas fa-paw py-3"></i> 
+          <small class="bg-light py-4 text-black-50"> © 2020 Copyright</small>
+        </div>
       </div>
-    </nav>
-  <% end %>
-  <%= render 'shared/flash' if notice %>
-  <%= yield %>
-  <footer>
-    <div class="color-primary-pet text-center font-weight-lighter">
-      <div class="d-flex flex-column">
-        <i class="fas fa-paw py-3"></i> 
-        <small class="bg-light py-4 text-black-50"> © 2020 Copyright</small>
-      </div>
-    </div>
-  </footer>
+    </footer> -->
+  </div>
 </body>
 </html>
 
