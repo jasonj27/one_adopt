@@ -14,10 +14,10 @@
           <p class="card-text d-flex justify-content-between">
             姓名：<%= animal.name %>
           </p>
-          <p class="card-text d-flex justify-content-between">
-            <%= link_to "編輯", edit_sender_animal_path(animal), class: 'btn btn-sm-primary-pet btn-sm mr-1' %>
+          <p class="card-text d-flex justify-content-between flex-wrap">
+            <%= link_to "編輯", edit_sender_animal_path(animal), class: 'btn btn-sm-primary-pet btn-sm mr-1 my-2' %>
             <%= link_to "刪除", sender_animal_path(animal), method: :delete, data: {confirm: '
-            確定刪除？'}, class: 'btn btn-sm-delete-pet btn-sm mr-1' %>
+            確定刪除？'}, class: 'btn btn-sm-delete-pet btn-sm mr-1 my-2' %>
           </p>
         </div>
       </div>

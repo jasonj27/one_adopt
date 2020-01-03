@@ -6,6 +6,17 @@
   margin: 0;
   padding: 0;
 }
+html, body{
+  height: 100%
+}
+.wrap{
+  min-height: 100%;
+}
+footer{
+  width: 100%;
+  position: relative;
+  bottom: 0;
+}
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
   margin-bottom: 0rem;
 }
@@ -15,6 +26,13 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
   width: 100%;
   background-attachment: fixed;
   background-image: url(../images/inst-bg.png);
+}
+.bg-img-backend{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-attachment: fixed;
+  background-image: url(../images/toy-1-min.png);
 }
 .text-black-shadow{
   text-shadow: 1px 1px 3px rgba(0,0,0,.8)
@@ -120,4 +138,7 @@ a:hover{
 }
 .btn-reservation:last{
   display: block;
+}
+.border-box{
+  box-sizing: border-box;
 }

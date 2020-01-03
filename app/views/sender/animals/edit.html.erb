@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>編輯動物</h1>
+  <h1>編輯動物資料</h1>
   <% if @animal.errors.any? %>
     <ul>
       <% @animal.errors.full_messages.each do |msg| %>
@@ -11,8 +11,8 @@
     <strong>已上傳照片:</strong>
     <% if @animal.images.attached? %>
       <% @animal.images.each do |image| %>
-        <%= image_tag image %>
-        <%= link_to '刪除', destroy_image_sender_animal_path(@animal, image), method: :delete %>
+        <%= image_tag image.variant(resize: "500x400!"), class: "card-img-top" %>
+        <%= link_to '刪除', destroy_image_sender_animal_path(@animal, image), method: :delete, class: "btn btn-sm-delete-pet my-3" %>
       <% end %>
     <% end %>
   </div>
@@ -23,8 +23,11 @@
           <%= f.hidden_field :images, multiple: true, value: img.signed_id %>
         <% end %>
       <% end %>
-      <%= f.label :images %>
-      <%= f.file_field :images, multiple: true, class: "form-control-file" %>
+      
+      <div class="custom-file">
+        <%= f.label "請選擇照片", class: "custom-file-label"%>
+      <%= f.file_field :images, multiple: true, type: "file" ,class: "custom-file-input", id: "customFile" %>
+      </div>
     </div>
     <div class="form-group">
       <%= f.label :name, "寵物姓名" %>
@@ -50,6 +53,6 @@
       <%= f.label :adopt_status, "是否可被搜尋" %>
       <%= f.select(:adopt_status, [['可以', '待領養'], ['不可以', '未上架']], {}, { :class => 'form-control' }) %>
     </div>
-    <%= f.submit '送出資料' %>
+    <%= f.submit '送出資料', class: "btn btn-sm-primary-pet" %>
   <% end %>
 </div>

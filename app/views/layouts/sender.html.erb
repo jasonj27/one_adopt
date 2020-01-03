@@ -1,51 +1,52 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>DemoProject</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <%# stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_pack_tag 'application' %>
-    <%= javascript_pack_tag 'multiselect' %>
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-light  bgcolor-primary-pet sticky-top">
-  
+<head>
+  <title>貓狗大後台</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <%# stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_pack_tag 'application' %>
+  <%= javascript_pack_tag 'multiselect' %>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="navbar navbar-expand-lg navbar-light  bg-secondary sticky-top">
+      
       <%= link_to sender_root_path do %>
-        <h3 class="text-white font-weight-bold letter-spacing px-2"><i class="fas fa-paw"></i>貓狗大後台</h3>
+      <h3 class="text-white font-weight-bold letter-spacing px-2"><i class="fas fa-paw"></i>貓狗大後台</h3>
       <% end %>
-
+      
       <button class="navbar-toggler border-none" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
+      
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
+          <li class="nav-item ">
             <%= link_to edit_sender_user_path do %>
-              <div class="nav-link pl-2">管理預約資料</div>
+            <div class="nav-link pl-2 text-white">管理預約資料</div>
             <% end %>
           </li>
           <li class="nav-item">
             <%= link_to sender_animals_path do %>
-              <div class="nav-link pl-2">寵物管理</div>
+            <div class="nav-link pl-2 text-white">寵物管理</div>
             <% end %>
           </li>
           <li class="nav-item">
             <%= link_to sender_reservations_path do %>
-              <div class="nav-link pl-2">預約管理</div>
+            <div class="nav-link pl-2 text-white">預約管理</div>
             <% end %>
           </li>
           <li class="nav-item">
             <%= link_to pages_path do %>
-              <div class="nav-link pl-2"><i class="far fa-laugh pr-1"></i>領養者頁面</div>
+            <div class="nav-link pl-2 text-white"><i class="far fa-grin-hearts"></i> 領養者頁面</div>
             <% end %>
           </li>
           <li class="nav-item">
             <%= link_to destroy_user_session_path , method: 'delete' do %>
-              <div class="nav-link pl-2">登出</div>
+            <div class="nav-link pl-2 text-white">登出</div>
             <% end %>
           </li>
         </ul>
@@ -53,13 +54,14 @@
     </nav>
     <%= render 'shared/flash' if notice %>
     <%= yield %>
-    <footer>
+<!--     <footer>
       <div class="color-primary-pet text-center font-weight-lighter">
-        <div class="d-flex flex-column ">
+        <div class="d-flex flex-column">
           <i class="fas fa-paw py-3"></i> 
           <small class="bg-light py-4 text-black-50"> © 2020 Copyright</small>
         </div>
       </div>
-   </footer>
-  </body>
+    </footer> -->
+  </div>
+</body>
 </html>
