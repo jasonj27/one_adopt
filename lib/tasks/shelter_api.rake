@@ -64,11 +64,27 @@ namespace :access do
     # 處理adopt_status狀態
     case result['animal_status']
     when '開放認養'
-      result['adopt_status'] = '待領養'
+      result['adopt_status'] = "待領養"
     when '已經認養'
-      result['adopt_status'] = '已領養'
+      result['adopt_status'] = "已領養"
     else 
-      result['adopt_status'] = '未上架'
+      result['adopt_status'] = "未上架"
+    end
+
+    # 處理animal_bodytype
+    case result['animal_bodytype']
+    when 'BIG'
+      result['animal_bodytype'] = "大型"
+    when 'MEDIUM'
+      result['animal_bodytype'] = "中型"
+    when 'SMALL'
+      result['animal_bodytype'] = "小型"
+    end
+
+    # 處理animal_colour
+    case result['animal_colour']
+    when ''
+      result['animal_colour'] = "未知色"
     end
 
     #  處理沒有圖片，判斷貓或狗給預設圖。
@@ -114,6 +130,12 @@ namespace :access do
       unless animal_data.adopt_status == result['adopt_status']
         animal_data.assign_attributes( adopt_status: result['adopt_status'] )
       end
+      unless animal_data.animal_bodytype == result['animal_bodytype']
+        animal_data.assign_attributes( animal_bodytype: result['animal_bodytype'] )
+      end
+      unless animal_data.animal_colour == result['animal_colour']
+        animal_data.assign_attributes( animal_colour: result['animal_colour'] )
+      end
 
     else
       animal_data = Animal.new
@@ -130,6 +152,8 @@ namespace :access do
         animal_status: result['animal_status'],
         user_id: shelter[result['shelter_name']],
         adopt_status: result['adopt_status'],
+        animal_bodytype: result['animal_bodytype'],
+        animal_colour: result['animal_colour'],
         gov_shelter: true
       )
     end
@@ -140,7 +164,8 @@ namespace :access do
     puts "subid: #{animal_data.animal_subid}"
     puts "#{result['album_file']}"
     puts "#{animal_data.animal_age}"
-    puts "gov_shelter: #{animal_data.gov_shelter}"
+    puts "animal_colour: #{animal_data.animal_colour}"
+    puts "animal_bodytype: #{animal_data.animal_bodytype}"
     end
     puts "Finish!!!"
   end
