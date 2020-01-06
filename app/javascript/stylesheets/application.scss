@@ -25,7 +25,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
   height: 100%;
   width: 100%;
   background-attachment: fixed;
-  background-image: url(../images/inst-bg.png);
+  background-image: url(../images/inst-bg-min-b.png);
 }
 .bg-img-backend{
   position: absolute;
@@ -36,6 +36,9 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
 }
 .text-black-shadow{
   text-shadow: 1px 1px 3px rgba(0,0,0,.8)
+}
+.text-white-shadow{
+  text-shadow: 1px 1px 1px rgba(255,255,255,.3)
 }
 .letter-spacing{
   letter-spacing: 4px;
@@ -84,6 +87,20 @@ a:hover{
   border: 1px solid #ffe600;
 }
 .btn-secondary-pet:hover{
+  color: #888;
+}
+.btn-primary-fluid-pet{
+  color: #e09300;
+  background-color: #ffe600;
+}
+.btn-primary-fluid-pet:hover{
+  color: #fff;
+}
+.btn-secondary-fluid-pet{
+  color: #e09300;
+  border: 1px solid #ffe600;
+}
+.btn-secondary-fluid-pet:hover{
   color: #888;
 }
 .btn-dark-pet{
@@ -141,4 +158,8 @@ a:hover{
 }
 .border-box{
   box-sizing: border-box;
+}
+.btn-set{
+  flex: 1;
+  max-width: 50%;
 }
