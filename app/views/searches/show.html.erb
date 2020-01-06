@@ -1,6 +1,10 @@
-<%= link_to advance_searches_path do %>
-  <i class="far fa-arrow-alt-circle-left color-primary-pet h3 p-4"></i>
-<% end %>
+<nav aria-label="breadcrumb-pet">
+  <ol class="breadcrumb-pet">
+    <li class="breadcrumb-pet-item"><%= link_to "首頁" , pages_path ,class:'bc-item' %></li>
+    <li class="breadcrumb-pet-item"><%= link_to "搜尋" , searches_path ,class:'bc-item' %></li>
+    <li class="breadcrumb-pet-item active" aria-current="page">進階搜尋</li>
+  </ol>
+</nav>
 
 <div class="col-md-12">
   <div class="card pt-5 pb-3 m-4" >
