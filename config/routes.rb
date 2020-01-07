@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 
-  # root "pages#introduction"
-  root 'conversations#index'
+  root "pages#introduction"
 
 
-  resources :conversations, only: [:index, :show]
+
+  resources :conversations, only: [:index, :show, :destroy] 
   resources :users, only: [:index]
   resources :personal_messages, only: [:new, :create]
 

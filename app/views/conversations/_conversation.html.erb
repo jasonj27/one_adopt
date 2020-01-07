@@ -1,8 +1,9 @@
 <div>
-  Chatting with <%= conversation.with(current_user).name %>
+  和<%= conversation.with(current_user).name %>的對話
   <br>
   <em><%= conversation.personal_messages.last.body.truncate(50) %></em>
   <br>
-  <%= link_to 'View conversation', conversation_path(conversation) %>
+  <%= link_to '進入對話', conversation_path(conversation), class: 'btn btn-sm-primary-pet btn-sm mr-1' %>
+  <%= link_to '刪除對話', conversation_path(conversation), method: :delete, class: 'btn btn-sm-primary-pet btn-sm mr-1' %>
   <hr>
 </div>

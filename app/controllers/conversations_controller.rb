@@ -11,6 +11,11 @@ class ConversationsController < ApplicationController
     @personal_message = PersonalMessage.new
   end
 
+  def destroy
+    Conversation.find_by(id: params[:id]).destroy
+    redirect_to conversations_path
+  end
+
   private
 
   def set_conversation

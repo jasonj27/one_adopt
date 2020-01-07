@@ -17,7 +17,7 @@ class User < ApplicationRecord
   has_many :personal_messages, dependent: :destroy
   # @user.sent_messages
   # @user.received_messages
-  validates :name, presence: true
+  validates :name, presence: true, :uniqueness => true
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email

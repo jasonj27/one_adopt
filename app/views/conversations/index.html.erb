@@ -1,5 +1,12 @@
-<h1>Your conversations</h1>
+<%= link_to pages_path do %>
+  <i class="far fa-arrow-alt-circle-left color-primary-pet h3 p-4"></i>
+<% end %>
+<h1>你的訊息</h1>
 
 <div id="conversations">
-  <%= render @conversations %>
+  <% if @conversations.empty? %>
+    <p> 沒有訊息</p>
+  <% else %>
+    <%= render @conversations %>
+  <% end %>
 </div>
