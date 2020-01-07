@@ -47,17 +47,42 @@
       <div class="content text-center py-2">
         <ul class="py-2">
           <li><%= @animal.user.name %></li>
-          <li><%= @animal.user.sender_add %></li>
+          <li><%= @animal.user.sender_add %>  <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-map-marker-alt"></i></button></li>
           <li><%= @animal.user.sender_tel %></li>
           <li>編號：<%= @animal.animal_subid %></li>
         </ul>
       </div>
     </div>
-  
     <div data-controller="favorite" data-favorite-id="<%= @animal.id %>" data-favorite-favorited="<%= @animal.favorited_by?(current_user) %>" class="text-center">
       <%= link_to "#", "data-action": "favorite#toggle", class: "btn btn-sm-primary-pet w-25 mb-4" do %>
         <i class="far fa-heart" data-target="favorite.icon"></i>
       <% end %>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><%= @animal.user.name %></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="embed-responsive embed-responsive-4by3">
+          <iframe width="600" height="450" class="embed-responsive-item" 
+            <% if (@animal.user.email).ends_with?("@pet.com") %>
+              src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDkzbhgrcZprbdEP9aU0GqRTuKdG9r2zAg&q=<%= @animal.user.name %>" 
+            <% else %>
+              src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDkzbhgrcZprbdEP9aU0GqRTuKdG9r2zAg&q=<%= @animal.user.sender_add %>" 
+            <% end %>
+            allowfullscreen></iframe>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
     </div>
   </div>
 </div>
