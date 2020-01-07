@@ -82,6 +82,12 @@ a:hover{
   color: #e09300;
   background-color: #ffe600;
 }
+.btn-sm-secondary-pet{
+  width: 100px;
+  height: 35px;
+  color: #e09300;
+  border: 1px solid #ffe600;
+}
 .btn-secondary-pet{
   width: 200px;
   height: 35px;
@@ -176,7 +182,7 @@ a:hover{
   display: flex;
   flex-wrap: wrap;
   padding: 20px 10px;
-  margin: 0 0 10px 15px;
+  margin: 0 0 0 15px;
   list-style: none;
   border-radius: 20px;
   a{
@@ -196,8 +202,17 @@ a:hover{
   padding-left: 0.5rem;
 }
 .breadcrumb-pet-item + .breadcrumb-pet-item::before {
+  content: " > ";
   display: inline-block;
   padding-right: 0.5rem;
   color: #aaa;
-  content: " > ";
+}
+.border-left-pet::before{
+  content: '';
+  padding: 0 5px; 
+  border-left: 2px solid #ccc;
+}
+.img{/*
+  width: 100%;*/
+  height: 50%;
 }

@@ -14,16 +14,25 @@
           <%= image_tag s.images.first.variant(resize: "500x400!") , class: "card-img-top"%>
         <% end %>
         <div class="card-body">
-          <p class="card-text d-flex justify-content-between">
-            <span class="color-primary-pet"><%= s.animal_kind%></span>
-            <span><%= s.animal_age %></span>
-            <span data-controller="favorite" data-favorite-id="<%= s.id %>" data-favorite-favorited="<%= s.favorited_by?(current_user) %>">
-              <%= link_to "#", "data-action": "favorite#toggle", class: "text-warning" do %>
-                <i class="far fa-heart" data-target="favorite.icon"></i>
+          <p class="card-text d-flex">
+            <span class="text-secondary border-left-pet pr-2"><%= s.animal_kind%></span>
+            <span class="border-left-pet pr-2"><%= s.animal_age %></span>
+          </p>
+          <span class="card-text border-left-pet pr-2"><%= s.user.name%></span>
+
+          <div class="row mt-4 mr-1">
+            <span data-controller="favorite" data-favorite-id="<%= s.id %>" data-favorite-favorited="<%= s.favorited_by?(current_user) %>" class="col-6">
+              <%= link_to "#", "data-action": "favorite#toggle", class: "btn btn-sm-primary-pet  mb-4" do %>
+              <i class="far fa-heart" data-target="favorite.icon"></i>
               <% end %>
             </span> 
-          </p>
-          <p class="card-text"><%= s.user.name%></p>
+            <span class="col-6">
+              <%= link_to search_path(s) do%>
+                <p class="btn btn-sm-secondary-pet">詳細資料</p>
+              <% end %>
+            </span>
+          </div>
+        
         </div>
       </div>
     </div>
