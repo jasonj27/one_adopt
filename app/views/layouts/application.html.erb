@@ -16,34 +16,35 @@
 <body>
   <div class="wrap">
     <% if !current_user.nil? %>
-      <nav class="navbar navbar-expand-lg navbar-light  bgcolor-primary-pet sticky-top">
+      <nav class="navbar navbar-expand-lg navbar-light bgcolor-primary-pet sticky-top">
         
-        <%= link_to pages_path do %>
-          <h3 class="text-white font-weight-bold letter-spacing px-2"><i class="fas fa-paw"></i>貓狗大平台</h3>
+        <%= link_to pages_path, style: 'position: absolute;left: 10px;top: 10px;display:inline-block;' do %>
+          <img src="<%= asset_pack_path 'media/images/logo_w.png'%>" class="w-25" alt="logo">
         <% end %>
-  
-        <button class="navbar-toggler border-none" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-  
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <%= link_to searches_path do %>
-                <div class="nav-link pl-2">搜尋</div>
-              <% end %>
-            </li>
-            <li class="nav-item">
-              <%= link_to favorites_path do %>
-                <div class="nav-link pl-2">收藏動物</div>
-              <% end %>
-            </li>
-            <li class="nav-item">
-              <%= link_to reservations_path do %>
-                <div class="nav-link pl-2">預約記錄</div>
-              <% end %>
-            </li>
-            <li class="nav-item">
+
+        <div class="navbar-item"> 
+          <button class="navbar-toggler border-none" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+    
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <%= link_to searches_path do %>
+                  <div class="nav-link pl-2">搜尋</div>
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to favorites_path do %>
+                  <div class="nav-link pl-2">收藏動物</div>
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to reservations_path do %>
+                  <div class="nav-link pl-2">預約記錄</div>
+                <% end %>
+              </li>
+              <li class="nav-item">
               <%= link_to conversations_path do %>
                 <div class="nav-link pl-2">站內信件</div>
               <% end %>
@@ -53,28 +54,33 @@
                 <div class="nav-link pl-2 disabled">設定</div>
               <% end %>
             </li>
-            <li class="nav-item">
-              <% if current_user.is_sender %>
-                <%= link_to sender_root_path do %>
-                  <div class="nav-link pl-2">
-                    <i class="far fa-laugh pr-1"></i>送養管理
-                  </div>
+              <li class="nav-item">
+                <% if current_user.is_sender %>
+                  <%= link_to sender_root_path do %>
+                    <div class="nav-link pl-2">
+                      <i class="far fa-laugh pr-1"></i>送養管理
+                    </div>
+                  <% end %>
+                <% else %>
+                  <%= link_to edit_sender_user_path do %>
+                    <div class="nav-link pl-2">
+                      <i class="far fa-laugh pr-1"></i>成為送養者
+                    </div>
+                  <% end %>
                 <% end %>
-              <% else %>
-                <%= link_to edit_sender_user_path do %>
-                  <div class="nav-link pl-2">
-                    <i class="far fa-laugh pr-1"></i>成為送養者
-                  </div>
+              </li>
+              <li class="nav-item">
+                <%= link_to edit_user_registration_path do %>
+                  <div class="nav-link pl-2">設定</div>
                 <% end %>
-              <% end %>
-                
-            </li>
-            <li class="nav-item">
-              <%= link_to destroy_user_session_path , method: 'delete' do %>
-                <div class="nav-link pl-2">登出</div>
-              <% end %>
-            </li>
-          </ul>
+              </li>
+              <li class="nav-item">
+                <%= link_to destroy_user_session_path , method: 'delete' do %>
+                  <div class="nav-link pl-2">登出</div>
+                <% end %>
+              </li>
+            </ul>
+          </div>
         </div>
       </nav>
     <% end %>
