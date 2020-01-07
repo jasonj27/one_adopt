@@ -1,0 +1,8 @@
+<div class="card pt-5 pb-3 m-4">
+  <%= image_tag @animal.images.first.variant(resize: "500x400!") , class: "card-img-top w-75 m-auto"%>
+  <div class="card-body text-center">
+    <h5 class="card-title h4 py-1 color-primary-pet"><%= @animal.animal_subid %></h5>
+    <p class="card-text py-1 mt-2"><%= @animal.user.name %></p>
+    <p class="card-text py-1">年紀：<%= @animal.id %></p>
+  </div>
+</div>

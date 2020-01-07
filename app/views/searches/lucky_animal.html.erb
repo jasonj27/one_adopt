@@ -1,0 +1,14 @@
+<% if @animal == nil %>
+  <%= form_with url: lucky_show_searches_path, class: "formSearch d-flex flex-column align-items-center" do |f| %>
+    
+    <%= f.select(:animal_kind,
+                  options_for_select(Animal::ANIMAL_KIND_CLASS),
+                  { include_blank: "種類"},
+                  { class: 'form-control mt-4 w-75' }) %>
+                  
+      <%= f.submit "抽取今日幸運動物！", class: 'w-75 btn btn-primary-pet mt-4' %>
+  <% end %>
+<% else %>
+  <%= image_tag @animal.images.first.variant(resize: "500x400!")%>
+  <%= @animal.id%>
+<% end %>

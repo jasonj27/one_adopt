@@ -31,6 +31,8 @@ Rails.application.routes.draw do
     collection do
       get :simple
       get :advance
+      post :lucky_show
+      get :lucky_animal
     end
   end
 

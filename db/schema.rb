@@ -99,6 +99,7 @@ ActiveRecord::Schema.define(version: 2020_01_07_172554) do
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
+<<<<<<< HEAD
   create_table "mailboxer_conversation_opt_outs", id: :serial, force: :cascade do |t|
     t.string "unsubscriber_type"
     t.integer "unsubscriber_id"
@@ -151,6 +152,15 @@ ActiveRecord::Schema.define(version: 2020_01_07_172554) do
     t.string "message_id"
     t.index ["notification_id"], name: "index_mailboxer_receipts_on_notification_id"
     t.index ["receiver_id", "receiver_type"], name: "index_mailboxer_receipts_on_receiver_id_and_receiver_type"
+=======
+  create_table "lucky_animals", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "animal_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["animal_id"], name: "index_lucky_animals_on_animal_id"
+    t.index ["user_id"], name: "index_lucky_animals_on_user_id"
+>>>>>>> Feat lucky_animal(WIP)
   end
 
   create_table "messages", force: :cascade do |t|
@@ -223,6 +233,7 @@ ActiveRecord::Schema.define(version: 2020_01_07_172554) do
   add_foreign_key "chatroom_users", "users"
   add_foreign_key "favorites", "animals"
   add_foreign_key "favorites", "users"
+<<<<<<< HEAD
   add_foreign_key "mailboxer_conversation_opt_outs", "mailboxer_conversations", column: "conversation_id", name: "mb_opt_outs_on_conversations_id"
   add_foreign_key "mailboxer_notifications", "mailboxer_conversations", column: "conversation_id", name: "notifications_on_conversation_id"
   add_foreign_key "mailboxer_receipts", "mailboxer_notifications", column: "notification_id", name: "receipts_on_notification_id"
@@ -230,6 +241,12 @@ ActiveRecord::Schema.define(version: 2020_01_07_172554) do
   add_foreign_key "messages", "users"
   add_foreign_key "personal_messages", "conversations"
   add_foreign_key "personal_messages", "users"
+=======
+  add_foreign_key "lucky_animals", "animals"
+  add_foreign_key "lucky_animals", "users"
+  add_foreign_key "messages", "users", column: "from_id"
+  add_foreign_key "messages", "users", column: "to_id"
+>>>>>>> Feat lucky_animal(WIP)
   add_foreign_key "reservation_pets", "animals"
   add_foreign_key "reservation_pets", "reservations"
   add_foreign_key "reservations", "users", column: "receiver_id"
