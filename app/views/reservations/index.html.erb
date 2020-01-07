@@ -35,6 +35,9 @@
               <div class="pt-4 pb-2">
                 <%= link_to "取消預約", cancel_reservation_path(res), method: :delete, data: {confirm: '確認取消!?'} , class: 'btn btn-sm-primary-pet btn-sm' %>
               </div>
+              <div class="pt-4 pb-2">
+                <%= link_to "寄信給他", new_personal_message_path(:receiver_id =>(User.find_by(name: res.sender.name).id)), class: 'btn btn-sm-primary-pet btn-sm'%>
+              </div>
             </section>
           </p>
         </div>

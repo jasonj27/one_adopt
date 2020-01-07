@@ -11,9 +11,13 @@ class User < ApplicationRecord
   has_many :received_messages, :class_name => 'Message', :foreign_key => 'to_id'
   has_many :sender_reservations, :class_name => 'Reservation', :foreign_key => 'sender_id'
   has_many :receiver_reservations, :class_name => 'Reservation', :foreign_key => 'receiver_id'
+
+  has_many :authored_conversations, class_name: 'Conversation', foreign_key: 'author_id'
+  has_many :received_conversations, class_name: 'Conversation', foreign_key: 'received_id'
+  has_many :personal_messages, dependent: :destroy
   # @user.sent_messages
   # @user.received_messages
-  validates :name, presence: true
+  validates :name, presence: true, :uniqueness => true
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email

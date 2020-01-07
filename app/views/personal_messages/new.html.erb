@@ -1,0 +1,10 @@
+<h1>傳送訊息給 <%= @receiver.name %></h1>
+
+<%= form_for @personal_message do |f| %>
+  <%= hidden_field_tag 'receiver_id', @receiver.id %>
+
+  <%= f.label :內容 %>
+  <%= f.text_area :body %>
+
+  <%= f.submit "傳送", class: 'btn btn-sm-primary-pet btn-sm mr-1'%>
+<% end %>

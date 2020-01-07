@@ -44,6 +44,11 @@
               <% end %>
             </li>
             <li class="nav-item">
+              <%= link_to conversations_path do %>
+                <div class="nav-link pl-2">站內信件</div>
+              <% end %>
+            </li>
+            <li class="nav-item">
               <%= link_to edit_user_registration_path do %>
                 <div class="nav-link pl-2 disabled">設定</div>
               <% end %>
@@ -74,6 +79,7 @@
       </nav>
     <% end %>
     <%= render 'shared/flash' if notice %>
+
     <%= yield %>
 <!--     <footer>
       <div class="color-primary-pet text-center font-weight-lighter">

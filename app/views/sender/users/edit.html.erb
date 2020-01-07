@@ -1,6 +1,12 @@
 <div class="container col-12 mx-auto">
-  <%= link_to sender_root_path do %>
-  <i class="far fa-arrow-alt-circle-left color-primary-pet h3 p-4"></i>
+  <% if current_user.is_sender %>
+    <%= link_to sender_root_path do %>
+    <i class="far fa-arrow-alt-circle-left color-primary-pet h3 p-4"></i>
+    <% end %>
+  <% else %>
+    <%= link_to root_path do %>
+    <i class="far fa-arrow-alt-circle-left color-primary-pet h3 p-4"></i>
+    <% end %>
   <% end %>
 
   <div class="instroduction-card w-80 center mx-auto mt-5 text-center">

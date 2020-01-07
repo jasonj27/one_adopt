@@ -3,6 +3,14 @@ Rails.application.routes.draw do
 
   root "pages#introduction"
 
+
+
+  resources :conversations, only: [:index, :show, :destroy] 
+  resources :users, only: [:index]
+  resources :personal_messages, only: [:new, :create]
+
+  
+  
   resources :pages, only: [:index] do
     collection do
       get :newfav

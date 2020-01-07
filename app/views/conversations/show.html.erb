@@ -1,0 +1,15 @@
+<h1>傳送給 <%= @conversation.with(current_user).name %></h1>
+
+<div id="conversation-main">
+  <div id="conversation-body">
+    <%= render @conversation.personal_messages %>
+  </div>
+
+  <%= form_for @personal_message do |f| %>
+    <%= hidden_field_tag 'conversation_id', @conversation.id %>
+    <%= f.label :body, "訊息內容" %>
+    <%= f.text_area :body %>
+
+    <%= f.submit "傳送", class: 'btn btn-sm-primary-pet btn-sm mr-1'%>
+  <% end %>
+</div>
