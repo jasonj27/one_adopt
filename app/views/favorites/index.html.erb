@@ -15,16 +15,26 @@
           <i class="fas fa-home"></i>
           <%= user %>            
         </div>
-        <div class="card-body btn-reservation">
+        <div class="card-body">
+          
           <% for fav in favorites %>
-          <li>
-            <span class="color-primary-pet font-weight-bold">
-              <i class="fas fa-paw pr-1"></i><%= fav.animal.name %>
-            </span>
-            <span><%= fav.animal.animal_kind %></span>
-            <span><%= fav.animal.animal_age %></span>
-            <%= link_to '刪除收藏', favorite_path(fav.animal), method: :delete, data: { confirm: '確認刪除?!' } ,class: 'btn btn-sm-delete-pet btn-sm ml-4 my-1' %>  
-          </li>
+            <div class="row bg-light m-1">
+              <div class="col-6">
+                <%= image_tag fav.animal.images.first.variant(resize: "500x400!") , class: "card-img-top"%>
+              </div>
+
+              <div class="col-6">
+                <li class="color-primary-pet font-weight-bold">
+                  <%= fav.animal.name %>
+                </li>
+                <li><%= fav.animal.animal_kind %></li>
+                <li><%= fav.animal.animal_age %></li>
+              </div>
+              
+              <div><%= link_to 'X', favorite_path(fav.animal), method: :delete, data: { confirm: '確認刪除?!' } ,class: 'btn rounded-circle bg-secondary' %></div>
+            </div>
+          <% end %>
+          
           <div class="pt-4 pb-2 mt-5">
             <%= link_to "我要預約", new_reservation_path(:sender => (fav.animal.user.id)),class: 'btn btn-sm-primary-pet btn-sm mr-1' %>
           </div>

@@ -1,12 +1,13 @@
-<%= link_to pages_path do %>
-  <i class="far fa-arrow-alt-circle-left color-primary-pet h3 p-4"></i>
-<% end %>
+<nav aria-label="breadcrumb-pet mt-4">
+  <ol class="breadcrumb-pet">
+    <li class="breadcrumb-pet-item"><%= link_to "首頁" , pages_path , class:'bc-item'%></li>
+    <li class="breadcrumb-pet-item active" aria-current="page">搜尋</li>
+  </ol>
+</nav>
 
-<div class="row">
-  <div class="col-md-12">
-    <%= render 'form'%>
-  </div>
-</div>
+
+<%= render 'form'%>
+
 
 <%= javascript_pack_tag 'search/advSearch'%>
 
