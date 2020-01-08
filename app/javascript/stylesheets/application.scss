@@ -40,7 +40,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
   height: 100%;
   width: 100%;
   background-attachment: fixed;
-  background-image: url(../images/toy-1-min.png);
+  background-image: url(https://storage.googleapis.com/oneadopt-public/images/toy-1.png);
 }
 .text-black-shadow{
   text-shadow: 1px 1px 3px rgba(0,0,0,.8)
@@ -81,6 +81,9 @@ a:hover{
 }
 .color-primary-pet{
   color: #e09300;
+}
+.color-secondary-pet{
+  color: #ffc107;
 }
 .btn-primary-pet{
   width: 200px;
@@ -134,6 +137,10 @@ a:hover{
 }
 .btn-dark-pet:hover{
   color: #888;
+}
+.btn-conversation-del{
+  color: #fff;
+  background-color: #e06b5c;
 }
 .btn-delete-pet{
   width: 200px;
@@ -231,4 +238,11 @@ a:hover{
   content: '';
   padding: 0 5px; 
   border-left: 2px solid #ccc;
+}
+.bg-conversations{
+  background-color: #f3f6fd;
+}
+.rounded-conversation{
+  border-top-right-radius: 30px;
+  border-bottom-left-radius: 30px;
 }
