@@ -1,51 +1,50 @@
 <%= link_to pages_path do %>
-<i class="far fa-arrow-alt-circle-left color-primary-pet h3 p-4"></i>
+  <i class="far fa-arrow-alt-circle-left color-primary-pet h3 p-4"></i>
 <% end %>
 
 <div class="container">
   <div class="row col-sm-12 flex-xl-row">
     <% if @favorites.empty? %>
-    <p class="p-4">趕快去收藏</p>
+      <p class="p-4">趕快去收藏</p>
     <% end %>
 
     <% @favorites_group.each do |user, favorites| %>
-    <div class="col">
-      <div class="card-pet center mx-auto my-4" style="width: 18rem;">
-        <div class="card-header font-weight-bold letter-spacing text-secondary">
-          <i class="fas fa-home"></i>
-          <%= user %>            
-        </div>
-        <div class="card-body">
-          
-          <% for fav in favorites %>
-            <div class="row bg-light m-1">
-              <div class="col-6">
-                <%= image_tag fav.animal.images.first.variant(resize: "500x400!") , class: "card-img-top"%>
+      <div class="col">
+        <div class="card-pet center mx-auto my-4" style="width: 18rem;">
+          <div class="card-header font-weight-bold letter-spacing text-secondary">
+            <i class="fas fa-home"></i>
+            <%= user %>            
+          </div>
+
+          <div class="card-body">
+            <% for fav in favorites %>
+              <div class="row bg-light m-1">
+                <div class="col-6">
+                  <%= image_tag fav.animal.images.first.variant(resize: "500x400!") , class: "card-img-top"%>
+                </div>
+
+                <div class="col-6">
+                  <li class="color-primary-pet font-weight-bold">
+                    <%= fav.animal.name %>
+                  </li>
+                  <li><%= fav.animal.animal_kind %></li>
+                  <li><%= fav.animal.animal_age %></li>
+                </div>
+                
+                <div><%= link_to 'X', favorite_path(fav.animal), method: :delete, data: { confirm: '確認刪除?!' } ,class: 'btn rounded-circle bg-secondary' %></div>
               </div>
 
-              <div class="col-6">
-                <li class="color-primary-pet font-weight-bold">
-                  <%= fav.animal.name %>
-                </li>
-                <li><%= fav.animal.animal_kind %></li>
-                <li><%= fav.animal.animal_age %></li>
+              <div class="pt-4 pb-2 mt-5">
+                <%= link_to "我要預約", new_reservation_path(:sender => (fav.animal.user.id)),class: 'btn btn-sm-primary-pet btn-sm mr-1' %>
               </div>
               
-              <div><%= link_to 'X', favorite_path(fav.animal), method: :delete, data: { confirm: '確認刪除?!' } ,class: 'btn rounded-circle bg-secondary' %></div>
-            </div>
-          
-          <div class="pt-4 pb-2 mt-5">
-            <%= link_to "我要預約", new_reservation_path(:sender => (fav.animal.user.id)),class: 'btn btn-sm-primary-pet btn-sm mr-1' %>
+              <div class="pt-4 pb-2 mt-5">
+                <%= link_to "寄信給他", new_personal_message_path(:receiver_id =>(fav.animal.user.id)), class: 'btn btn-sm-primary-pet btn-sm mr-1'%>
+              </div>
+            <% end %>
           </div>
-          <div class="pt-4 pb-2 mt-5">
-            <%= link_to "寄信給他", new_personal_message_path(:receiver_id =>(fav.animal.user.id)), class: 'btn btn-sm-primary-pet btn-sm mr-1'%>
-          </div>
-          <% end %>
-
         </div>
-      </div>
-    </div>  
+      </div>  
     <% end %> 
   </div>
 </div>
-

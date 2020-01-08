@@ -45,10 +45,15 @@
                 <% end %>
               </li>
               <li class="nav-item">
-              <%= link_to conversations_path do %>
-                <div class="nav-link pl-2">站內信件</div>
-              <% end %>
-            </li>
+                <%= link_to conversations_path do %>
+                  <div class="nav-link pl-2">站內信件</div>
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to lucky_animal_searches_path do %>
+                  <div class="nav-link pl-2">每日幸運寵物</div>
+                <% end %>
+              </li>
             <li class="nav-item">
               <%= link_to edit_user_registration_path do %>
                 <div class="nav-link pl-2 disabled">設定</div>
