@@ -22,15 +22,16 @@
                   </div>
                 <% end %>
                 <hr>
-                <div class="color-primary-pet text-uppercase pr-1 m-2">
-                  <span class="text-secondary">•</span>
-                  <span class="px-2">狀態：<%=t res.status, locale: "zh-TW" %></span>
-                </div>
-                <hr>
                 <div class="pr-1 m-2">
                   <span class="text-secondary">•</span>
                   <span class="font-weight-lighter px-2">
-                    <%= res.datetime.strftime("%Y年 %m月 %d日 %I:%M %p %A")%>
+                    <i class="fas fa-calendar-alt color-primary-pet"></i>日期：<%= l res.datetime, format: :custom_date %>
+                  </span>
+                </div>
+                <div class="pr-1 m-2">
+                  <span class="text-secondary">•</span>
+                  <span class="font-weight-lighter px-2">
+                    <i class="far fa-clock color-primary-pet"></i>時間：<%= l res.datetime, format: :custom_time %>
                   </span>
                 </div>
                 <hr>
