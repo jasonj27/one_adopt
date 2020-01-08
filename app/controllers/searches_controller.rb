@@ -27,8 +27,8 @@ class SearchesController < ApplicationController
                           .search_age(params[:animal_age])
 
     ids = animals.joins(:favorites)
-                  .where("favorites.user_id = ?", current_user.id)
-                  .pluck(:id)
+                 .where("favorites.user_id = ?", current_user.id)
+                 .pluck(:id)
 
     search_params = animals.where.not(id: ids)                            
 
