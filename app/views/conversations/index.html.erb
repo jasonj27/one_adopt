@@ -2,7 +2,7 @@
   <nav aria-label="breadcrumb-pet mt-4">
     <ol class="breadcrumb-pet">
       <li class="breadcrumb-pet-item"><%= link_to "首頁" , pages_path ,class:'bc-item' %></li>
-        <li class="breadcrumb-pet-item active" aria-current="page">站內信件</li>
+      <li class="breadcrumb-pet-item active" aria-current="page">站內信件</li>
     </ol>
   </nav>
 
@@ -12,7 +12,7 @@
 
     <div id="conversations">
       <% if @conversations.empty? %>
-      <p>沒有訊息</p>
+        <p>沒有訊息</p>
       <% else %>
       <%#= render @conversations %>
 
@@ -31,7 +31,7 @@
 
             <div class="text-right pt-2">
               <%= link_to conversation_path(conversation), class: 'btn btn-sm-primary-pet btn-sm mr-2' do %>
-              <p>對話內容 <i class="fas fa-pen"></i></p>
+                <p>對話內容 <i class="fas fa-pen"></i></p>
               <% end %>
               <%= link_to conversation_path(conversation), method: :delete , data: { confirm: '確認刪除?!' },class: 'btn btn-conversation-del mr-2' do %>
               <i class="fas fa-trash-alt"></i>
