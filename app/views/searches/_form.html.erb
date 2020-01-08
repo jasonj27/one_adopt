@@ -22,6 +22,18 @@
             { class: 'form-control mt-2 mb-2' }) %>
         </div>
         <div class="col-12 col-md-6">
+            <%= f.select(:animal_bodytype,
+            options_for_select(Animal::ANIMAL_BODYTYPE_CLASS),
+            { include_blank: "體型" },
+            { class: 'form-control mt-2 mb-2' }) %>
+        </div>
+        <div class="col-12 col-md-6">
+            <%= f.select(:animal_colour,
+            options_for_select(Animal::ANIMAL_COLOUR_CLASS),
+            { include_blank: "毛色" },
+            { class: 'form-control mt-2 mb-2' }) %>
+        </div>
+        <div class="col-12 col-md-6">
             <%= f.select(:animal_sterilization,
             options_for_select(Animal::ANIMAL_STERILIZATION_CLASS),
             { include_blank: "結紮" },

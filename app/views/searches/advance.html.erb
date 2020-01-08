@@ -15,7 +15,8 @@
         <% end %>
         <div class="card-body">
           <p class="card-text d-flex">
-            <span class="text-secondary border-left-pet pr-2"><%= s.animal_kind%></span>
+            <span class="text-secondary border-left-pet pr-2"><%= s.animal_kind%>
+            <%= s.animal_bodytype%><%= s.animal_colour%></span>
             <span class="border-left-pet pr-2"><%= s.animal_age %></span>
           </p>
           <span class="card-text border-left-pet pr-2"><%= s.user.name%></span>

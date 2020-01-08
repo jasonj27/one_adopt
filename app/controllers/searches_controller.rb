@@ -44,6 +44,8 @@ class SearchesController < ApplicationController
                                 .search_kind(params[:animal_kind])
                                 .search_sex(params[:animal_sex])
                                 .search_age(params[:animal_age])
+                                .search_bodytype(params[:animal_bodytype])
+                                .search_colour(params[:animal_colour])
                                 .search_sterilization(params[:animal_sterilization])
                                 .search_area_pkid(params[:animal_area_pkid])
                                 .search_shelter(params[:animal_shelter])

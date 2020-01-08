@@ -16,27 +16,30 @@ class Animal < ApplicationRecord
   enum adopt_status: { "未上架": 1, "待領養": 2, "已領養": 3 }
 
   # search_form_select
-  ANIMAL_KIND_CLASS = [["貓咪", "貓"], ["狗狗", "狗"], ["兔子", "兔"], ["老鼠", "鼠"]]
-  ANIMAL_SEX_CLASS = [["男生", "公"], ["女生", "母"], ["未知", "還未輸入"]]
-  ANIMAL_AGE_CLASS = [["0~7 years old", "幼年"], ["> 7 years old", "成年"], ["未知", "未知"]]
-  ANIMAL_STERILIZATION_CLASS = [["結紮", "是"], ["尚未結紮", "否"], ["未知", "未輸入"]]
-  ANIMAL_AREA_PKID_CLASS = [["臺北市"], ["新北市"], ["基隆市"], ["宜蘭縣"], ["桃園縣"], ["新竹縣"], ["新竹市"], ["苗栗縣"], ["臺中市"], ["彰化縣"], ["南投縣"], ["雲林縣"], ["嘉義縣"], ["嘉義市"], ["臺南市"], ["高雄市"], ["屏東縣"], ["花蓮縣"], ["臺東縣"], ["澎湖縣"], ["金門縣"], ["連江縣"]]
-  ANIMAL_SHELTER_CLASS = [["是", "收容所"], ["否", "中途之家"]]
-
+  ANIMAL_KIND_CLASS = [["貓咪","貓"],["狗狗","狗"],["兔子","兔"],["老鼠","鼠"]]
+  ANIMAL_SEX_CLASS = [["男生","公"],["女生","母"],["未知","還未輸入"]]
+  ANIMAL_AGE_CLASS = [["0~7 years old","幼年"],["> 7 years old","成年"],["未知","未知"]]
+  ANIMAL_BODYTYPE_CLASS = [["大型","大型"],["中型","中型"],["小型","小型"]]
+  ANIMAL_COLOUR_CLASS = [["三花色","三花色"],["白色","白色"],["灰色","灰色"],["灰白色","灰白色"],["灰黑色","灰黑色"],["米色","米色"],["咖啡色","咖啡色"],["咖啡白色","咖啡白色"],["咖啡棕色","咖啡棕色"],["咖啡黑色","咖啡黑色"],["花色","花色"],["花白色","花白色"],["虎斑色","虎斑色"],["虎斑白色","虎斑白色"],["棕色","棕色"],["棕白色","棕白色"],["棕灰色","棕灰色"],["棕黑色","棕黑色"],["黃色","黃色"],["黃白色","黃白色"],["黃虎斑色","黃虎斑色"],["黑色","黑色"],["黑白色","黑白色"],["黑灰色","黑灰色"],["黑虎斑色","黑虎斑色"],["黑棕色","黑棕色"],["黑黃色","黑黃色"],["未知色","未知色"]]
+  ANIMAL_STERILIZATION_CLASS = [["結紮","是"],["尚未結紮","否"],["未知","未輸入"]]
+  ANIMAL_AREA_PKID_CLASS = [["臺北市"],["新北市"],["基隆市"], ['宜蘭縣'], ['桃園縣'], ['新竹縣'], ['新竹市'], ['苗栗縣'], ['臺中市'], ['彰化縣'], ['南投縣'], ['雲林縣'], ['嘉義縣'], ['嘉義市'], ['臺南市'], ['高雄市'], ['屏東縣'], ['花蓮縣'], ['臺東縣'], ['澎湖縣'], ['金門縣'], ['連江縣']]
+  ANIMAL_SHELTER_CLASS = [["是","收容所"],["否","中途之家"]]
+  
   # scope
-  scope :search_kind, ->(animal_kind) { animal_kind.present? ? where(animal_kind: animal_kind) : all }
-  scope :search_sex, ->(animal_sex) { animal_sex.present? ? where(animal_sex: animal_sex) : all }
-  scope :search_age, ->(animal_age) { animal_age.present? ? where(animal_age: animal_age) : all }
-  scope :search_sterilization, ->(animal_sterilization) { animal_sterilization.present? ? where(animal_sterilization: animal_sterilization) : all }
-  scope :search_area_pkid, ->(animal_area_pkid) { animal_area_pkid.present? ? where(animal_area_pkid: animal_area_pkid) : all }
-  scope :search_shelter, ->(animal_shelter) {
-          animal_shelter.present? ?
-            if animal_shelter == "收容所"
-            Animal.where(gov_shelter: true)
-          elsif animal_shelter == "中途之家"
-            Animal.where.not(gov_shelter: true)
-          end : all
-        }
+  scope :search_kind, -> (animal_kind) { animal_kind.present? ? where(animal_kind: animal_kind) : all }
+  scope :search_sex, -> (animal_sex) { animal_sex.present? ? where(animal_sex: animal_sex) : all  }
+  scope :search_age, -> (animal_age) { animal_age.present? ? where(animal_age: animal_age) : all }
+  scope :search_bodytype, -> (animal_bodytype) { animal_bodytype.present? ? where(animal_bodytype: animal_bodytype) : all }
+  scope :search_colour, -> (animal_colour) { animal_colour.present? ? where(animal_colour: animal_colour) : all }
+  scope :search_sterilization, -> (animal_sterilization) { animal_sterilization.present? ? where(animal_sterilization: animal_sterilization) : all }
+  scope :search_area_pkid, -> (animal_area_pkid) { animal_area_pkid.present? ? where(animal_area_pkid: animal_area_pkid) : all }
+  scope :search_shelter, -> (animal_shelter) { animal_shelter.present? ? 
+                                                 if animal_shelter == "收容所"
+                                                   Animal.where(gov_shelter: true)
+                                                 elsif animal_shelter == "中途之家"
+                                                   Animal.where.not(gov_shelter: true)
+                                                 end : all
+                                             }
 
   def favorited_by?(user)
     favorites.exists?(user: user)
