@@ -1,11 +1,10 @@
-<div class="container col-12 mx-auto bg-img">
-  <%= link_to sender_root_path do %>
-    <i class="far fa-arrow-alt-circle-left color-primary-pet h3 p-4"></i>
-  <% end %>
-    <div class="text-center">
-      <h2 class="color-primary-pet font-weight-bold letter-spacing mb-2">貓狗大平台</h2>
-      <h5 class="text-light text-black-shadow letter-spacing">讓愛不流浪</h5>
-    </div>
+<div class="container col-12 mx-auto bg-pet">
+  <nav aria-label="breadcrumb-pet mt-4">
+    <ol class="breadcrumb-pet">
+      <li class="breadcrumb-pet-item"><%= link_to "送養首頁" , sender_root_path,class:'bc-item-sender' %></li>
+      <li class="breadcrumb-pet-item active" aria-current="page">預約管理</li>
+    </ol>
+  </nav>
   <div class="row w-75 m-auto ">
     <% @reservations.each do |res| %>
       <% if res.status != "canceled" && res.datetime >= Time.now %>

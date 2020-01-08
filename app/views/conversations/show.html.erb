@@ -1,15 +1,40 @@
-<h1>傳送給 <%= @conversation.with(current_user).name %></h1>
+<div class="wrap bg-conversations">
+  <nav aria-label="breadcrumb-pet mt-4">
+    <ol class="breadcrumb-pet">
+      <li class="breadcrumb-pet-item"><%= link_to "首頁" , pages_path ,class:'bc-item' %>
+      <li class="breadcrumb-pet-item"><%= link_to "站內信件" , conversations_path ,class:'bc-item' %></li>
+        <li class="breadcrumb-pet-item active" aria-current="page"><%= @conversation.with(current_user).name %></li>
+    </ol>
+  </nav>
 
-<div id="conversation-main">
-  <div id="conversation-body">
-    <%= render @conversation.personal_messages %>
+  <div class="container">
+    <div class="row pb-5">
+      <div class="col-12 pb-2" id="conversation-main">
+        <section class="bg-white rounded-lg shadow-sm my-4 p-5" id="conversation-body">
+          <%= render @conversation.personal_messages %>
+        </section>
+      </div>
+      <div class="col-12 pb-2" id="conversation-main">
+        <section class="bg-white rounded-lg shadow-sm my-3 p-4" id="conversation-body">
+          <%= form_for @personal_message do |f| %>
+            <div class="text-black-50 py-2">
+              <%= f.label :body do %>
+                <h6>傳送訊息 <i class="fas fa-pen fz-14"></i></h6>
+              <% end %>
+            </div>
+            <div>
+              <%= f.text_area :body , class: "w-100 mx-auto btn-secondary-fluid-pet mb-2" %> 
+            </div>
+            <div class="d-flex justify-content-center">
+              <%= f.submit "傳送", class: 'btn btn-primary-pet mt-4 mb-2' %>
+            </div>
+            <%= hidden_field_tag 'conversation_id', @conversation.id %>
+          <% end %>
+        </section>
+      </div>
+    </div>
   </div>
-
-  <%= form_for @personal_message do |f| %>
-    <%= hidden_field_tag 'conversation_id', @conversation.id %>
-    <%= f.label :body, "訊息內容" %>
-    <%= f.text_area :body %>
-
-    <%= f.submit "傳送", class: 'btn btn-sm-primary-pet btn-sm mr-1'%>
-  <% end %>
 </div>
+
+
+

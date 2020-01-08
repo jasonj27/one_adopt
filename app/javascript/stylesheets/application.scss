@@ -14,6 +14,9 @@ footer{
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
   margin-bottom: 0rem;
 }
+.w-20{
+  width: 20%;
+}
 .navbar-nav{
   margin-left: auto;
 }
@@ -37,7 +40,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
   height: 100%;
   width: 100%;
   background-attachment: fixed;
-  background-image: url(../images/toy-1-min.png);
+  background-image: url(https://storage.googleapis.com/oneadopt-public/images/toy-1.png);
 }
 .text-black-shadow{
   text-shadow: 1px 1px 3px rgba(0,0,0,.8)
@@ -55,9 +58,15 @@ a:hover{
 .fz-12{
   font-size: 12px;
 }
-/*.bg-pet{
-  background-color: #fffbd8;
-}*/
+.fz-14{
+  font-size: 14px;
+}
+.fz-16{
+  font-size: 16px;
+}
+.fz-18{
+  font-size: 18px;
+}
 .bg-pet{
   background-color: #ffeed2;
 }
@@ -72,6 +81,9 @@ a:hover{
 }
 .color-primary-pet{
   color: #e09300;
+}
+.color-secondary-pet{
+  color: #ffc107;
 }
 .btn-primary-pet{
   width: 200px;
@@ -125,6 +137,10 @@ a:hover{
 }
 .btn-dark-pet:hover{
   color: #888;
+}
+.btn-conversation-del{
+  color: #fff;
+  background-color: #e06b5c;
 }
 .btn-delete-pet{
   width: 200px;
@@ -204,6 +220,11 @@ a:hover{
   border-radius: 20px;
   background-color: #ffc107;
 }
+.bc-item-sender{
+  padding: 5px 15px;
+  border-radius: 20px;
+  background-color: #ccc;
+}
 .breadcrumb-pet-item + .breadcrumb-pet-item {
   padding-left: 0.5rem;
 }
@@ -217,4 +238,11 @@ a:hover{
   content: '';
   padding: 0 5px; 
   border-left: 2px solid #ccc;
+}
+.bg-conversations{
+  background-color: #f3f6fd;
+}
+.rounded-conversation{
+  border-top-right-radius: 30px;
+  border-bottom-left-radius: 30px;
 }

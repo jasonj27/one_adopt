@@ -1,12 +1,47 @@
-<%= link_to pages_path do %>
-  <i class="far fa-arrow-alt-circle-left color-primary-pet h3 p-4"></i>
-<% end %>
-<h1>你的訊息</h1>
+<div class="wrap bg-conversations">
+  <nav aria-label="breadcrumb-pet mt-4">
+    <ol class="breadcrumb-pet">
+      <li class="breadcrumb-pet-item"><%= link_to "首頁" , pages_path ,class:'bc-item' %></li>
+      <li class="breadcrumb-pet-item active" aria-current="page">站內信件</li>
+    </ol>
+  </nav>
 
-<div id="conversations">
-  <% if @conversations.empty? %>
-    <p> 沒有訊息</p>
-  <% else %>
-    <%= render @conversations %>
-  <% end %>
+  <div class="container">
+    <h2 class="color-primary-pet font-weight-bold letter-spacing pb-3 my-4 border-bottom">對話訊息</h2>
+
+
+    <div id="conversations">
+      <% if @conversations.empty? %>
+        <p>沒有訊息</p>
+      <% else %>
+      <%#= render @conversations %>
+
+      <div class="row pb-5">
+        <% @conversations.each do |conversation|%>
+        <div class="col-12 col-md-6 col-xl-4 pb-2">
+          <section class="bg-white rounded-lg shadow-sm my-3 p-4">
+            <div>
+              <i class="fas fa-paw color-secondary-pet pr-2 py-2"></i>
+              <span class="h6"><%= conversation.with(current_user).name %></span>
+            </div>
+
+            <div class="text-black-50 pl-4 py-2">
+              <%= conversation.personal_messages.last.body.truncate(25) %>
+            </div>
+
+            <div class="text-right pt-2">
+              <%= link_to conversation_path(conversation), class: 'btn btn-sm-primary-pet btn-sm mr-2' do %>
+                <p>對話內容 <i class="fas fa-pen"></i></p>
+              <% end %>
+              <%= link_to conversation_path(conversation), method: :delete , data: { confirm: '確認刪除?!' },class: 'btn btn-conversation-del mr-2' do %>
+              <i class="fas fa-trash-alt"></i>
+              <% end %>
+            </div>
+          </section>
+        </div>
+        <% end %>
+      </div>
+      <% end %>
+    </div>
+  </div>
 </div>

@@ -1,6 +1,7 @@
 <div class="container">
+  <%= image_pack_tag 'dog-3.jpg', class: 'img-fluid py-1 rounded'%>
   <div class="row mb-4">
-    <%= image_pack_tag 'dog-3.jpg', class: 'img-fluid'%>
+    
     <%= form_with url: advance_searches_path, local: true, method: :get, class: "w-100" do |f| %>
       <div class="d-flex flex-wrap">
         <div class="col-12 col-md-6">

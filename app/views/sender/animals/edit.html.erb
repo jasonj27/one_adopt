@@ -1,7 +1,13 @@
 <%= javascript_pack_tag 'bsCustomFileInput' %>
 
 <div class="container">
-  <h1>編輯動物資料</h1>
+  <nav aria-label="breadcrumb-pet mt-4">
+    <ol class="breadcrumb-pet">
+      <li class="breadcrumb-pet-item"><%= link_to "送養首頁" , sender_root_path,class:'bc-item-sender' %></li>
+      <li class="breadcrumb-pet-item"><%= link_to "動物管理" , sender_animals_path,class:'bc-item-sender' %></li>
+      <li class="breadcrumb-pet-item active" aria-current="page">編輯動物資料</li>
+    </ol>
+  </nav>
   <% if @animal.errors.any? %>
     <ul>
       <% @animal.errors.full_messages.each do |msg| %>
@@ -9,56 +15,63 @@
       <% end %>
     </ul>
   <% end %>
-  <div>
-    <strong>已上傳照片:</strong>
-    <% if @animal.images.attached? %>
-      <% @animal.images.each do |image| %>
-        <%= image_tag image.variant(resize: "500x400!"), class: "card-img-top" %>
-        <%= link_to '刪除', destroy_image_sender_animal_path(@animal, image), method: :delete, class: "btn btn-sm-delete-pet my-3" %>
-      <% end %>
-    <% end %>
-  </div>
+  <div class="color-primary-pet font-weight-bold letter-spacing pb-3 my-5 border-bottom h2">編輯動物資料<i class="fas fa-pen fz-16"></i></div>
   <%= form_with model: @animal, url: sender_animal_path(@animal), local: true do |f|%>
-    <div class="form-group">
-      <% if @animal.images.attached? %>
-        <% @animal.images.each do |img| %>
-          <%= f.hidden_field :images, multiple: true, value: img.signed_id %>
+    <div class="row">
+      <div class="col-12">
+        <!-- <div class="text-secondary py-2 mt-2 font-weight-bold">已上傳照片</div> -->
+        <% if @animal.images.attached? %>
+          <% @animal.images.each do |image| %>
+            <%= image_tag image.variant(resize_to_fill: [500, 400]), class: "card-img-top" %>
+            <div class="d-flex justify-content-center">
+              <%= link_to '刪除', destroy_image_sender_animal_path(@animal, image), method: :delete, class: "btn btn-delete-pet my-3 mx-auto" %>    
+            </div>
+          <% end %>
         <% end %>
-      <% end %>
-      
-    <div class="custom-file">
-      <%= f.label :images, "請選擇照片", class: "custom-file-label" %>
-      <%= f.file_field :images, multiple: true, class: "custom-file-input", id: "customFile" %>
+      </div>
+      <div class="col-12">
+        <% if @animal.images.attached? %>
+          <% @animal.images.each do |img| %>
+            <%= f.hidden_field :images, multiple: true, value: img.signed_id %>
+          <% end %>
+        <% end %>
+        
+        <div class="col-12 custom-file">
+          <%= f.label :images, "請選擇照片", class: "custom-file-label mx-auto btn-secondary-fluid-pet mb-2" %>
+          <%= f.file_field :images, multiple: true, class: "custom-file-input", id: "customFile" %>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-md-4">
+        <%= f.label :name, "寵物姓名" , class: "text-secondary py-2 mt-2" %>
+        <%= f.text_field :name, class: "form-control mx-auto btn-secondary-fluid-pet mb-2 " %>
+      </div>
+      <div class="col-12 col-md-6 col-md-4">
+        <%= f.label :animal_kind, "寵物種類" , class: "text-secondary py-2 mt-2" %>
+        <%= f.select(:animal_kind, [['貓', '貓'], ['狗', '狗']], {}, { :class => 'form-control mx-auto btn-secondary-fluid-pet mb-2' }) %>
+      </div>
+      <div class="col-12 col-md-6 col-md-4">
+        <%= f.label :animal_sex, "寵物性別" , class: "text-secondary py-2 mt-2" %>
+        <%= f.select(:animal_sex, [['公', '公'], ['母', '母'],['不知道','還未輸入']], {}, { :class => 'form-control mx-auto btn-secondary-fluid-pet mb-2' }) %>
+      </div>
+      <div class="col-12 col-md-6 col-md-4">
+        <%= f.label :animal_age, "寵物年紀" , class: "text-secondary py-2 mt-2" %>
+        <%= f.select(:animal_age, [['幼年', '幼年'], ['成年', '成年']], {}, { :class => 'form-control mx-auto btn-secondary-fluid-pet mb-2' }) %>
+      </div>
+      <div class="col-12 col-md-6 col-md-4">
+        <%= f.label :animal_sterilization, "是否結紮" , class: "text-secondary py-2 mt-2" %>
+        <%= f.select(:animal_sterilization, [['是', '是'], ['否', '否'],['不知道','未輸入']], {}, { :class => 'form-control mx-auto btn-secondary-fluid-pet mb-2' }) %>
+      </div>
+      <div class="col-12 col-md-6 col-md-4">
+        <%= f.label :adopt_status, "是否可被搜尋" , class: "text-secondary py-2 mt-2" %>
+        <%= f.select(:adopt_status, [['可以', '待領養'], ['不可以', '未上架']], {}, { :class => 'form-control mx-auto btn-secondary-fluid-pet mb-2' }) %>
+      </div>
+      <div class="col-12">
+        <%= f.label :content, "詳細說明：  （可附加JPEG或PNG圖片，單張圖片最大2MB）" , class: "text-secondary py-2 mt-2" %>
+        <%= f.rich_text_area :content , class: " mx-auto btn-secondary-fluid-pet mb-2" %>
+      </div>
+      <div class="col-12 d-flex justify-content-center">
+        <%= f.submit '送出資料', class: "btn btn-primary-pet mt-4 mb-5" %>
+      </div>
     </div>
-    </div>
-    <div class="form-group">
-      <%= f.label :name, "寵物姓名" %>
-      <%= f.text_field :name, class: "form-control" %>
-    </div>
-    <div class="form-group">
-      <%= f.label :animal_kind, "寵物種類" %>
-      <%= f.select(:animal_kind, [['貓', '貓'], ['狗', '狗']], {}, { :class => 'form-control' }) %>
-    </div>
-    <div class="form-group">
-      <%= f.label :animal_sex, "寵物性別" %>
-      <%= f.select(:animal_sex, [['公', '公'], ['母', '母'],['不知道','還未輸入']], {}, { :class => 'form-control' }) %>
-    </div>
-    <div class="form-group">
-      <%= f.label :animal_age, "寵物年紀" %>
-      <%= f.select(:animal_age, [['幼年', '幼年'], ['成年', '成年']], {}, { :class => 'form-control' }) %>
-    </div>
-    <div class="form-group">
-      <%= f.label :animal_sterilization, "是否結紮" %>
-      <%= f.select(:animal_sterilization, [['是', '是'], ['否', '否'],['不知道','未輸入']], {}, { :class => 'form-control' }) %>
-    </div>
-    <div class="form-group">
-      <%= f.label :adopt_status, "是否可被搜尋" %>
-      <%= f.select(:adopt_status, [['可以', '待領養'], ['不可以', '未上架']], {}, { :class => 'form-control' }) %>
-    </div>
-    <div class="form-group">
-      <%= f.label :content, "詳細說明：  （可附加JPEG或PNG圖片，單張圖片最大2MB）" %>
-      <%= f.rich_text_area :content %>
-    </div>
-    <%= f.submit '送出資料', class: "btn btn-sm-primary-pet" %>
   <% end %>
 </div>

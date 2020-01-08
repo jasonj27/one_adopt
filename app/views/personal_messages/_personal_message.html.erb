@@ -1,4 +1,9 @@
-<p><%= emojify personal_message.body %></p>
-<p>時間 <strong><%= personal_message.created_at %></strong><br>
-  寄件人 <strong><%= personal_message.user.name %></strong></p>
-<hr>
+<div class="bg-pet rounded-conversation px-4 py-3 my-3">
+  <div class="text-black-50 fz-14 py-2">
+    <i class="fas fa-paw color-secondary-pet pr-1"></i>
+    <%= personal_message.created_at %>
+  </div>
+  <div class="fz-14 py-4">
+    <%= emojify personal_message.body %>
+  </div>
+</div>

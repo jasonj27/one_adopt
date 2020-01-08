@@ -1,6 +1,9 @@
-<%= link_to pages_path do %>
-  <i class="far fa-arrow-alt-circle-left color-primary-pet h3 p-4"></i>
-<% end %>
+<nav aria-label="breadcrumb-pet mt-4">
+  <ol class="breadcrumb-pet">
+    <li class="breadcrumb-pet-item"><%= link_to "首頁" , pages_path ,class:'bc-item' %></li>
+    <li class="breadcrumb-pet-item active" aria-current="page">收藏動物</li>
+  </ol>
+</nav>
 
 <div class="container">
   <div class="row col-sm-12 flex-xl-row">
@@ -21,7 +24,7 @@
               <% if fav.animal.user.email.end_with?("@pet.com") %>
                 <div class="row bg-light m-1">
                   <div class="col-6">
-                    <%= image_tag fav.animal.images.first.variant(resize: "500x400!") , class: "card-img-top"%>
+                    <%= image_tag fav.animal.images.first.variant(resize_to_fill: [400, 400]) , class: "card-img-top rounded-circle"%>
                   </div>
 
                   <div class="col-6">
