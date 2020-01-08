@@ -1,3 +1,5 @@
+<%= javascript_pack_tag 'bsCustomFileInput' %>
+
 <div class="container">
   <h1>編輯動物資料</h1>
   <% if @animal.errors.any? %>
@@ -24,9 +26,9 @@
         <% end %>
       <% end %>
       
-    <div class="form-group">
-      <%= f.label "請選擇照片" %>
-      <%= f.file_field :images, multiple: true, type: "file" ,class: "form-control-file" %>
+    <div class="custom-file">
+      <%= f.label :images, "請選擇照片", class: "custom-file-label" %>
+      <%= f.file_field :images, multiple: true, class: "custom-file-input", id: "customFile" %>
     </div>
     </div>
     <div class="form-group">
