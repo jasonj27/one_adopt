@@ -242,7 +242,18 @@ a:hover{
 .bg-conversations{
   background-color: #f3f6fd;
 }
+.bg-favorites{
+  background-color: #fafdfd;
+}
 .rounded-conversation{
   border-top-right-radius: 30px;
   border-bottom-left-radius: 30px;
+}
+.fav-card-item{
+  position: relative;
+}
+.btn-close{
+  position: absolute;
+  right: -10px;
+  top: 0px;
 }
