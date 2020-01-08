@@ -1,0 +1,7 @@
+zh-TW:
+  hello: "嗨嗨"
+  pending: "預約等待確認"
+  confirmed: "預約已確認"
+  canceled: "預約已取消"
+  adopt_success: "領/送養成功"
+  adopt_fail: "領/送養失敗"

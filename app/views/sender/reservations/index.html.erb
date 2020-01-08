@@ -28,12 +28,16 @@
                 <hr>
                 <div class="color-primary-pet text-uppercase pr-1 m-2">
                   <span class="text-secondary">•</span>
-                  <span class="px-2">狀態：<%= res.status %></span>
+                  <span class="px-2">
+                    狀態：<%=t res.status, locale: "zh-TW" %>
+                  </span>
                 </div>
                 <hr>
                 <div class="pr-1 m-2">
                   <span class="text-secondary">•</span>
-                  <span class="font-weight-lighter px-2"><%= res.datetime %></span>
+                  <span class="font-weight-lighter px-2">
+                    <%= res.datetime.strftime("%Y年 %m月 %d日 %I:%M %p %A")%>
+                  </span>
                 </div>
                 <hr>
                 <div class="pt-4 pb-2 text-center">
@@ -66,12 +70,16 @@
                 <hr>
                 <div class="color-primary-pet text-uppercase pr-1 m-2">
                   <span class="text-secondary">•</span>
-                  <span class="px-2">狀態：<%= res.status %></span>
+                  <span class="px-2">
+                    狀態：<%=t res.status, locale: "zh-TW" %>
+                  </span>
                 </div>
                 <hr>
                 <div class="pr-1 m-2">
                   <span class="text-secondary">•</span>
-                  <span class="font-weight-lighter px-2"><%= res.datetime %></span>
+                  <span class="font-weight-lighter px-2">
+                    <%= res.datetime.strftime("%Y年 %m月 %d日 %I:%M %p %A")%>
+                  </span>
                 </div>
                 <hr>
                 <div class="pt-4 pb-2 text-center">
