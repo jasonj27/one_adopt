@@ -33,7 +33,6 @@
               
               <div><%= link_to 'X', favorite_path(fav.animal), method: :delete, data: { confirm: '確認刪除?!' } ,class: 'btn rounded-circle bg-secondary' %></div>
             </div>
-          <% end %>
           
           <div class="pt-4 pb-2 mt-5">
             <%= link_to "我要預約", new_reservation_path(:sender => (fav.animal.user.id)),class: 'btn btn-sm-primary-pet btn-sm mr-1' %>

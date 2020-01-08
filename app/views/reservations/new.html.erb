@@ -26,7 +26,7 @@
 		<div class="card-pet w-75 center mx-auto my-4 pt-5 pb-3" style="width: 18rem;">
 			<div class="card-body">
 				<h2 class="color-primary-pet font-weight-bold letter-spacing pb-2">填寫預約資料</h2>	
-				<%= form_with model: @reservation do |f| %>
+				<%= form_with model: @reservation, local: true do |f| %>
 				<%= f.hidden_field :sender_id, value: params['sender'] %>
 				<%= f.label :date, '請先選擇預約日期' , class: 'text-secondary py-2'%>
 				<%= f.text_field :date, id: "datepicker", "data-value": "2015/04/20" , class: 'form-control mx-auto btn-secondary-pet mb-2'%>
