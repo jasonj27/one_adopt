@@ -10,11 +10,6 @@
   <div>
   <%= form_with model: @animal, url: sender_animals_path, local: true do |f|%>
     <div class="form-group">
-      <% if @animal.images.attached? %>
-        <% @animal.images.each do |img| %>
-          <%= f.hidden_field :images, multiple: true, value: img.signed_id %>
-        <% end %>
-      <% end %>
       <%= f.label :images %>
       <%= f.file_field :images, multiple: true, class: "form-control-file" %>
     </div>
@@ -41,6 +36,10 @@
     <div class="form-group">
       <%= f.label :adopt_status, "是否可被搜尋" %>
       <%= f.select(:adopt_status, [['可以', '待領養'], ['不可以', '未上架']], {}, { :class => 'form-control' }) %>
+    </div>
+    <div class="form-group">
+      <%= f.label :content %>
+      <%= f.rich_text_area :content %>
     </div>
     <%= f.submit '送出資料' %>
   <% end %>

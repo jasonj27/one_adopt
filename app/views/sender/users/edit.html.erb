@@ -1,3 +1,4 @@
+<%= javascript_pack_tag 'multiselect' %>
 <div class="container col-12 mx-auto">
   <% if current_user.is_sender %>
     <%= link_to sender_root_path do %>
@@ -13,7 +14,7 @@
     <div class="card-pet w-75 center mx-auto my-4 pt-5 pb-3" style="width: 18rem;">
       <div class="card-body">
         <h2 class="color-primary-pet font-weight-bold letter-spacing pb-2">管理預約資料</h2>
-        <%= form_with model: @user, url: sender_user_path(@user) do |f| %>
+        <%= form_with model: @user, url: sender_user_path(@user),local: true do |f| %>
           <%= f.label :sender_tel, '電話', class: 'text-secondary py-2 mt-2' %>
           <% if current_user.is_sender%>
           <%= f.text_field :sender_tel, required: true, value:current_user.sender_tel, class: 'form-control mx-auto btn-secondary-pet mb-2' %>

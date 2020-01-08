@@ -1,6 +1,5 @@
 class Sender::AnimalsController < BaseController
-
-  layout 'sender'
+  layout "sender"
 
   def index
     @animals = current_user.animals.page(params[:page]).per(8)
@@ -47,7 +46,6 @@ class Sender::AnimalsController < BaseController
   private
 
   def animal_params
-    params.require(:animal).permit(:name, :animal_kind, :animal_sex, :animal_age, :animal_sterilization ,:adopt_status, images: [],)
+    params.require(:animal).permit(:name, :animal_kind, :animal_sex, :animal_age, :animal_sterilization, :adopt_status, :content, images: [])
   end
-
 end

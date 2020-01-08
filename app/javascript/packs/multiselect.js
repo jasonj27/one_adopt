@@ -105,7 +105,7 @@ $.fn.multiSelect = function(options) {
   return this;
 };
 
-document.addEventListener("turbolinks:load", function() {
+document.addEventListener("DOMContentLoaded", function() {
   $("#days-select").multiSelect({
     label: "請選擇星期"
   });

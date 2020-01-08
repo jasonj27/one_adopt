@@ -1,7 +1,7 @@
 import $ from "jquery";
 import "../picker/index.js";
 
-document.addEventListener("turbolinks:load", function() {
+document.addEventListener("DOMContentLoaded", function() {
   let myvar = $("#timepicker").pickatime({
     interval: 30
   });
