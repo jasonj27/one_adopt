@@ -6,6 +6,7 @@ class SearchesController < ApplicationController
   end
 
   def lucky_animal
+    
     if current_user.lucky_animal.nil?
     else
       if current_user.lucky_animal.updated_at.today?
@@ -16,7 +17,7 @@ class SearchesController < ApplicationController
   end
 
   def lucky_show
-    @animal = pick_lucky_animal(params[:animal_kind])[0] 
+    @animal = pick_lucky_animal(params[:animal_kind])[0]
   end
 
   def simple

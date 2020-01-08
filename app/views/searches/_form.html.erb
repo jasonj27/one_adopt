@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row mb-4">
     <%= image_pack_tag 'dog-3.jpg', class: 'img-fluid'%>
-    <%= form_with url: '/searches/simple', local: true, method: :get, class: "formSearch w-100" do |f| %>
+    <%= form_with url: advance_searches_path, local: true, method: :get, class: "w-100" do |f| %>
       <div class="d-flex flex-wrap">
         <div class="col-12 col-md-6">
           <%= f.select(:animal_kind,
@@ -25,27 +25,24 @@
             <%= f.select(:animal_sterilization,
             options_for_select(Animal::ANIMAL_STERILIZATION_CLASS),
             { include_blank: "結紮" },
-            { class: 'form-control advSearchCondition mt-2 mb-2' }) %>
+            { class: 'form-control mt-2 mb-2' }) %>
         </div>
         <div class="col-12 col-md-6">
             <%= f.select(:animal_area_pkid,
             options_for_select(Animal::ANIMAL_AREA_PKID_CLASS),
             { include_blank: "縣市" },
-            { class: 'form-control advSearchCondition mt-2 mb-2' }) %>
+            { class: 'form-control mt-2 mb-2' }) %>
         </div>
         <div class="col-12 col-md-6">
             <%= f.select(:animal_shelter,
             options_for_select(Animal::ANIMAL_SHELTER_CLASS),
             { include_blank: "是否包含政府收容所?" },
-            { class: 'form-control advSearchCondition mt-2 mb-2' }) %>
+            { class: 'form-control mt-2 mb-2' }) %>
         </div>
       </div>
-      <div class="d-flex justify-content-center">
-        
-          <%= f.submit "進行搜尋", class: 'mx-3 btn btn-primary-fluid-pet my-2 px-5 text-nowrap btn-set' %>
 
-          <button type="button" id="advSearchButton" class="mx-3 btn btn-secondary-fluid-pet mt-2 mb-2 px-5 text-nowrap btn-set">進階搜尋</button>
-        
+      <div class="d-flex justify-content-center">        
+          <%= f.submit "進行搜尋", class: 'mx-3 btn btn-primary-fluid-pet my-2 px-5 text-nowrap btn-set' %>
       </div>
     <% end %>
   </div>
