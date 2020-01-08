@@ -14,6 +14,9 @@ footer{
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
   margin-bottom: 0rem;
 }
+.w-20{
+  width: 20%;
+}
 .navbar-nav{
   margin-left: auto;
 }
@@ -55,9 +58,6 @@ a:hover{
 .fz-12{
   font-size: 12px;
 }
-/*.bg-pet{
-  background-color: #fffbd8;
-}*/
 .bg-pet{
   background-color: #ffeed2;
 }
@@ -203,6 +203,11 @@ a:hover{
   padding: 5px 15px;
   border-radius: 20px;
   background-color: #ffc107;
+}
+.bc-item-sender{
+  padding: 5px 15px;
+  border-radius: 20px;
+  background-color: #ccc;
 }
 .breadcrumb-pet-item + .breadcrumb-pet-item {
   padding-left: 0.5rem;

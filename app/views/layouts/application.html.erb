@@ -54,11 +54,6 @@
                   <div class="nav-link pl-2">每日幸運寵物</div>
                 <% end %>
               </li>
-            <li class="nav-item">
-              <%= link_to edit_user_registration_path do %>
-                <div class="nav-link pl-2 disabled">設定</div>
-              <% end %>
-            </li>
               <li class="nav-item">
                 <% if current_user.is_sender %>
                   <%= link_to sender_root_path do %>

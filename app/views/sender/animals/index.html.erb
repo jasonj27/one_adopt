@@ -1,6 +1,9 @@
-<%= link_to sender_root_path do %>
-  <i class="far fa-arrow-alt-circle-left color-primary-pet h3 p-4"></i>
-<% end %>
+<nav aria-label="breadcrumb-pet mt-4">
+  <ol class="breadcrumb-pet">
+    <li class="breadcrumb-pet-item"><%= link_to "送養首頁" , sender_root_path,class:'bc-item-sender' %></li>
+    <li class="breadcrumb-pet-item active" aria-current="page">動物管理</li>
+  </ol>
+</nav>
 <h2 class="color-primary-pet font-weight-bold letter-spacing pb-4 text-center">寵物管理</h2>
 <div class="row"><%= link_to "新增動物", new_sender_animal_path, class: "btn btn-secondary-pet mx-auto" %></div>
 <div class="row w-75 m-auto ">
@@ -8,7 +11,7 @@
     <div class="col-md-6 col-xl-3 mt-4 w-50">
       <div class="card searchimg">
         <% if animal.images.attached? %>
-          <%= image_tag animal.images.first.variant(resize: "500x400!"), class: "card-img-top" %>
+          <%= image_tag animal.images.first.variant(resize_to_fill: [500, 400]), class: "card-img-top" %>
         <% end %>
         <div class="card-body">
           <p class="card-text d-flex justify-content-between">

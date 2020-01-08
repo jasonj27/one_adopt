@@ -1,9 +1,12 @@
 <%= javascript_pack_tag 'multiselect' %>
 <div class="container col-12 mx-auto">
   <% if current_user.is_sender %>
-    <%= link_to sender_root_path do %>
-    <i class="far fa-arrow-alt-circle-left color-primary-pet h3 p-4"></i>
-    <% end %>
+    <nav aria-label="breadcrumb-pet mt-4">
+      <ol class="breadcrumb-pet">
+        <li class="breadcrumb-pet-item"><%= link_to "送養首頁" , sender_root_path,class:'bc-item-sender' %></li>
+        <li class="breadcrumb-pet-item active" aria-current="page">管理資料</li>
+      </ol>
+    </nav>
   <% else %>
     <%= link_to root_path do %>
     <i class="far fa-arrow-alt-circle-left color-primary-pet h3 p-4"></i>

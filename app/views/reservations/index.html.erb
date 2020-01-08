@@ -1,7 +1,10 @@
 <div class="container col-12 mx-auto bg-img">
-  <%= link_to root_path do %>
-    <i class="far fa-arrow-alt-circle-left color-primary-pet h3 p-4"></i>
-  <% end %>
+  <nav aria-label="breadcrumb-pet mt-4">
+    <ol class="breadcrumb-pet">
+      <li class="breadcrumb-pet-item"><%= link_to "首頁" , pages_path ,class:'bc-item' %></li>
+      <li class="breadcrumb-pet-item active" aria-current="page">預約記錄</li>
+    </ol>
+  </nav>
   <div class="row w-75 m-auto ">
     <% @reservations.each do |res| %>
       <% if res.status != "canceled" %>
@@ -15,6 +18,7 @@
                 <hr>
                 <% res.reservation_pets.each do |pet| %>
                   <div class="color-primary-pet text-uppercase pr-1 mx-2">
+                    <span class=""><%= image_tag pet.animal.images.first.variant(resize_to_fill: [50, 50]) , class: "card-img-top rounded w-20"%></span>
                     <span class="text-secondary">•</span>
                     <span class="px-2"><%= pet.animal.name %></span>
                     <span class="px-2"><%= pet.animal.animal_kind %></span>

@@ -1,6 +1,10 @@
-<%= link_to pages_path do %>
-  <i class="far fa-arrow-alt-circle-left color-primary-pet h3 p-4"></i>
-<% end %>
+<nav aria-label="breadcrumb-pet mt-4">
+  <ol class="breadcrumb-pet">
+    <li class="breadcrumb-pet-item"><%= link_to "首頁" , pages_path ,class:'bc-item' %></li>
+    <li class="breadcrumb-pet-item active" aria-current="page">站內信件</li>
+  </ol>
+</nav>
+
 <h1>你的訊息</h1>
 
 <div id="conversations">

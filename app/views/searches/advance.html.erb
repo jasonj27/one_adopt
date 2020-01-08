@@ -8,10 +8,10 @@
 
 <div class="row w-75 m-auto">
   <% @search_params.each do |s| %>
-    <div class="col-12 col-md-6 col-xl-3 mt-4 w-50">
+    <div class="col-12 col-md-6 col-xl-4 mt-4 w-50">
       <div class="card searchimg">
         <%= link_to search_path(s) do%>
-          <%= image_tag s.images.first.variant(resize: "500x400!") , class: "card-img-top"%>
+          <%= image_tag s.images.first.variant(resize_to_fill: [500, 400]) , class: "card-img-top"%>
         <% end %>
         <div class="card-body">
           <p class="card-text d-flex">
