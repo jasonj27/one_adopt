@@ -67,6 +67,42 @@ a:hover{
 .fz-18{
   font-size: 18px;
 }
+.bn-txt{
+  position:absolute;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  letter-spacing: 10px;
+}
+.bn-txt-1{
+  left: 34%;
+  top: 50%;
+  font-weight: 700;
+  font-size: 20px;
+}
+.bn-txt-2{
+  left: 32%;
+  top: 50%;
+  font-size: 14px;
+}
+@media screen and (max-width:767px) {
+  .btn-txt-2{
+    display: none;
+  }
+}
+@media screen and (min-width:768px){
+  .bn-txt-1{
+    left: 28%;
+    top: 50%;
+    font-size: 28px;
+    border-left: 3px solid #fff;
+    border-right: 3px solid #fff;
+    padding: 0 15px 0 20px;
+  }
+  .bn-txt-2{
+    left: 28%;
+    font-size: 24px;
+  }
+}
 .bg-pet{
   background-color: #ffeed2;
 }
