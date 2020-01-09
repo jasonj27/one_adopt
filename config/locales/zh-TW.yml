@@ -217,4 +217,5 @@ zh-TW:
       short: "%m月%d日 %H:%M"
       custom_date: "%m月%d日 %A"
       custom_time: "%H:%M"
+      custom_date_nc: "%Y/%m/%d"
     pm: 下午

@@ -1,7 +1,8 @@
 <div class="bg-pet rounded-conversation px-4 py-3 my-3">
   <div class="text-black-50 fz-14 py-2">
     <i class="fas fa-paw color-secondary-pet pr-1"></i>
-    <%= personal_message.created_at %>
+    <%= l personal_message.created_at, format: :custom_date_nc %>
+    <%= l personal_message.created_at, format: :custom_time %>
   </div>
   <div class="fz-14 py-4">
     <%= emojify personal_message.body %>

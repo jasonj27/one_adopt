@@ -1,85 +1,103 @@
-<nav aria-label="breadcrumb-pet mt-4">
-  <ol class="breadcrumb-pet">
-    <li class="breadcrumb-pet-item"><%= link_to "首頁" , pages_path ,class:'bc-item' %></li>
-    <li class="breadcrumb-pet-item active" aria-current="page">收藏動物</li>
-  </ol>
-</nav>
-
-<div class="container">
-  <div class="row col-sm-12 flex-xl-row">
-    <% if @favorites.empty? %>
-      <p class="p-4">趕快去收藏</p>
-    <% end %>
-
-    <% @favorites_group.each do |user, favorites| %>
-      <div class="col">
-        <div class="card-pet center mx-auto my-4" style="width: 18rem;">
-          <div class="card-header font-weight-bold letter-spacing text-secondary">
-            <i class="fas fa-home"></i>
-            <%= user %>
-          </div>
-
-          <div class="card-body">
-            <% for fav in favorites %>
-              <% if fav.animal.user.email.end_with?("@pet.com") %>
-                <div class="row bg-light m-1">
-                  <div class="col-6">
-                    <%= image_tag fav.animal.images.first.variant(resize_to_fill: [400, 400]) , class: "card-img-top rounded-circle"%>
+<div class="wrap bg-favorites">
+  <nav aria-label="breadcrumb-pet mt-4">
+    <ol class="breadcrumb-pet">
+      <li class="breadcrumb-pet-item"><%= link_to "首頁" , pages_path ,class:'bc-item' %></li>
+      <li class="breadcrumb-pet-item active" aria-current="page">收藏動物</li>
+    </ol>
+  </nav>
+  
+  <div class="container">
+    <div class="row">
+      <% if @favorites.empty? %>
+        <p class="p-4">趕快去收藏</p>
+      <% end %>
+  
+      <% @favorites_group.each do |user, favorites| %>
+        <div class="col">
+          <div class="card-pet center mx-auto my-4" style="width: 24rem;">
+            <div class="card-header font-weight-bold letter-spacing text-secondary">
+              <i class="fas fa-home"></i>
+              <%= user %>
+            </div>
+  
+            <div class="card-body">
+              <% for fav in favorites %>
+                <% if fav.animal.user.email.end_with?("@pet.com") %>
+                  <div class="fav-card-item py-3">
+                    <div class="d-flex flex-column bg-light m-1 px-2 py-5 rounded-lg">
+                      <div class="col-12">
+                        <%= image_tag fav.animal.images.first.variant(resize_to_fill: [400, 400]) , class: "card-img-top rounded-circle"%>
+                      </div>
+                      
+                      <div class="row pt-4 mx-1">
+                        <div class="col-6">
+                          <li class="color-primary-pet font-weight-bold"><%= fav.animal.name %></li>
+                          <li>種類 <%= fav.animal.animal_kind %></li>
+                        </div>
+                        <div class="col-12">
+                          <li>體型 <%= fav.animal.animal_bodytype %></li>
+                        </div>
+                        <div class="col-12">
+                          <li>年紀 <%= fav.animal.animal_age %></li>
+                        </div>
+                        <div class="col-12">
+                          <li>毛色 <%= fav.animal.animal_colour %></li>
+                        </div>
+                      </div>
+                      
+                      <div class="btn-close">
+                        <%= link_to 'X', favorite_path(fav.animal), method: :delete, data: { confirm: '確認刪除?!' }, class: 'btn rounded-circle bgcolor-primary-pet text-white' %>
+                      </div>
+                      
+                      <div class="col-12 mt-5 d-flex justify-content-center">
+                        <%= link_to "我要預約",
+                                    "https://asms.coa.gov.tw/Amlapp/App/AnnounceList.aspx?Id=#{fav.animal.animal_id}&AcceptNum=#{fav.animal.animal_subid}&PageType=Adopt",
+                                    target: "_blank",
+                                    class: 'btn btn-sm-primary-pet btn-sm mr-1',
+                                    data: { confirm: "確認要連結至收容所預約頁面?"} %>
+                      </div> 
+                    </div>
                   </div>
-
-                  <div class="col-6">
-                    <li class="color-primary-pet font-weight-bold">
-                      <%= fav.animal.name %>
-                    </li>
-                    <li><%= fav.animal.animal_kind %></li>
-                    <li><%= fav.animal.animal_age %></li>
+                <% else %>
+                  <div class="fav-card-item py-4">
+                    <div class="d-flex flex-column bg-light m-1 px-2 py-5 rounded-lg">
+                      <div class="col-12">
+                        <%= image_tag fav.animal.images.first.variant(resize_to_fill: [400, 400]) , class: "card-img-top rounded-circle"%>
+                      </div>
+                        
+                      <div class="row pt-4 mx-1">
+                        <div class="col-6">
+                          <li class="color-primary-pet font-weight-bold"><%= fav.animal.name %></li>
+                          <li><%= fav.animal.animal_kind %></li>
+                          <li><%= fav.animal.animal_age %></li>
+                        </div>
+                      </div>
+                        
+                      <div class="btn-close">
+                        <%= link_to 'X', favorite_path(fav.animal), method: :delete, data: { confirm: '確認刪除?!' }, class: 'btn rounded-circle bgcolor-primary-pet text-white' %>
+                      </div>
+                    </div>
                   </div>
-                  
-                  <div>
-                    <%= link_to 'X', favorite_path(fav.animal), method: :delete, data: { confirm: '確認刪除?!' }, class: 'btn rounded-circle bg-secondary' %>
-                  </div>
-
-                  <div class="pt-4 pb-2 mt-5">
-                    <%= link_to "我要預約",
-                                "https://asms.coa.gov.tw/Amlapp/App/AnnounceList.aspx?Id=#{fav.animal.animal_id}&AcceptNum=#{fav.animal.animal_subid}&PageType=Adopt",
-                                target: "_blank",
-                                class: 'btn btn-sm-primary-pet btn-sm mr-1',
-                                data: { confirm: "確認要連結至收容所預約頁面?"} %>
-                  </div> 
-                </div>
-              <% else %>
-                <div class="row bg-light m-1">
-                  <div class="col-6">
-                    <%= image_tag fav.animal.images.first.variant(resize: "500x400!") , class: "card-img-top"%>
-                  </div>
-
-                  <div class="col-6">
-                    <li class="color-primary-pet font-weight-bold">
-                      <%= fav.animal.name %>
-                    </li>
-                    <li><%= fav.animal.animal_kind %></li>
-                    <li><%= fav.animal.animal_age %></li>
-                  </div>
-                  
-                  <div>
-                    <%= link_to 'X', favorite_path(fav.animal), method: :delete, data: { confirm: '確認刪除?!' }, class: 'btn rounded-circle bg-secondary' %>
-                  </div>
-                </div>
-
-                <% if favorites.last == fav %>
-                  <div class="pt-4 pb-2 mt-5">
-                    <%= link_to "我要預約", new_reservation_path(:sender => (fav.animal.user.id)), class: 'btn btn-sm-primary-pet btn-sm mr-1' %>
-                  </div>
-              
-                  <div class="pt-4 pb-2 mt-5">
-                    <%= link_to "寄信給他", new_personal_message_path(:receiver_id =>(fav.animal.user.id)), class: 'btn btn-sm-primary-pet btn-sm mr-1'%>
-                  </div>
+                  <% if favorites.last == fav %>
+                    <div class="row py-4 justify-content-around">
+                      <div class="col-6">
+                        <div class="p-2">
+                          <%= link_to "我要預約", new_reservation_path(:sender => (fav.animal.user.id)), class: 'btn btn-sm-primary-pet ml-3' %>
+                        </div>
+                      </div>
+                      <div class="col-6">          
+                        <div class="p-2">
+                          <%= link_to "寄信給他", new_personal_message_path(:receiver_id =>(fav.animal.user.id)), class: 'btn btn-sm-primary-pet ml-3'%>
+                        </div>
+                      </div>
+                    </div>
+                  <% end %>
                 <% end %>
               <% end %>
-            <% end %>
+            </div>
           </div>
-        </div>
-      </div>  
-    <% end %> 
+        </div>  
+      <% end %> 
+    </div>
   </div>
 </div>

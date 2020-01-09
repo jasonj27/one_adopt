@@ -1,56 +1,58 @@
-<div class="container col-12 mx-auto bg-img">
+<div class="wrap">
   <nav aria-label="breadcrumb-pet mt-4">
     <ol class="breadcrumb-pet">
       <li class="breadcrumb-pet-item"><%= link_to "首頁" , pages_path ,class:'bc-item' %></li>
       <li class="breadcrumb-pet-item active" aria-current="page">預約記錄</li>
     </ol>
   </nav>
-  <div class="row w-75 m-auto ">
-    <% @reservations.each do |res| %>
-      <% if res.status != "canceled" %>
-      <div class="col-12 col-md-12 col-xl-6 mt-4 w-50">
-        <div class="card-pet searchimg">
-          <div class="card-body bg-light">
-            <p class="card-text d-flex justify-content-between">
-              <section>
-                <h3 class="color-primary-pet font-weight-bold letter-spacing pb-2"><%= res.sender.name %></h3>
+  <div class="container col-12 mx-auto">
+    <div class="row w-75 m-auto ">
+      <% @reservations.each do |res| %>
+        <% if res.status != "canceled" %>
+          <div class="col-12 col-md-12 col-xl-6 mt-4 w-50">
+            <div class="card-pet searchimg">
+              <div class="card-body bg-light">
+                <p class="card-text d-flex justify-content-between">
+                  <section>
+                    <h3 class="color-primary-pet font-weight-bold letter-spacing pb-2"><%= res.sender.name %></h3>
 
-                <hr>
-                <% res.reservation_pets.each do |pet| %>
-                  <div class="color-primary-pet text-uppercase pr-1 mx-2">
-                    <span class=""><%= image_tag pet.animal.images.first.variant(resize_to_fill: [50, 50]) , class: "card-img-top rounded w-20"%></span>
-                    <span class="text-secondary">•</span>
-                    <span class="px-2"><%= pet.animal.name %></span>
-                    <span class="px-2"><%= pet.animal.animal_kind %></span>
-                    <span class="px-2"><%= pet.animal.animal_sex %></span>
-                  </div>
-                <% end %>
-                <hr>
-                <div class="pr-1 m-2">
-                  <span class="text-secondary">•</span>
-                  <span class="font-weight-lighter px-2">
-                    <i class="fas fa-calendar-alt color-primary-pet"></i>日期：<%= l res.datetime, format: :custom_date %>
-                  </span>
-                </div>
-                <div class="pr-1 m-2">
-                  <span class="text-secondary">•</span>
-                  <span class="font-weight-lighter px-2">
-                    <i class="far fa-clock color-primary-pet"></i>時間：<%= l res.datetime, format: :custom_time %>
-                  </span>
-                </div>
-                <hr>
-                <div class="pt-4 pb-2">
-                  <%= link_to "取消預約", cancel_reservation_path(res), method: :delete, data: {confirm: '確認取消!?'} , class: 'btn btn-sm-primary-pet btn-sm' %>
-                </div>
-                <div class="pt-4 pb-2">
-                  <%= link_to "寄信給他", new_personal_message_path(:receiver_id =>(User.find_by(name: res.sender.name).id)), class: 'btn btn-sm-primary-pet btn-sm'%>
-                </div>
-              </section>
-            </p>
+                    <hr>
+                    <% res.reservation_pets.each do |pet| %>
+                      <div class="color-primary-pet text-uppercase pr-1 mx-2">
+                        <span class=""><%= image_tag pet.animal.images.first.variant(resize_to_fill: [50, 50]) , class: "card-img-top rounded w-20"%></span>
+                        <span class="text-secondary">•</span>
+                        <span class="px-2"><%= pet.animal.name %></span>
+                        <span class="px-2"><%= pet.animal.animal_kind %></span>
+                        <span class="px-2"><%= pet.animal.animal_sex %></span>
+                      </div>
+                    <% end %>
+                    <hr>
+                    <div class="pr-1 m-2">
+                      <span class="text-secondary">•</span>
+                      <span class="font-weight-lighter px-2">
+                        <i class="fas fa-calendar-alt color-primary-pet"></i>日期：<%= l res.datetime, format: :custom_date %>
+                      </span>
+                    </div>
+                    <div class="pr-1 m-2">
+                      <span class="text-secondary">•</span>
+                      <span class="font-weight-lighter px-2">
+                        <i class="far fa-clock color-primary-pet"></i>時間：<%= l res.datetime, format: :custom_time %>
+                      </span>
+                    </div>
+                    <hr>
+                    <div class="pt-4 pb-2">
+                      <%= link_to "取消預約", cancel_reservation_path(res), method: :delete, data: {confirm: '確認取消!?'} , class: 'btn btn-sm-primary-pet btn-sm' %>
+                    </div>
+                    <div class="pt-4 pb-2">
+                      <%= link_to "寄信給他", new_personal_message_path(:receiver_id =>(User.find_by(name: res.sender.name).id)), class: 'btn btn-sm-primary-pet btn-sm'%>
+                    </div>
+                  </section>
+                </p>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
 </div>
