@@ -10,7 +10,9 @@ class Sender::AnimalsController < BaseController
   end
 
   def create
-    @animal = current_user.animals.build(animal_params)
+    animal_area_pkid = current_user.sender_add.slice(0..2)
+    @animal = current_user.animals.build(animal_params(animal_area_pkid))
+
     if @animal.save
       redirect_to sender_animals_path
     else
@@ -24,7 +26,8 @@ class Sender::AnimalsController < BaseController
 
   def update
     @animal = Animal.find(params[:id])
-    if @animal.update(animal_params)
+    animal_area_pkid = @animal.user.sender_add.slice(0..2)
+    if @animal.update(animal_params(animal_area_pkid))
       redirect_to sender_animals_path
     else
       render :new
@@ -45,7 +48,17 @@ class Sender::AnimalsController < BaseController
 
   private
 
-  def animal_params
-    params.require(:animal).permit(:name, :animal_kind, :animal_sex, :animal_age, :animal_sterilization, :adopt_status, :content, images: [])
+  def animal_params(animal_area_pkid)
+    params.require(:animal).permit(:name,
+                                   :animal_kind, 
+                                   :animal_sex,
+                                   :animal_age,
+                                   :animal_bodytype,
+                                   :animal_colour,
+                                   :animal_sterilization,
+                                   :adopt_status,
+                                   :content,
+                                   images: [])
+                           .merge(animal_area_pkid: animal_area_pkid)
   end
 end

@@ -20,18 +20,33 @@
         <%= form_with model: @user, url: sender_user_path(@user),local: true do |f| %>
           <%= f.label :sender_tel, '電話', class: 'text-secondary py-2 mt-2' %>
           <% if current_user.is_sender%>
-          <%= f.text_field :sender_tel, required: true, value:current_user.sender_tel, class: 'form-control mx-auto btn-secondary-pet mb-2' %>
+            <%= f.text_field :sender_tel, required: true, value:current_user.sender_tel, class: 'form-control mx-auto btn-secondary-pet mb-2' %>
           <% end %>
+
           <% if !current_user.is_sender%>
-          <%= f.text_field :sender_tel, required: true, class: 'form-control mx-auto btn-secondary-pet mb-2' %>
+            <%= f.text_field :sender_tel, required: true, class: 'form-control mx-auto btn-secondary-pet mb-2' %>
           <% end %>
+
           <%= f.label :sender_add, '地址', class: 'text-secondary py-2 mt-2' %>
           <% if current_user.is_sender%>
-          <%= f.text_field :sender_add, required: true, value:current_user.sender_add, class: 'form-control mx-auto btn-secondary-pet mb-2' %>
+            <%= f.select(:sender_area,
+                         options_for_select(Animal::ANIMAL_AREA_PKID_CLASS),
+                         { include_blank: current_user.sender_add.slice(0..2) },
+                         { class: 'form-control mx-auto btn-secondary-pet mb-2' }) %>
+            <%= f.text_field :sender_add, 
+                             required: true,
+                             value: current_user.sender_add.slice(3..50),
+                             class: 'form-control mx-auto btn-secondary-pet mb-2' %>
           <% end %>
+
           <% if !current_user.is_sender%>
-          <%= f.text_field :sender_add, required: true, class: 'form-control mx-auto btn-secondary-pet mb-2' %>
+            <%= f.select(:sender_area,
+                          options_for_select(Animal::ANIMAL_AREA_PKID_CLASS),
+                          {},
+                          { class: 'form-control mx-auto btn-secondary-pet mb-2' }) %>
+            <%= f.text_field :sender_add, required: true, class: 'form-control mx-auto btn-secondary-pet mb-2' %>
           <% end %>
+
           <%= f.label :days, '一周中有空的星期', class: 'text-secondary py-2 mt-2' %>
           <div id="days-select" value:<% current_user.days %> >
             <select>

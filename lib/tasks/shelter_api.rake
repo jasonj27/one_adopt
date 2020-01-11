@@ -20,11 +20,11 @@ namespace :access do
       # 處理性別
       case result['animal_sex']
       when 'M'
-        result['animal_sex'] = "公"
+        result['animal_sex'] = "男生"
       when 'F'
-        result['animal_sex'] = "母"
+        result['animal_sex'] = "女生"
       when 'N'
-        result['animal_sex'] = "還未輸入"
+        result['animal_sex'] = "性別未知"
       end
 
       # 處理年紀
@@ -34,17 +34,17 @@ namespace :access do
       when 'CHILD'
         result['animal_age'] = "幼年"
       when ''
-        result['animal_age'] = "未知"
+        result['animal_age'] = "年紀未知"
       end
 
       # 處理是否絕育
       case result['animal_sterilization']
       when 'T'
-        result['animal_sterilization'] = "是"
+        result['animal_sterilization'] = "已結紮"
       when 'F'
-        result['animal_sterilization'] = "否"
+        result['animal_sterilization'] = "未結紮"
       when 'N'
-        result['animal_sterilization'] = "未輸入"
+        result['animal_sterilization'] = "未知"
       end
 
       # 處理animal_status
@@ -84,7 +84,7 @@ namespace :access do
       # 處理animal_colour
       case result['animal_colour']
       when ''
-        result['animal_colour'] = "未知色"
+        result['animal_colour'] = "其他"
       end
 
       #  處理沒有圖片，判斷貓或狗給預設圖。

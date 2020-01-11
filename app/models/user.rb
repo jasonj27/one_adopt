@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  after_commit :update_animal_area_pkid
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -31,4 +32,12 @@ class User < ApplicationRecord
     end
   end
   store_accessor :available_time, :days, :w0, :w1, :w2, :w3, :w4, :w5, :w6
+
+  private
+
+  def update_animal_area_pkid
+    if !self.animals.nil? && !self.animals.empty?
+      self.animals.update_all(animal_area_pkid: self.sender_add.slice(0..2))
+    end
+  end
 end
