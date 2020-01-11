@@ -1,5 +1,4 @@
 import $ from "jquery";
-// import '../multiselect/jquery.multiselect.js'
 import "../multiselect/jquery.multiselect.css";
 
 $.fn.multiSelect = function(options) {

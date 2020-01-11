@@ -1,3 +1,6 @@
+<%= javascript_pack_tag 'picker' %>
+<%= stylesheet_pack_tag "picker", media: "all" %>
+
 <div class="available-date" data-time=[<%= @reservation.sender.days %>] >
 </div>
 <div class="available-time" id="w0" data-time=[<%= @reservation.sender.w0 %>] >
