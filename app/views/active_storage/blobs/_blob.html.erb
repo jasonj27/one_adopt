@@ -6,9 +6,9 @@
   <figcaption class="attachment__caption">
     <% if caption = blob.try(:caption) %>
       <%= caption %>
-    <% else %>
-      <span class="attachment__name"><%= blob.filename %></span>
-      <span class="attachment__size"><%= number_to_human_size blob.byte_size %></span>
     <% end %>
   </figcaption>
 </figure>
+<% if blob.filename.to_s.end_with?("pdf") %>
+  <%= link_to "下載文件", url_for(blob), class: "pdf_link" %>
+<% end %>
