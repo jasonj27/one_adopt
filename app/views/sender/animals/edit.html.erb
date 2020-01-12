@@ -66,8 +66,8 @@
         <%= f.select(:adopt_status, [['可以', '待領養'], ['不可以', '未上架']], {}, { :class => 'form-control mx-auto btn-secondary-fluid-pet mb-2' }) %>
       </div>
       <div class="col-12">
-        <%= f.label :content, "詳細說明：  （可附加JPEG或PNG圖片，單張圖片最大2MB）" , class: "text-secondary py-2 mt-2" %>
-        <%= f.rich_text_area :content , class: " mx-auto btn-secondary-fluid-pet mb-2" %>
+        <%= f.label :content, "詳細說明：（可附加JPEG、PNG、PDF檔案，最大2MB）" , class: "text-secondary py-2 mt-2" %>
+        <%= f.rich_text_area :content , class: " mx-auto trix-content mb-2" %>
       </div>
       <div class="col-12 d-flex justify-content-center">
         <%= f.submit '送出資料', class: "btn btn-primary-pet mt-4 mb-5" %>

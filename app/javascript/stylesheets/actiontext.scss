@@ -1,3 +1,4 @@
+@import './trix.css';
 //
 // Provides a drop-in pointer for the default Trix stylesheet that will format the toolbar and
 // the trix-editor content (whether displayed or under editing). Feel free to incorporate this
@@ -7,7 +8,21 @@
 // We need to override trix.css’s image gallery styles to accommodate the
 // <action-text-attachment> element we wrap around attachments. Otherwise,
 // images in galleries will be squished by the max-width: 33%; rule.
+span.trix-button-group--history-tools{
+  display: none;
+}
+trix-editor .pdf_link{
+  display: none;
+}
+
 .trix-content {
+  .attachment{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+
   .attachment-gallery {
     > action-text-attachment,
     > .attachment {
