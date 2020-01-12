@@ -20,3 +20,4 @@
     * Ruby: 2.6.3
     * Ruby on Rails: 6.0.2
     * DB: PostgreSQL
+    * lib: libvips

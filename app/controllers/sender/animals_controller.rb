@@ -30,7 +30,6 @@ class Sender::AnimalsController < BaseController
     if @animal.update(animal_params(animal_area_pkid))
       redirect_to sender_animals_path
     else
-      render :new
     end
   end
 
