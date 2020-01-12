@@ -5,13 +5,13 @@ class Animal < ApplicationRecord
   has_many :favorites
   has_rich_text :content
 
-  enum animal_area_pkid: { 
-                           '臺北市':  2, '新北市':  3, '基隆市':  4, '宜蘭縣':  5,
-                           '桃園縣':  6, '新竹縣':  7, '新竹市':  8, '苗栗縣':  9,
+  enum animal_area_pkid: {
+                           '臺北市': 2, '新北市': 3, '基隆市': 4, '宜蘭縣': 5,
+                           '桃園縣': 6, '新竹縣': 7, '新竹市': 8, '苗栗縣': 9,
                            '臺中市': 10, '彰化縣': 11, '南投縣': 12, '雲林縣': 13,
                            '嘉義縣': 14, '嘉義市': 15, '臺南市': 16, '高雄市': 17,
                            '屏東縣': 18, '花蓮縣': 19, '臺東縣': 20, '澎湖縣': 21,
-                           '金門縣': 22, '連江縣': 23
+                           '金門縣': 22, '連江縣': 23,
                          }
   enum animal_kind: { "貓貓": 1, "狗狗": 2, "兔": 3, "鼠": 4 }
   enum animal_sex: { "男生": 1, "女生": 2, "性別未知": 3 }
@@ -41,28 +41,29 @@ class Animal < ApplicationRecord
                          ["黑棕色"], ["黑黃色"], ["未知色"]]
   ANIMAL_STERILIZATION_CLASS = [["已結紮"], ["未結紮"], ["未知"]]
   ANIMAL_AREA_PKID_CLASS = [["臺北市"], ["新北市"], ["基隆市"], ["宜蘭縣"], ["桃園縣"],
-                            ["新竹縣"], ["新竹市"], ["苗栗縣"], ["臺中市"], ["彰化縣"], 
-                            ["南投縣"], ["雲林縣"], ["嘉義縣"], ["嘉義市"], ["臺南市"], 
-                            ["高雄市"], ["屏東縣"], ["花蓮縣"], ["臺東縣"], ["澎湖縣"], 
+                            ["新竹縣"], ["新竹市"], ["苗栗縣"], ["臺中市"], ["彰化縣"],
+                            ["南投縣"], ["雲林縣"], ["嘉義縣"], ["嘉義市"], ["臺南市"],
+                            ["高雄市"], ["屏東縣"], ["花蓮縣"], ["臺東縣"], ["澎湖縣"],
                             ["金門縣"], ["連江縣"]]
-  ANIMAL_SHELTER_CLASS = [["是","收容所"], ["否","中途之家"]]
-  ADOPT_STATUS_CLASS = [['可以', '待領養'], ['不可以', '未上架']]
-  
+  ANIMAL_SHELTER_CLASS = [["是", "收容所"], ["否", "中途之家"]]
+  ADOPT_STATUS_CLASS = [["可以", "待領養"], ["不可以", "未上架"]]
+
   # scope
-  scope :search_kind, -> (animal_kind) { animal_kind.present? ? where(animal_kind: animal_kind) : all }
-  scope :search_sex, -> (animal_sex) { animal_sex.present? ? where(animal_sex: animal_sex) : all  }
-  scope :search_age, -> (animal_age) { animal_age.present? ? where(animal_age: animal_age) : all }
-  scope :search_bodytype, -> (animal_bodytype) { animal_bodytype.present? ? where(animal_bodytype: animal_bodytype) : all }
-  scope :search_colour, -> (animal_colour) { animal_colour.present? ? where(animal_colour: animal_colour) : all }
-  scope :search_sterilization, -> (animal_sterilization) { animal_sterilization.present? ? where(animal_sterilization: animal_sterilization) : all }
-  scope :search_area_pkid, -> (animal_area_pkid) { animal_area_pkid.present? ? where(animal_area_pkid: animal_area_pkid) : all }
-  scope :search_shelter, -> (animal_shelter) { animal_shelter.present? ? 
-                                                 if animal_shelter == "收容所"
-                                                   Animal.where(gov_shelter: true)
-                                                 elsif animal_shelter == "中途之家"
-                                                   Animal.where.not(gov_shelter: true)
-                                                 end : all
-                                             }
+  scope :search_kind, ->(animal_kind) { animal_kind.present? ? where(animal_kind: animal_kind) : all }
+  scope :search_sex, ->(animal_sex) { animal_sex.present? ? where(animal_sex: animal_sex) : all }
+  scope :search_age, ->(animal_age) { animal_age.present? ? where(animal_age: animal_age) : all }
+  scope :search_bodytype, ->(animal_bodytype) { animal_bodytype.present? ? where(animal_bodytype: animal_bodytype) : all }
+  scope :search_colour, ->(animal_colour) { animal_colour.present? ? where(animal_colour: animal_colour) : all }
+  scope :search_sterilization, ->(animal_sterilization) { animal_sterilization.present? ? where(animal_sterilization: animal_sterilization) : all }
+  scope :search_area_pkid, ->(animal_area_pkid) { animal_area_pkid.present? ? where(animal_area_pkid: animal_area_pkid) : all }
+  scope :search_shelter, ->(animal_shelter) {
+          animal_shelter.present? ?
+            if animal_shelter == "收容所"
+            Animal.where(gov_shelter: true)
+          elsif animal_shelter == "中途之家"
+            Animal.where.not(gov_shelter: true)
+          end : all
+        }
 
   def favorited_by?(user)
     favorites.exists?(user: user)
