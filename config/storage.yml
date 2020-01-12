@@ -18,7 +18,7 @@ local:
 google:
   service: GCS
   project: one-adopt
-  credentials: <%= ENV["GOOGLE_APPLICATION_CREDENTIALS"] %>
+  credentials: <%= Rails.root.join("cloud_storage.json") %>
   bucket: oneadopt-storage
 
 # Use rails credentials:edit to set the Azure Storage secret (as azure_storage:storage_access_key)

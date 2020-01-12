@@ -1,0 +1,26 @@
+[
+    {
+      "origin": ["http://oneadopt.today/"],
+      "responseHeader": ["Content-Type", "Content-Md5"],
+      "method": ["PUT", "GET", "HEAD", "DELETE", "OPTIONS"],
+      "maxAgeSeconds": 3600
+    },
+    {
+      "origin": ["https://oneadopt.today/"],
+      "responseHeader": ["Content-Type", "Content-Md5"],
+      "method": ["PUT", "GET", "HEAD", "DELETE", "OPTIONS"],
+      "maxAgeSeconds": 3600
+    },
+    {
+      "origin": ["http://www.oneadopt.today/"],
+      "responseHeader": ["Content-Type", "Content-Md5"],
+      "method": ["PUT", "GET", "HEAD", "DELETE", "OPTIONS"],
+      "maxAgeSeconds": 3600
+    },
+    {
+      "origin": ["https://www.oneadopt.today/"],
+      "responseHeader": ["Content-Type", "Content-Md5"],
+      "method": ["PUT", "GET", "HEAD", "DELETE", "OPTIONS"],
+      "maxAgeSeconds": 3600
+    }
+  ]

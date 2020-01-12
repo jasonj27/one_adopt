@@ -1,0 +1,10 @@
+{
+  "name": "one-adopt",
+  "description": "animal adopt platform for 5xRuby astro camp 3rd",
+  "keywords": [],
+  "scripts": {
+    "dokku": {
+      "postdeploy": "bundle exec rake db:migrate"
+    }
+  }
+}
