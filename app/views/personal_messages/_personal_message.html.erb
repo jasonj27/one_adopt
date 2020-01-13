@@ -1,15 +1,15 @@
 <div class="pb-2">
-	<div class="d-flex justify-content-between text-black-50 pt-4">	
-		<h5><i class="fas fa-paw fz-14 color-secondary-pet pr-1"></i><%= personal_message.user.name %></h5>
-		<p class="fz-14">
-			<%= l personal_message.created_at, format: :custom_date_nc %>
-			<%= l personal_message.created_at, format: :custom_time %>		
-		</p>
-	</div>
+  <div class="d-flex justify-content-between text-black-50 pt-4">	
+    <h5><i class="fas fa-paw fz-14 color-secondary-pet pr-1"></i><%= personal_message.user.name %></h5>
+    <p class="fz-14">
+      <%= l personal_message.created_at, format: :custom_date_nc %>
+      <%= l personal_message.created_at, format: :custom_time %>		
+    </p>
+  </div>
 	
-	<div class="border rounded pl-2 my-3">
-	  <div class="fz-14 p-2">
-	    <%= emojify personal_message.body %>
-	  </div>
-	</div>
+  <div class="border rounded pl-2 my-3">
+    <div class="fz-14 p-2">
+      <%= emojify personal_message.body %>
+    </div>
+  </div>
 </div>
