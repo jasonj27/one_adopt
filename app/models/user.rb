@@ -17,6 +17,7 @@ class User < ApplicationRecord
   has_many :received_conversations, class_name: 'Conversation', foreign_key: 'received_id'
   has_many :personal_messages, dependent: :destroy
   has_one :lucky_animal
+  has_rich_text :readme
   # @user.sent_messages
   # @user.received_messages
   validates :name, presence: true, :uniqueness => true
