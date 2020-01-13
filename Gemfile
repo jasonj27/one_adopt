@@ -66,4 +66,5 @@ gem 'emoji', '~> 1.0', '>= 1.0.7'
 
 gem 'actioncable', '~> 6.0', '>= 6.0.2.1'
 gem 'google-cloud-storage', '~> 1.25', require: false
+gem 'mini_magick', '~> 4.10', '>= 4.10.1'
 
