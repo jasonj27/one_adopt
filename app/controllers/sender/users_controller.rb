@@ -9,8 +9,10 @@ class Sender::UsersController < ApplicationController
     form = Validsender.new(user_params)
     if !current_user.is_sender
       if form.validsender?
+        params[:user][:sender_add] = params[:user][:sender_area] + params[:user][:sender_add]
+
         current_user.update(is_sender: true)
-        current_user.update(user_params)
+        current_user.update(user_params.except(:sender_area))
 
         redirect_to sender_root_path, notice: "恭喜成為送養者！"
       else
@@ -18,7 +20,9 @@ class Sender::UsersController < ApplicationController
       end
     elsif current_user.is_sender
       if form.validsender?
-        current_user.update(user_params)
+        params[:user][:sender_add] = params[:user][:sender_area] + params[:user][:sender_add]
+               
+        current_user.update(user_params.except(:sender_area))
         redirect_to sender_root_path, notice: "更新成功！"
       else
         render :edit
@@ -27,8 +31,7 @@ class Sender::UsersController < ApplicationController
   end
 
   private
-
   def user_params
-    params.require(:user).permit(:sender_tel, :sender_add, :days, :w0, :w1, :w2, :w3, :w4, :w5, :w6)
+    params.require(:user).permit(:sender_tel, :sender_add, :sender_area, :days, :w0, :w1, :w2, :w3, :w4, :w5, :w6)
   end
 end
