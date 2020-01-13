@@ -7,9 +7,8 @@
     <div class="card-pet w-75 center mx-auto my-4 pt-5 pb-3" style="width: 18rem;">
       <div class="card-body">
         <h2 class="color-primary-pet font-weight-bold letter-spacing pb-2">登入</h2>
+        <%= flash[:alert] %>
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-
-        <%= render "devise/shared/error_messages", resource: resource %>
 
         <%= f.label :Email, class: 'text-secondary py-2' %>
         <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:'email@example.com', class: 'form-control mx-auto btn-secondary-pet mb-2' %>
