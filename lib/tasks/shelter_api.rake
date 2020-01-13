@@ -3,8 +3,8 @@ require 'open-uri'
 require 'net/http'
 
 namespace :access do
-  desc "Grab Animals data and Parse Json"
-  task shelter_api: :environment do
+  desc "Grab Animals data and Parse Json, if no enter quantity then grab 20"
+  task :shelter_api, [:quantity] => [:environment]  do |task, args|
     
     # 抓取收容所API
     url = 'https://data.coa.gov.tw/Service/OpenData/TransService.aspx?UnitId=QcbUEzN6E6DL'
@@ -15,8 +15,19 @@ namespace :access do
     # 找出已建立的收容所user 
     shelter = User.where("email ILIKE :email", email: "%pet.com").map{  |x| { x.name => x.id } }.inject(:merge)
 
-    # 可先輸入你要數量（預設隨機取20隻）
-    @result.sample(20).each do |result|
+    # 若為輸入數量預設抓20隻
+    args.with_defaults(quantity: 20)
+    quantity = args.quantity.to_i
+    @result.sample(quantity).each do |result|
+
+      # 處理種類
+      case result['animal_kind']
+      when '狗'
+        result['animal_kind'] = "狗狗"
+      when '貓'
+        result['animal_kind'] = "貓貓"
+      end
+
       # 處理性別
       case result['animal_sex']
       when 'M'
@@ -88,9 +99,9 @@ namespace :access do
       end
 
       #  處理沒有圖片，判斷貓或狗給預設圖。
-      if result['album_file'] == nil || result['album_file'] == "" && result['animal_kind'] == "狗"
+      if result['album_file'] == nil || result['album_file'] == "" && result['animal_kind'] == "狗狗"
         result['album_file'] = "https://picsum.photos/id/237/500/500"
-      elsif result['album_file'] == nil || result['album_file'] == "" && result['animal_kind'] == "貓"
+      elsif result['album_file'] == nil || result['album_file'] == "" && result['animal_kind'] == "貓貓"
         result['album_file'] = "https://picsum.photos/id/40/500/500"
       else
       result['album_file']
