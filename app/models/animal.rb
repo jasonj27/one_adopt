@@ -1,4 +1,5 @@
 class Animal < ApplicationRecord
+  acts_as_paranoid
   belongs_to :user
   has_many_attached :images
   has_many :reservation_pets
