@@ -7,7 +7,10 @@
     <div class="card-pet w-75 center mx-auto my-4 pt-5 pb-3" style="width: 18rem;">
       <div class="card-body">
         <h2 class="color-primary-pet font-weight-bold letter-spacing pb-2">登入</h2>
-        <%= flash[:alert] %>
+
+        <% if flash[:alert] -%>
+          <div class = "alert alert-warning" role="alert"><%= flash[:alert] %></div>
+        <% end %>
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
         <%= f.label :Email, class: 'text-secondary py-2' %>
