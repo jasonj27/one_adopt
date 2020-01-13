@@ -2,7 +2,7 @@ class Sender::AnimalsController < BaseController
   layout "sender"
 
   def index
-    @animals = current_user.animals.page(params[:page]).per(8)
+    @animals = current_user.animals.with_attached_images.page(params[:page]).per(8)
   end
 
   def new
