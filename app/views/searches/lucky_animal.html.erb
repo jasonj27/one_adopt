@@ -7,13 +7,8 @@
 
 <% if @animal == nil %>
   <%= form_with url: lucky_show_searches_path, local: true, class: "d-flex flex-column align-items-center" do |f| %>
-    
-    <%= f.select(:animal_kind,
-                 options_for_select(Animal::ANIMAL_KIND_CLASS),
-                 { include_blank: "種類"},
-                 { class: 'form-control mt-4 w-75' }) %>
-                  
-    <%= f.submit "抽取今日幸運寵物！", class: 'w-75 btn btn-primary-pet mt-4' %>
+    <%= f.button '貓貓', name: "animal_kind", value: "貓貓"%>
+    <%= f.button '狗狗', name: "animal_kind", value: "狗狗"%>
   <% end %>
 <% else %>
   <div class="col">
