@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  after_commit :update_animal_area_pkid
+  after_commit :update_animal_area_pkid if: :is_sender?
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
