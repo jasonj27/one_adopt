@@ -110,7 +110,7 @@ Rails.application.configure do
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
   config.action_mailer.raise_delivery_errors = true #測試可改true，但如果已上線的話建議改回false
-  config.action_mailer.default_url_options = { host: "localhost:3000" } #production的絕對網址
+  config.action_mailer.default_url_options = { host: ENV["WEB_PATH"] } #production的絕對網址
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = config_for(:email).symbolize_keys
 end

@@ -20,7 +20,7 @@ class PersonalMessagesController < ApplicationController
   private
 
   def personal_message_params
-    params.require(:personal_message).permit(:body)
+    params.require(:personal_message).permit(:message_body)
   end
 
   def find_conversation!

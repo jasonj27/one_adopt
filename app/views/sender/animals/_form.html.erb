@@ -33,43 +33,43 @@
   <div class="col-12 col-md-6 col-md-4">
     <%= f.label :animal_kind, "寵物種類" , class: "text-secondary py-2 mt-2"%>
     <%= f.select(:animal_kind, 
-                  options_for_select(Animal::ANIMAL_KIND_CLASS),
-                  { include_blank: @animal.animal_kind },
+                  options_for_select(Animal::ANIMAL_KIND_CLASS, @animal.animal_kind),
+                  {},
                   { class: 'form-control mx-auto btn-secondary-fluid-pet mb-2'}) %>
   </div>
   <div class="col-12 col-md-6 col-md-4">
     <%= f.label :animal_sex, "寵物性別" , class: "text-secondary py-2 mt-2"%>
     <%= f.select(:animal_sex,
-                  options_for_select(Animal::ANIMAL_SEX_CLASS),
-                  { include_blank: @animal.animal_sex },
+                  options_for_select(Animal::ANIMAL_SEX_CLASS, @animal.animal_sex),
+                  {},
                   { class: 'form-control mx-auto btn-secondary-fluid-pet mb-2' }) %>
   </div>
     <div class="col-12 col-md-6 col-md-4">
       <%= f.label :animal_age, "寵物年紀" , class: "text-secondary py-2 mt-2"%>
       <%= f.select(:animal_age,
-                    options_for_select(Animal::ANIMAL_AGE_CLASS),
-                    { include_blank: @animal.animal_age },
+                    options_for_select(Animal::ANIMAL_AGE_CLASS, @animal.animal_age),
+                    {},
                     { class: 'form-control mx-auto btn-secondary-fluid-pet mb-2' }) %>
     </div>
     <div class="col-12 col-md-6 col-md-4">
     <%= f.label :animal_bodytype, "寵物體型" , class: "text-secondary py-2 mt-2"%>
     <%= f.select(:animal_bodytype, 
-                  options_for_select(Animal::ANIMAL_BODYTYPE_CLASS),
-                  { include_blank: @animal.animal_bodytype },
+                  options_for_select(Animal::ANIMAL_BODYTYPE_CLASS, @animal.animal_bodytype),
+                  {},
                   { class:'form-control mx-auto btn-secondary-fluid-pet mb-2' }) %>
   </div>
   <div class="col-12 col-md-6 col-md-4">
     <%= f.label :animal_colour, "寵物毛色" , class: "text-secondary py-2 mt-2"%>
     <%= f.select(:animal_colour,
-                  options_for_select(Animal::ANIMAL_COLOUR_CLASS),
-                  { include_blank: @animal.animal_colour },
+                  options_for_select(Animal::ANIMAL_COLOUR_CLASS, @animal.animal_colour),
+                  {},
                   { class: 'form-control mx-auto btn-secondary-fluid-pet mb-2' }) %>
   </div>
   <div class="col-12 col-md-6 col-md-4">
     <%= f.label :animal_sterilization, "是否結紮" , class: "text-secondary py-2 mt-2"%>
     <%= f.select(:animal_sterilization,
-                  options_for_select(Animal::ANIMAL_STERILIZATION_CLASS),
-                  { include_blank: @animal.animal_sterilization },
+                  options_for_select(Animal::ANIMAL_STERILIZATION_CLASS, @animal.animal_sterilization),
+                  {},
                   { class: 'form-control mx-auto btn-secondary-fluid-pet mb-2' }) %>
   </div>
   <div class="col-12 col-md-6 col-md-4">
@@ -81,7 +81,7 @@
   </div>
   <div class="col-12">
     <%= f.label :content, "詳細說明：（可附加JPEG、PNG、PDF檔案，最大2MB）" , class: "text-secondary py-2 mt-2" %>
-    <%= f.rich_text_area :content , class: " mx-auto trix-content mb-2" %>
+    <%= f.rich_text_area :content , class: "mx-auto trix-content mb-2" %>
   </div>
   <div class="col-12 d-flex justify-content-center">
     <%= f.submit '送出資料', class: "btn btn-primary-pet mt-4 mb-5" %>

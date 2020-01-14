@@ -1,9 +1,11 @@
 class User < ApplicationRecord
+
   after_commit :update_animal_area_pkid , if: :is_sender?
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :confirmable
   devise :omniauthable, omniauth_providers: %i[google_oauth2 facebook]
   has_many :animals
   has_many :favorites
@@ -17,6 +19,7 @@ class User < ApplicationRecord
   has_many :received_conversations, class_name: 'Conversation', foreign_key: 'received_id'
   has_many :personal_messages, dependent: :destroy
   has_one :lucky_animal
+  has_rich_text :readme
   # @user.sent_messages
   # @user.received_messages
   validates :name, presence: true, :uniqueness => true
@@ -28,8 +31,12 @@ class User < ApplicationRecord
       user.image = auth.info.image # assuming the user model has an image
       # If you are using confirmable and the provider(s) you use validate emails, 
       # uncomment the line below to skip the confirmation emails.
-      # user.skip_confirmation!
+      user.my_skip_confirmation!
+      user.skip_confirmation!
     end
+  end
+  def my_skip_confirmation!
+    self.confirmed_at = Time.now
   end
   store_accessor :available_time, :days, :w0, :w1, :w2, :w3, :w4, :w5, :w6
 

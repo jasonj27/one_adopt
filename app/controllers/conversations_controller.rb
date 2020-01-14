@@ -4,6 +4,7 @@ class ConversationsController < ApplicationController
 
   def index
     @conversations = Conversation.participating(current_user).order('updated_at DESC')
+    redirect_to root_path, notice: '您目前沒有任何訊息！' if @conversations.empty? 
   end
 
   def show
