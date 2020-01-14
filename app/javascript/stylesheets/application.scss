@@ -318,3 +318,14 @@ a:hover{
   right: -10px;
   top: 0px;
 }
+.img-cat{
+  background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, .7)),url(../images/cat-5.png);
+  background-size: cover;
+}
+.img-dog{
+  background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, .7)),url(../images/dog-4.png);
+  background-size: cover;
+}
+.bg-dark-50{
+  background-color: rgba(0,0,0,.5);
+}

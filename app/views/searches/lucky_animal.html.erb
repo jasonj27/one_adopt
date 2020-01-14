@@ -5,21 +5,21 @@
   </ol>
 </nav>
 
-<div class="container">
-  <% if @animal == nil %>
-    <%= form_with url: lucky_show_searches_path, local: true, class: "d-flex flex-column align-items-center" do |f| %>
+<h5 class="color-primary-pet letter-spacing py-4 m-3 text-center border-bottom">趕快來抽今日幸運動物吧！</h5>
 
-      <div class="row">
-        <div class="col-6">
-          <%= f.button '貓貓', name: "animal_kind", value: "貓貓" ,class: "m-3 p-3 w-100 text-white border-white bg-secondary-pet rounded-lg" do %>
+  <% if @animal == nil %>
+    <%= form_with url: lucky_show_searches_path, local: true do |f| %>
+      <div class="row mt-4 pt-2 mx-auto">
+        <div class="col-6 text-center">
+          <%= f.button '貓貓', name: "animal_kind", value: "貓貓" ,class: "py-5 w-100 text-white border-white img-cat rounded-lg" do %>
             <i class="fas fa-cat fz-14 py-2"></i>
-            <h3 class="fz-16 text-white py-2">貓貓</h3>
+            <h3 class="fz-16 text-white py-2">貓 貓</h3>
           <% end %>
         </div>
-        <div class="col-6">
-          <%= f.button '狗狗', name: "animal_kind", value: "狗狗" ,class: "m-3 p-3 w-100 text-white border-white bg-secondary-pet rounded-lg" do %>
+        <div class="col-6 text-center">
+          <%= f.button '狗狗', name: "animal_kind", value: "狗狗" ,class: "py-5 w-100 text-white border-white img-dog rounded-lg" do %>
             <i class="fas fa-dog fz-14 py-2"></i>
-            <h3 class="fz-16 text-white py-2">狗狗</h3>
+            <h3 class="fz-16 text-white py-2">狗 狗</h3>
           <% end %>
         </div>
       </div>
@@ -81,4 +81,3 @@
       </div>
     </div>
   <% end %>
-</div>
