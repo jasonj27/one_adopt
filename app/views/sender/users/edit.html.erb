@@ -48,7 +48,14 @@
                           { class: 'form-control mx-auto btn-secondary-pet mb-2' }) %>
             <%= f.text_field :sender_add, required: true, class: 'form-control mx-auto btn-secondary-pet mb-2' %>
           <% end %>
-
+          <div class="location">
+            <button id="get-location" class="btn btn-primary-pet mb-2">取得我的地址位置</button>
+            <%= f.hidden_field :latitude %>
+            <%= f.hidden_field :longtitude %>
+            <div class="img">
+              <img id="location-img" src="">
+            </div>
+          </div>
           <%= f.label :days, '一周中有空的星期', class: 'text-secondary py-2 mt-2' %>
           <div id="days-select" value:<% current_user.days %> >
             <select>
