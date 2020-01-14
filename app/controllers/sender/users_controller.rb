@@ -32,6 +32,6 @@ class Sender::UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:sender_tel, :sender_add, :sender_area, :days, :w0, :w1, :w2, :w3, :w4, :w5, :w6)
+    params.require(:user).permit(:sender_tel, :sender_add, :sender_area, :days, :w0, :w1, :w2, :w3, :w4, :w5, :w6, :readme)
   end
 end

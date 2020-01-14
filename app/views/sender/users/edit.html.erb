@@ -32,8 +32,8 @@
           <%= f.label :sender_add, '地址', class: 'text-secondary py-2 mt-2' %>
           <% if current_user.is_sender%>
             <%= f.select(:sender_area,
-                         options_for_select(Animal::ANIMAL_AREA_PKID_CLASS),
-                         { include_blank: current_user.sender_add.slice(0..2) },
+                         options_for_select(Animal::ANIMAL_AREA_PKID_CLASS, current_user.sender_add.slice(0..2)),
+                         {},
                          { class: 'form-control mx-auto btn-secondary-pet mb-2' }) %>
             <%= f.text_field :sender_add, 
                              required: true,
@@ -272,7 +272,13 @@
             </select>
             <%= f.hidden_field :w0%>
           </div>
-          <%= f.submit "新增資料", class: "btn btn-primary-pet mt-2" %>
+          <div class="col-12">
+            <%= f.label :readme, '關於我', class: 'text-secondary py-2 mt-2' %>
+            <%= f.rich_text_area :readme , class: "mx-auto trix-content mb-2" %> 
+          </div>
+          <div class="col-12 d-flex justify-content-center">
+            <%= f.submit "新增資料", class: "btn btn-primary-pet mt-2" %>
+          </div>
         <% end %>
       </div>
     </div>

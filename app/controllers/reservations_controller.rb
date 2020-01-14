@@ -17,6 +17,11 @@ class ReservationsController < ApplicationController
 
   def index
     @reservations = current_user.receiver_reservations.includes(:sender, { reservation_pets: :animal }).order(:datetime)
+
+    if @reservations.count == @reservations.where(status: "canceled").count
+      redirect_to root_path, notice: '趕快去收藏寵物，進行預約吧！'
+    end
+    
   end
 
   def new
