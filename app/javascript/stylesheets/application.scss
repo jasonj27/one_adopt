@@ -1,4 +1,7 @@
 @import 'bootstrap';
+*{
+  font-family: 'Noto Sans TC', sans-serif;
+}
 
 html, body{
   height: 100%
@@ -112,8 +115,8 @@ a:hover{
 .bg-primary-pet{
   background-color: #ffe600;
 }
-.btn-pet a:hover{
-  color: #ffe600;
+.bg-dark-pet{
+  background-color: #ccc;
 }
 .bgcolor-primary-pet{
   background-color: #e09300;
@@ -123,6 +126,9 @@ a:hover{
 }
 .color-secondary-pet{
   color: #ffc107;
+}
+.btn-pet a:hover{
+  color: #ffe600;
 }
 .btn-primary-pet{
   width: 200px;

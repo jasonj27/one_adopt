@@ -7,7 +7,7 @@ https://storage.googleapis.com/oneadopt-public/images/logo_icon-y.png" alt="logo
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:400,700&display=swap" rel="stylesheet">
   <%= stylesheet_pack_tag 'application' %>
   <%= javascript_pack_tag 'application' %>
 
@@ -110,15 +110,17 @@ https://storage.googleapis.com/oneadopt-public/images/logo_icon-y.png" alt="logo
 
     <%= yield %>
     <footer>
-      <div class="container bg-light">
-        <div class="row color-primary-pet justify-content-center py-4">
+      <div class="bg-light">
+        <div class="row color-primary-pet justify-content-center py-4 my-2">
           <div class="text-center font-weight-lighter">
-            <div><i class="fas fa-paw"></i></div>
-            <div>聯絡我們</div>
-            <div>詳細地址</div>
-            <div>服務時間</div>
-            <div>隱私規範</div> 
-            <small class="text-black-50"> © 2020 Copyright</small>
+            <div><i class="fas fa-paw py-2"></i></div>
+            <div class="pt-3 fz-14">
+              <span>聯絡我們</span>
+              <span>服務時間</span>
+              <span>隱私規範</span>
+            <div>
+            
+            <small class="text-black-50 fz-12"> © 2020 Copyright</small>
           </div>
         </div>
       </div>
