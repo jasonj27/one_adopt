@@ -7,7 +7,17 @@ html, body{
   height: 100%
 }
 .wrap{
-  min-height: 100%;
+  position: relative;
+  min-height: 100vh;
+}
+.content-wrap{
+  padding-bottom: 2.5rem;
+}
+footer{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;
 }
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
   margin-bottom: 0rem;
@@ -60,6 +70,9 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
 a:hover{
   color: #aaa;
   text-decoration: none;
+}
+.btn:hover{
+  color: #ccc;
 }
 .fz-12{
   font-size: 12px;
@@ -114,6 +127,9 @@ a:hover{
 }
 .bg-primary-pet{
   background-color: #ffe600;
+}
+.bg-secondary-pet{
+  background-color: #ffc107;
 }
 .bg-dark-pet{
   background-color: #ccc;
