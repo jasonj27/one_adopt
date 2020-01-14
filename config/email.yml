@@ -6,3 +6,11 @@ development:
   user_name: <%= ENV["mail_server_user_name"] %>
   password: <%= ENV["mail_server_pwd"] %>
   enable_starttls_auto: true
+production:
+  address: "smtp.mailgun.org"
+  port: 587
+  domain: "mg.oneadopt.today"
+  authentication: "plain"
+  user_name: <%= ENV["mail_server_user_name"] %>
+  password: <%= ENV["mail_server_pwd"] %>
+  enable_starttls_auto: true
