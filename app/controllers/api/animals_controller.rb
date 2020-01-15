@@ -11,9 +11,8 @@ class Api::AnimalsController < ApplicationController
       current_user.favorites.create(animal: animal) #Request failed with status code 500
       favorited = true
     end
-
-  render json: { status:'ok', favorited: favorited }
-
+    render json: { status:'ok', favorited: favorited }
+        
   end
  
 end

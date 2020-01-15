@@ -1,4 +1,11 @@
-<span class="d-none hidden-id"><%= @animal.id %></span>
+<div class="share-result">
+  <button type="button" class="close d-none share-close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <input type="hidden" id="content-to-copy" />
+  <span class="d-none hidden-id"><%= @animal.id %></span>
+</div>
+
 <nav aria-label="breadcrumb-pet">
   <ol class="breadcrumb-pet">
     <li class="breadcrumb-pet-item"><%= link_to "首頁" , pages_path ,class:'bc-item' %></li>
@@ -6,15 +13,6 @@
     <li class="breadcrumb-pet-item active" aria-current="page">進階搜尋</li>
   </ol>
 </nav>
-<div class="">
-  <button class="share-button"><i class="fas fa-share-alt"></i></button>
-  <div class="share-result">
-    <button type="button" class="close d-none share-close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-<div>
-<input type="hidden" id="content-to-copy" />
 
 <div class="col">
   <div class="card pt-5 pb-3 m-4" >
@@ -86,8 +84,13 @@
             </tr>
             <tr>
               <td scope="row" colspan="2">
+<<<<<<< HEAD
                 <button class="btn btn-dark-pet fz-14 navbar-toggler py-2" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">詳細資料 <i class="fas fa-chevron-down"></i>
                 </button>
+=======
+                <button class="share-button btn btn-success-pet fz-14 py-2">分享 <i class="fas fa-share-alt"></i></button>
+                <button class="btn btn-dark-pet fz-14 navbar-toggler py-2 m-2" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">詳細資料 <i class="fas fa-chevron-down"></i></button>
+>>>>>>> 完成分享連結
                 <div class="pos-f-t m-2 py-2 rounded">
                   <div class="collapse" id="navbarToggleExternalContent">
                     <ul class="bg-light text-center py-2 list-unstyled text-secondary fz-14 rounded">
@@ -106,11 +109,21 @@
         </table>
       </div>
     </div>
-    <div data-controller="favorite" data-favorite-id="<%= @animal.id %>" data-favorite-favorited="<%= @animal.favorited_by?(current_user) %>" class="text-center mt-2">
-      <%= link_to "#", "data-action": "favorite#toggle", class: "btn btn-sm-primary-pet w-25 mb-4" do %>
-        <i class="far fa-heart" data-target="favorite.icon"></i>
-      <% end %>
-    </div>
+    <% if user_signed_in? %>
+      <div data-controller="favorite" data-favorite-id="<%= @animal.id %>" data-favorite-favorited="<%= @animal.favorited_by?(current_user) %>" class="text-center mt-2">
+        <%= link_to "#", "data-action": "favorite#toggle", class: "btn btn-sm-primary-pet w-25 mb-4" do %>
+          <i class="far fa-heart" data-target="favorite.icon"></i>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="text-center mt-2">
+        <%= link_to pages_path, class: "btn btn-sm-primary-pet w-25 mb-4" do %>
+          <i class="far fa-heart" data-target="favorite.icon"></i>
+          <% session[:share_animal_id] = @animal.id
+          %>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -139,3 +152,5 @@
     </div>
   </div>
 </div>
+
+<%= javascript_pack_tag "search/shareApi"%>

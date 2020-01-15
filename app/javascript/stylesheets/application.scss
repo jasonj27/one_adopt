@@ -169,6 +169,12 @@ a:hover{
   color: #e09300;
   border: 1px solid #ffe600;
 }
+.btn-sm-success-pet{
+  width: 100px;
+  height: 35px;
+  color: #fff;
+  background-color: #28a745;
+}
 .btn-secondary-pet{
   width: 200px;
   height: 35px;
@@ -200,6 +206,15 @@ a:hover{
 }
 .btn-dark-pet:hover{
   color: #888;
+}
+.btn-success-pet{
+  width: 200px;
+  height: 35px;
+  color: #fff;
+  background-color: #28a745;
+}
+.btn-success-pet:hover{
+  color: #1b6c2d;
 }
 .btn-conversation-del{
   color: #fff;

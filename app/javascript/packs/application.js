@@ -7,7 +7,6 @@ import '../scripts/index.js'
 import '../stylesheets/index.js'
 import 'jquery'
 import "controllers"
-import "./search/shareApi.js"
 
 const images = require.context("../images", true)
 const imagePath = (name) => images(name, true)
