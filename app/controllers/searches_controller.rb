@@ -1,8 +1,17 @@
 class SearchesController < ApplicationController
+<<<<<<< HEAD
   before_action :authenticate_user!
 
+=======
+  before_action :authenticate_user!, except: :show
+  
+>>>>>>> 完成分享連結（手機瀏覽器預設/桌機複製連結）
   def show
     @animal = Animal.find(params[:id])
+    respond_to do |format|
+      format.json { render json: @animal }
+      format.html { render :show }
+    end
   end
 
   def lucky_animal

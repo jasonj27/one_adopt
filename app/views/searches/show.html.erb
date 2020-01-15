@@ -1,3 +1,4 @@
+<span class="d-none hidden-id"><%= @animal.id %></span>
 <nav aria-label="breadcrumb-pet">
   <ol class="breadcrumb-pet">
     <li class="breadcrumb-pet-item"><%= link_to "首頁" , pages_path ,class:'bc-item' %></li>
@@ -5,6 +6,15 @@
     <li class="breadcrumb-pet-item active" aria-current="page">進階搜尋</li>
   </ol>
 </nav>
+<div class="">
+  <button class="share-button"><i class="fas fa-share-alt"></i></button>
+  <div class="share-result">
+    <button type="button" class="close d-none share-close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+<div>
+<input type="hidden" id="content-to-copy" />
 
 <div class="col">
   <div class="card pt-5 pb-3 m-4" >
