@@ -73,17 +73,17 @@ https://storage.googleapis.com/oneadopt-public/images/logo_icon-y.png" alt="logo
               <div class="navbar-item-pet">
                 <li class="nav-item ml-auto">
                   <% if current_user.is_sender %>
-                  <%= link_to sender_root_path do %>
-                    <div class="nav-link pl-2">
-                    <i class="far fa-laugh pr-1"></i>送養管理
-                    </div>
-                  <% end %>
+                    <%= link_to sender_root_path do %>
+                      <div class="nav-link pl-2">
+                      <i class="far fa-laugh pr-1"></i>送養管理
+                      </div>
+                    <% end %>
                   <% else %>
-                  <%= link_to edit_sender_user_path do %>
-                  <div class="nav-link pl-2">
-                    <i class="far fa-laugh pr-1"></i>成為送養者
-                  </div>
-                  <% end %>
+                    <%= link_to edit_sender_user_path do %>
+                      <div class="nav-link pl-2">
+                        <i class="far fa-laugh pr-1"></i>成為送養者
+                      </div>
+                    <% end %>
                   <% end %>
                 </li>
                 <li class="line"></li>
@@ -116,13 +116,15 @@ https://storage.googleapis.com/oneadopt-public/images/logo_icon-y.png" alt="logo
         <div class="bg-light">
           <div class="row color-primary-pet justify-content-center py-4">
             <div class="text-center font-weight-lighter">
-              <div><i class="fas fa-paw py-2"></i></div>
-              <div class="pt-3 fz-14">
-                <span>聯絡我們</span>
-                <span>服務時間</span>
-                <span>隱私規範</span>
+              <div><i class="fas fa-paw"></i></div>
+              <div class="pt-3 fz-14 my-2">
+                <%= mail_to "lccjw0001@gmail.com" , subject: "貓狗大平台 你好，我是#{current_user.name}" , class: " color-primary-pet" do %>
+                  <i class="far fa-envelope pr-1"></i>聯絡我們
+                <% end %>
               <div>
-              <small class="text-black-50 fz-12"> © 2020 Copyright</small>
+              <div class="mt-2">
+                <small class="text-black-50 fz-10"> © 2020 Copyright</small>
+              </div>
             </div>
           </div>
         </div>
