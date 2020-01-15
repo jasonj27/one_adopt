@@ -1,7 +1,5 @@
 class User < ApplicationRecord
-
-  after_commit :update_animal_area_pkid , if: :is_sender?
-
+  after_commit :update_animal_area_pkid if :is_sender?
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -18,6 +16,7 @@ class User < ApplicationRecord
   has_many :authored_conversations, class_name: 'Conversation', foreign_key: 'author_id'
   has_many :received_conversations, class_name: 'Conversation', foreign_key: 'received_id'
   has_many :personal_messages, dependent: :destroy
+  has_many :notifications, foreign_key: :recipient_id
   has_one :lucky_animal
   has_rich_text :readme
   # @user.sent_messages
