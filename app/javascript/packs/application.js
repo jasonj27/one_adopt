@@ -14,7 +14,3 @@ const imagePath = (name) => images(name, true)
 require("trix")
 require("@rails/actiontext")
 import './trix-overrides.js'
-
-document.addEventListener("DOMContentLoaded", function() {
-  $('.toast').toast('show')
-})
