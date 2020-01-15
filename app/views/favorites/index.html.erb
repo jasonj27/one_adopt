@@ -8,15 +8,15 @@
   <div class="wrap">
     <div class="container">
       <div class="row">
-        <div class="card-columns">
+
           <% if @favorites.empty? %>
             <p class="p-4">趕快去收藏</p>
           <% end %>
             
           <% @favorites_group.each do |user, favorites| %>
-            <div class="col">
-              <div class="card-pet my-3">
-                <div class="center mx-auto" style="width: 24rem;">
+            <div class="col-12 col-md-6 col-xl-4 py-4">
+              <div class="card-pet h-100">
+                <div class="center">
                   <div class="card-header font-weight-bold letter-spacing text-secondary">
                     <i class="fas fa-home"></i>
                     <%= user %>
@@ -28,7 +28,6 @@
                         <div class="d-flex justify-content-between align-items-center fav-card-item  bg-light rounded-pill py-3 px-4 m-3">
                           <div class="d-flex justify-content-between align-items-center">
                             <span class="pr-4"><%= image_tag fav.animal.images.first.variant(resize_to_fill: [200, 200]) , class: "rounded-circle" , style: "width:40px" %></span>
-                            <span class="pr-4"><%= fav.animal.animal_kind %></span>
                             <%= link_to "https://asms.coa.gov.tw/Amlapp/App/AnnounceList.aspx?Id=#{fav.animal.animal_id}&AcceptNum=#{fav.animal.animal_subid}&PageType=Adopt", target: "_blank", class: "color-primary-pet", data: { confirm: "確認要連結至收容所預約頁面?"} do %>預約<i class="fas fa-external-link-alt pl-1"></i>
                             <% end %>
                             <span class="pl-5"><button class="text-secondary navbar-toggler" data-toggle="collapse" data-target="#a<%= "#{ fav.created_at.to_i }#{ fav.animal.animal_subid }" %>" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation"><i class="fas fa-chevron-down"></i></button></span>
@@ -54,7 +53,7 @@
                           <div class="d-flex justify-content-between align-items-center">
                             <span class="pr-4"><%= image_tag fav.animal.images.first.variant(resize_to_fill: [200, 200])  , class: "rounded-circle" , style: "width:40px" %></span>
                             <span class="pr-4"><%= fav.animal.name %></span>
-                            <span class="pr-4"><%= fav.animal.animal_kind %></span>
+                            <span class="pr-2"><%= fav.animal.animal_kind %></span>
                           </div>
                           <div>
                             <button class="btn btn-sm bg-dark-pet text-white rounded-pill fz-14 navbar-toggler" data-toggle="collapse" data-target="#a<%= "#{ fav.created_at.to_i }" %>" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation"><i class="fas fa-chevron-down"></i></button>
@@ -78,12 +77,12 @@
                           <div class="row py-4 justify-content-around">
                             <div class="col-6">
                               <div class="p-2">
-                                <%= link_to "我要預約", new_reservation_path(:sender => (fav.animal.user.id)), class: "btn btn-sm-primary-pet ml-3" %>
+                                <%= link_to "我要預約", new_reservation_path(:sender => (fav.animal.user.id)), class: "btn btn-sm-primary-pet btn-sm ml-3" %>
                               </div>
                             </div>
                             <div class="col-6">
                               <div class="p-2">
-                                <%= link_to "寄信給他", new_personal_message_path(:receiver_id =>(fav.animal.user.id)), class: "btn btn-sm-primary-pet ml-3"%>
+                                <%= link_to "寄信給他", new_personal_message_path(:receiver_id =>(fav.animal.user.id)), class: "btn btn-sm-primary-pet btn-sm ml-3"%>
                               </div>
                             </div>
                           </div>
@@ -95,7 +94,7 @@
               </div>
             </div>  
           <% end %>
-        </div>
+
       </div>
     </div>
   </div>

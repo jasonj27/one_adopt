@@ -1,7 +1,8 @@
 <div class="bg-white my-2 py-2">
   <%= conversation.with(current_user).name %>
   <br>
-  <em><%= truncate(strip_tags(conversation.personal_messages.last.message_body.to_s), length: 50) %></em>
+  <em>
+  	<%= truncate(strip_tags(conversation.personal_messages.last.message_body.to_s), length: 50) %></em>
   <br>
   <%= link_to '進入對話', conversation_path(conversation), class: 'btn btn-sm-primary-pet btn-sm mr-1' %>
   <%= link_to '刪除對話', conversation_path(conversation), method: :delete, class: 'btn btn-sm-delete-pet btn-sm mr-1' %>
