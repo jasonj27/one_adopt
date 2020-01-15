@@ -2,7 +2,6 @@
 *{
   font-family: 'Noto Sans TC', sans-serif;
 }
-
 html, body{
   height: 100%
 }
@@ -224,6 +223,16 @@ a:hover{
 .btn-pet:hover{
   color: #ffe600;
 }
+@media screen and (min-width: 958px){
+  .card-columns {
+    column-count: 2;
+  }
+}
+@media screen and (max-width: 957px){
+  .card-columns{
+    column-count: 1;
+  }
+}
 .card-pet{
   position: relative;
   display: flex;
@@ -234,6 +243,8 @@ a:hover{
   background-clip: border-box;
   border-radius: 0.5rem;
   box-shadow: 1px 1px 3px rgba(0,0,0,.2);
+  display: inline-block;
+  break-inside: avoid-column;
 }
 .btn-delete-outline-pet{
   color: #601407;
@@ -307,7 +318,7 @@ a:hover{
   background-color: #f3f6fd;
 }
 .bg-favorites{
-  background-color: #fafdfd;
+  background-color: #f4f7fc;
 }
 .rounded-conversation{
   border-top-right-radius: 30px;
@@ -318,8 +329,12 @@ a:hover{
 }
 .btn-close{
   position: absolute;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
   right: -10px;
   top: 0px;
+  line-height: 22px;
 }
 .img-cat{
   background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, .7)),url(../images/cat-5.png);
