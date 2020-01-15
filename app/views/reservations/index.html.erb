@@ -1,12 +1,12 @@
+<nav aria-label="breadcrumb-pet mt-4">
+  <ol class="breadcrumb-pet">
+    <li class="breadcrumb-pet-item"><%= link_to "首頁" , pages_path ,class:'bc-item' %></li>
+    <li class="breadcrumb-pet-item active" aria-current="page">預約記錄</li>
+  </ol>
+</nav>
 <div class="wrap">
-  <nav aria-label="breadcrumb-pet mt-4">
-    <ol class="breadcrumb-pet">
-      <li class="breadcrumb-pet-item"><%= link_to "首頁" , pages_path ,class:'bc-item' %></li>
-      <li class="breadcrumb-pet-item active" aria-current="page">預約記錄</li>
-    </ol>
-  </nav>
   <div class="container col-12 mx-auto">
-    <div class="row m-auto ">
+    <div class="row m-auto">
       <% @reservations.each do |res| %>
         <% if res.status != "canceled" %>
           <div class="col-12 col-md-6 col-xl-4 my-4">
@@ -37,7 +37,7 @@
                     <% res.reservation_pets.each_with_index do |pet,index| %>
                       <div class="d-flex justify-content-between align-items-center mx-3">
                         <div class="d-flex justify-content-between align-items-center">
-                          <span class="pr-4"><%= image_tag pet.animal.images.first.variant(resize_to_fill: [200, 200]) , class: "rounded-circle" , style: "width:40px"%></span>
+                          <span class="pr-4"><%= image_tag pet.animal.images.first.variant(resize_to_fill: [200, 200]) , class: "rounded-circle" , style: "width:40px" %></span>
                           <span class="pr-4"><%= pet.animal.name %></span>
                           <span class="pr-4"><%= pet.animal.animal_kind %></span>
                         </div>
@@ -57,8 +57,6 @@
                         </div>
                       </div>
                     <% end %>
-
-                    
                     <div class="d-flex justify-content-center">
                       <div class="py-4 px-2">
                         <%= link_to "取消預約", cancel_reservation_path(res), method: :delete, data: {confirm: '確認取消!?'} , class: 'btn btn-sm-delete-pet btn-sm' %>
