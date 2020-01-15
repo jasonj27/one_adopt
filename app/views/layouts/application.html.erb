@@ -111,22 +111,23 @@ https://storage.googleapis.com/oneadopt-public/images/logo_icon-y.png" alt="logo
       
       <%= yield %>
     </div>
-    <footer>
-      <div class="bg-light">
-        <div class="row color-primary-pet justify-content-center py-4">
-          <div class="text-center font-weight-lighter">
-            <div><i class="fas fa-paw py-2"></i></div>
-            <div class="pt-3 fz-14">
-              <span>聯絡我們</span>
-              <span>服務時間</span>
-              <span>隱私規範</span>
-            <div>
-            
-            <small class="text-black-50 fz-12"> © 2020 Copyright</small>
+    <% if !current_user.nil? %>
+      <footer>
+        <div class="bg-light">
+          <div class="row color-primary-pet justify-content-center py-4">
+            <div class="text-center font-weight-lighter">
+              <div><i class="fas fa-paw py-2"></i></div>
+              <div class="pt-3 fz-14">
+                <span>聯絡我們</span>
+                <span>服務時間</span>
+                <span>隱私規範</span>
+              <div>
+              <small class="text-black-50 fz-12"> © 2020 Copyright</small>
+            </div>
           </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+    <% end %>
   </div>
 </body>
 </html>

@@ -10,14 +10,14 @@
   <div class="card pt-5 pb-3 m-4" >
     <div class="row">
       <div class="col-12 col-md-6 text-center">
-        <%= image_tag @animal.images.first.variant(resize_to_fill: [500, 500]) , class: "card-img-top w-75"%>
+        <%= image_tag @animal.images.first.variant(resize_to_fill: [500, 500]) , class: "card-img-top w-80"%>
       </div>
       <div class="col-12 col-md-6 col-xl-6">
         <table class="table table-borderless text-center mx-auto my-4">
           <tbody>
             <tr>
               <% if @animal.animal_subid.nil? %>
-                <td scope="row" class="color-primary-pet">名字
+                <td scope="row" class="color-primary-pet pl-4">名字
                 </td>
                 <td>
                   <%= @animal.name %>    
@@ -25,58 +25,59 @@
               <% end %>
             </tr>
             <tr>
-              <td scope="row" class="color-primary-pet">種類
+              <td scope="row" class="color-primary-pet pl-4">種類
               </td>
               <td>
                 <%= @animal.animal_kind %>
               </td>
             </tr>
             <tr>
-              <td scope="row" class="color-primary-pet">性別
+              <td scope="row" class="color-primary-pet pl-4">性別
               </td>
               <td>
                 <%= @animal.animal_sex %>
               </td>
             </tr>
             <tr>
-              <td scope="row" class="color-primary-pet">年紀
+              <td scope="row" class="color-primary-pet pl-4">年紀
               </td>
               <td>
                 <%= @animal.animal_age %>
               </td>
             </tr>
             <tr>
-              <td scope="row" class="color-primary-pet">體型
+              <td scope="row" class="color-primary-pet pl-4">體型
               </td>
               <td>
                 <%= @animal.animal_bodytype %>
               </td>
             </tr>
             <tr>
-              <td scope="row" class="color-primary-pet">毛色
+              <td scope="row" class="color-primary-pet pl-4">毛色
               </td>
               <td>
                 <%= @animal.animal_colour %>
               </td>
             </tr>
             <tr>
-              <td scope="row" class="color-primary-pet">結紮
+              <td scope="row" class="color-primary-pet pl-4">結紮
               </td>
               <td>
                 <%= @animal.animal_sterilization %>
               </td>
             </tr>
             <tr>
-              <td scope="row" class="color-primary-pet">縣市
+              <td scope="row" class="color-primary-pet pl-4">縣市
               </td>
               <td>
                 <%= @animal.animal_area_pkid %>
-                <a type="button" class="text-success" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-map-marked-alt"></i></a>
+                <a type="button" class="rounded text-white bg-success py-1 px-3 ml-1" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-map-marked-alt"></i></a>
               </td>
             </tr>
             <tr>
               <td scope="row" colspan="2">
-                <button class="btn btn-dark-pet fz-14 navbar-toggler py-2" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">詳細資料 <i class="fas fa-chevron-down"></i></button>
+                <button class="btn btn-dark-pet fz-14 navbar-toggler py-2" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">詳細資料 <i class="fas fa-chevron-down"></i>
+                </button>
                 <div class="pos-f-t m-2 py-2 rounded">
                   <div class="collapse" id="navbarToggleExternalContent">
                     <ul class="bg-light text-center py-2 list-unstyled text-secondary fz-14 rounded">
