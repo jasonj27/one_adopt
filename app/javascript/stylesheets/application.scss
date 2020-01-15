@@ -7,13 +7,26 @@ html, body{
   height: 100%
 }
 .wrap{
-  min-height: 100%;
+  position: relative;
+  min-height: 100vh;
+}
+.content-wrap{
+  padding-bottom: 2.5rem;
+}
+footer{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;
 }
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
   margin-bottom: 0rem;
 }
 .w-20{
   width: 20%;
+}
+.w-80{
+  width: 80%;
 }
 .navbar-item-pet{
   display: flex;
@@ -60,6 +73,9 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
 a:hover{
   color: #aaa;
   text-decoration: none;
+}
+.btn:hover{
+  color: #ccc;
 }
 .fz-12{
   font-size: 12px;
@@ -114,6 +130,9 @@ a:hover{
 }
 .bg-primary-pet{
   background-color: #ffe600;
+}
+.bg-secondary-pet{
+  background-color: #ffc107;
 }
 .bg-dark-pet{
   background-color: #ccc;
@@ -301,4 +320,15 @@ a:hover{
   position: absolute;
   right: -10px;
   top: 0px;
+}
+.img-cat{
+  background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, .7)),url(../images/cat-5.png);
+  background-size: cover;
+}
+.img-dog{
+  background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, .7)),url(../images/dog-4.png);
+  background-size: cover;
+}
+.bg-dark-50{
+  background-color: rgba(0,0,0,.5);
 }

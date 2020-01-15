@@ -6,64 +6,23 @@
 </nav>
 
 <% if @animal == nil %>
-  <%= form_with url: lucky_show_searches_path, local: true, class: "d-flex flex-column align-items-center" do |f| %>
-    <%= f.button '貓貓', name: "animal_kind", value: "貓貓"%>
-    <%= f.button '狗狗', name: "animal_kind", value: "狗狗"%>
-  <% end %>
-<% else %>
-  <div class="col">
-    <div class="card pt-5 pb-3 m-4" >
-      <%= image_tag @animal.images.first.variant(resize: "500x400!") , class: "card-img-top w-75 m-auto"%>
-      <div class="card-body">
-        <table class="table table-borderless text-center w-75 m-auto">
-          <tr>
-            <td class="color-primary-pet"><i class="fas fa-paw"></i>
-            </td>
-            <td>
-              <%= @animal.animal_kind %>
-            </td>
-          </tr>
-          <tr>
-            <td class="color-primary-pet"><i class="fas fa-venus-mars"></i></td>
-            <td>
-              <%= @animal.animal_sex %>
-            </td>
-          </tr>
-          <tr>
-            <td class="color-primary-pet"><i class="fas fa-child"></i>
-            </td>
-            <td>
-              <%= @animal.animal_age %>
-            </td>
-          <tr>
-            <td class="color-primary-pet"><i class="fas fa-cut"></i>
-            </td>
-            <td>
-              <%= @animal.animal_sterilization %>
-            </td>
-          </tr>
-          <tr>
-            <td class="color-primary-pet"><i class="fas fa-map-marker-alt"></i></td>
-            <td>
-              <%= @animal.animal_area_pkid %>
-            </td>
-          </tr>
-        </table>
-        <div class="content text-center py-2">
-          <ul class="py-2">
-            <li><%= @animal.user.name %></li>
-            <li><%= @animal.user.sender_add %></li>
-            <li><%= @animal.user.sender_tel %></li>
-            <li>編號：<%= @animal.animal_subid %></li>
-          </ul>
-        </div>
+  <h5 class="color-primary-pet letter-spacing py-4 m-3 text-center border-bottom">趕快來抽今日幸運動物吧！</h5>
+  <%= form_with url: lucky_show_searches_path, local: true do |f| %>
+    <div class="row mt-4 pt-2 mx-auto">
+      <div class="col-6 text-center">
+        <%= f.button '貓貓', name: "animal_kind", value: "貓貓" ,class: "py-5 w-100 text-white border-white img-cat rounded-lg" do %>
+          <i class="fas fa-cat fz-14 py-2"></i>
+          <h3 class="fz-16 text-white py-2">貓 貓</h3>
+        <% end %>
       </div>
-    
-      <div data-controller="favorite" data-favorite-id="<%= @animal.id %>" data-favorite-favorited="<%= @animal.favorited_by?(current_user) %>" class="text-center">
-        <%= link_to "#", "data-action": "favorite#toggle", class: "btn btn-sm-primary-pet w-25 mb-4" do %>
-          <i class="far fa-heart" data-target="favorite.icon"></i>
+      <div class="col-6 text-center">
+        <%= f.button '狗狗', name: "animal_kind", value: "狗狗" ,class: "py-5 w-100 text-white border-white img-dog rounded-lg" do %>
+          <i class="fas fa-dog fz-14 py-2"></i>
+          <h3 class="fz-16 text-white py-2">狗 狗</h3>
         <% end %>
       </div>
     </div>
-  </div>
+  <% end %>
+<% else %>
+  <%= render 'lucky_form'%>
 <% end %>

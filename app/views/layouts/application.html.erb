@@ -15,116 +15,121 @@ https://storage.googleapis.com/oneadopt-public/images/logo_icon-y.png" alt="logo
 
 <body>
   <div class="wrap">
-    <% if !current_user.nil? %>
-      <nav class="navbar navbar-expand-lg navbar-light bgcolor-primary-pet sticky-top">
-        <nav class="navbar py-0">
-          <%= link_to pages_path , class: 'navbar-brand' do %>
-            <img src="<%= asset_pack_path 'media/images/logo_w.png'%>" width="150" alt="logo">
-          <% end %>
+    <div class="content-wrap">
+      <% if !current_user.nil? %>
+        <nav class="navbar navbar-expand-lg navbar-light bgcolor-primary-pet sticky-top">
+          <nav class="navbar py-0">
+            <%= link_to pages_path , class: 'navbar-brand' do %>
+              <img src="<%= asset_pack_path 'media/images/logo_w.png'%>" width="150" alt="logo">
+            <% end %>
+          </nav>
+          
+          <button class="navbar-toggler border-none" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+      
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+              <div class="navbar-item-pet">
+                <li class="nav-item ml-auto">
+                  <%= link_to searches_path do %>
+                    <div class="nav-link pl-2">搜尋</div>
+                  <% end %>
+                </li>
+                <li class="line"></li>
+              </div>
+              <div class="navbar-item-pet">
+                <li class="nav-item ml-auto">
+                  <%= link_to favorites_path do %>
+                    <div class="nav-link pl-2">收藏動物</div>
+                  <% end %>
+                </li>
+                <li class="line"></li>
+              </div>
+              <div class="navbar-item-pet">
+                <li class="nav-item ml-auto">
+                  <%= link_to reservations_path do %>
+                    <div class="nav-link pl-2">預約記錄</div>
+                  <% end %>
+                </li>
+                <li class="line"></li>
+              </div>
+              <div class="navbar-item-pet">
+                <li class="nav-item ml-auto">
+                  <%= link_to conversations_path do %>
+                    <div class="nav-link pl-2">站內信件</div>
+                  <% end %>
+                </li>
+                <li class="line"></li>
+              </div>
+              <div class="navbar-item-pet">
+                <li class="nav-item ml-auto">
+                  <%= link_to lucky_animal_searches_path do %>
+                    <div class="nav-link pl-2">每日幸運寵物</div>
+                  <% end %>
+                </li>
+                <li class="line"></li>
+              </div>
+              <div class="navbar-item-pet">
+                <li class="nav-item ml-auto">
+                  <% if current_user.is_sender %>
+                    <%= link_to sender_root_path do %>
+                      <div class="nav-link pl-2">
+                      <i class="far fa-laugh pr-1"></i>送養管理
+                      </div>
+                    <% end %>
+                  <% else %>
+                    <%= link_to edit_sender_user_path do %>
+                      <div class="nav-link pl-2">
+                        <i class="far fa-laugh pr-1"></i>成為送養者
+                      </div>
+                    <% end %>
+                  <% end %>
+                </li>
+                <li class="line"></li>
+              </div>
+              <div class="navbar-item-pet">
+                <li class="nav-item ml-auto">
+                  <%= link_to edit_user_registration_path do %>
+                    <div class="nav-link pl-2">設定</div>
+                  <% end %>
+                </li>
+                <li class="line"></li>
+              </div>
+              <div class="navbar-item-pet">
+                <li class="nav-item ml-auto">
+                  <%= link_to destroy_user_session_path , method: 'delete' do %>
+                    <div class="nav-link pl-2">登出</div>
+                  <% end %>
+                </li>
+              </div>
+            </ul>
+          </div>
         </nav>
-        
-        <button class="navbar-toggler border-none" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ml-auto">
-            <div class="navbar-item-pet">
-              <li class="nav-item ml-auto">
-                <%= link_to searches_path do %>
-                  <div class="nav-link pl-2">搜尋</div>
+      <% end %>
+      <%= render 'shared/flash' if notice %>
+      
+      <%= yield %>
+    </div>
+    <% if !current_user.nil? %>
+      <footer>
+        <div class="bg-light">
+          <div class="row color-primary-pet justify-content-center py-4">
+            <div class="text-center font-weight-lighter">
+              <div><i class="fas fa-paw"></i></div>
+              <div class="pt-3 fz-14 my-2">
+                <%= mail_to "lccjw0001@gmail.com" , subject: "貓狗大平台 你好，我是#{current_user.name}" , class: " color-primary-pet" do %>
+                  <i class="far fa-envelope pr-1"></i>聯絡我們
                 <% end %>
-              </li>
-              <li class="line"></li>
+              <div>
+              <div class="mt-2">
+                <small class="text-black-50 fz-10"> © 2020 Copyright</small>
+              </div>
             </div>
-            <div class="navbar-item-pet">
-              <li class="nav-item ml-auto">
-                <%= link_to favorites_path do %>
-                  <div class="nav-link pl-2">收藏動物</div>
-                <% end %>
-              </li>
-              <li class="line"></li>
-            </div>
-            <div class="navbar-item-pet">
-              <li class="nav-item ml-auto">
-                <%= link_to reservations_path do %>
-                  <div class="nav-link pl-2">預約記錄</div>
-                <% end %>
-              </li>
-              <li class="line"></li>
-            </div>
-            <div class="navbar-item-pet">
-              <li class="nav-item ml-auto">
-                <%= link_to conversations_path do %>
-                  <div class="nav-link pl-2">站內信件</div>
-                <% end %>
-              </li>
-              <li class="line"></li>
-            </div>
-            <div class="navbar-item-pet">
-              <li class="nav-item ml-auto">
-                <%= link_to lucky_animal_searches_path do %>
-                  <div class="nav-link pl-2">每日幸運寵物</div>
-                <% end %>
-              </li>
-              <li class="line"></li>
-            </div>
-            <div class="navbar-item-pet">
-              <li class="nav-item ml-auto">
-                <% if current_user.is_sender %>
-                <%= link_to sender_root_path do %>
-                  <div class="nav-link pl-2">
-                  <i class="far fa-laugh pr-1"></i>送養管理
-                  </div>
-                <% end %>
-                <% else %>
-                <%= link_to edit_sender_user_path do %>
-                <div class="nav-link pl-2">
-                  <i class="far fa-laugh pr-1"></i>成為送養者
-                </div>
-                <% end %>
-                <% end %>
-              </li>
-              <li class="line"></li>
-            </div>
-            <div class="navbar-item-pet">
-              <li class="nav-item ml-auto">
-                <%= link_to edit_user_registration_path do %>
-                  <div class="nav-link pl-2">設定</div>
-                <% end %>
-              </li>
-              <li class="line"></li>
-            </div>
-            <div class="navbar-item-pet">
-              <li class="nav-item ml-auto">
-                <%= link_to destroy_user_session_path , method: 'delete' do %>
-                  <div class="nav-link pl-2">登出</div>
-                <% end %>
-              </li>
-            </div>
-          </ul>
-        </div>
-      </nav>
-    <% end %>
-    <%= render 'shared/flash' if notice %>
-
-    <%= yield %>
-    <footer>
-      <div class="bg-light">
-        <div class="row color-primary-pet justify-content-center py-4 my-2">
-          <div class="text-center font-weight-lighter">
-            <div><i class="fas fa-paw py-2"></i></div>
-            <div class="pt-3 fz-14">
-              <span>聯絡我們</span>
-              <span>服務時間</span>
-              <span>隱私規範</span>
-            <div>
-            
-            <small class="text-black-50 fz-12"> © 2020 Copyright</small>
           </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+    <% end %>
   </div>
 </body>
 </html>
