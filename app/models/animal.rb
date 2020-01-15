@@ -1,6 +1,6 @@
 class Animal < ApplicationRecord
   acts_as_paranoid
-  acts_as_geolocated lat: "latitude", lng: "longitude", through: :user
+  reverse_geocoded_by :latitude, :longitude
 
   belongs_to :user
   has_many_attached :images
@@ -82,5 +82,13 @@ class Animal < ApplicationRecord
     a.compact!
     p a
     return a
+  end
+
+  def latitude
+    self.user.latitude
+  end
+
+  def longitude
+    self.user.longitude
   end
 end

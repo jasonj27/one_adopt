@@ -52,6 +52,14 @@
             { include_blank: "是否包含政府收容所?" },
             { class: 'form-control mt-2 mb-2' }) %>
         </div>
+        <div class="col-12 col-md-6">
+            <%= f.select(:distance,
+            options_for_select([["5公里","5"],["10公里","10"],["20公里","10"],["50公里","50"],]),
+            { include_blank: "距離目前位置距離" },
+            { class: 'form-control mt-2 mb-2' }) %>
+        </div>
+         <%= f.hidden_field :latitude %>
+         <%= f.hidden_field :longitude %>
       </div>
 
       <div class="d-flex justify-content-center">        

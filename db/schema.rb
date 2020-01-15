@@ -67,6 +67,8 @@ ActiveRecord::Schema.define(version: 2020_01_14_132713) do
     t.integer "animal_colour"
     t.integer "animal_id"
     t.datetime "deleted_at"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["deleted_at"], name: "index_animals_on_deleted_at"
     t.index ["user_id"], name: "index_animals_on_user_id"
   end
@@ -231,7 +233,7 @@ ActiveRecord::Schema.define(version: 2020_01_14_132713) do
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
     t.float "latitude"
-    t.float "longtitude"
+    t.float "longitude"
     t.index ["available_time"], name: "index_users_on_available_time", using: :gin
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true

@@ -45,8 +45,11 @@ class User < ApplicationRecord
   private
 
   def update_animal_area_pkid
-    unless !self.animals.nil? && !self.animals.empty?
+    if self.animals.present?
       self.animals.update_all(animal_area_pkid: self.sender_add.slice(0..2))
+      if self.latitude.present? && self.longitude.present?
+        self.animals.update_all(latitude: self.latitude, longitude: self.longitude)
+      end
     end
   end
 end
