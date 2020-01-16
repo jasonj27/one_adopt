@@ -31,6 +31,15 @@ https://storage.googleapis.com/oneadopt-public/images/logo_icon-y.png" alt="logo
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
               <div class="navbar-item-pet">
+                <li class="nav-item btn-group" data-behavior="notifications" data-notifications='<%= render template: "notifications/index", formats: [:json] %>'>
+                  <a class="dropdown-toggle nav-link" type="button" data-behavior="notifications-link" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fas fa-bell"></i> <span data-behavior="unread-count"></span>
+                  </a>
+                  <div id="div1" class="dropdown-menu" aria-labelledby="dropdownMenu1" data-behavior="notification-items">
+                  </div>
+                </li>
+              </div>
+              <div class="navbar-item-pet">
                 <li class="nav-item ml-auto">
                   <%= link_to searches_path do %>
                     <div class="nav-link pl-2">搜尋</div>
