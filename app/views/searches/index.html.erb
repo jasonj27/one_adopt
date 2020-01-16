@@ -9,5 +9,23 @@
 
 <%= render 'form'%>
 
-<%= javascript_pack_tag 'search/advSearch'%>
+<div class="modal fade" id="locationModal" tabindex="-1" role="dialog" aria-labelledby="locationModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <img src="https://storage.googleapis.com/oneadopt-public/images/logo_icon-y.png" class="mr-2" alt="logo" style="width: 25px; height: 25px;">
+        <strong class="mr-auto">貓狗大平台</strong>
+      </div>
+      <div class="modal-body">
+        <div class="spinner-border" role="status">
+          <span class="sr-only">loading</span>
+        </div>
+        <span>定位中...</span>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal" id="locationButton">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 

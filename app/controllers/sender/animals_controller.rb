@@ -10,8 +10,7 @@ class Sender::AnimalsController < BaseController
   end
 
   def create
-    animal_area_pkid = current_user.sender_add.slice(0..2)
-    @animal = current_user.animals.build(animal_params(animal_area_pkid))
+    @animal = current_user.animals.build(animal_params)
 
     if @animal.save
       redirect_to sender_animals_path
@@ -26,8 +25,7 @@ class Sender::AnimalsController < BaseController
 
   def update
     @animal = Animal.find(params[:id])
-    animal_area_pkid = @animal.user.sender_add.slice(0..2)
-    if @animal.update(animal_params(animal_area_pkid))
+    if @animal.update(animal_params)
       redirect_to sender_animals_path
     else
     end
@@ -47,17 +45,31 @@ class Sender::AnimalsController < BaseController
 
   private
 
-  def animal_params(animal_area_pkid)
-    params.require(:animal).permit(:name,
-                                   :animal_kind, 
-                                   :animal_sex,
-                                   :animal_age,
-                                   :animal_bodytype,
-                                   :animal_colour,
-                                   :animal_sterilization,
-                                   :adopt_status,
-                                   :content,
-                                   images: [])
-                           .merge(animal_area_pkid: animal_area_pkid)
+  def animal_params
+    if current_user.latitude.present? && current_user.longitude.present?
+      params.require(:animal).permit(:name,
+                                     :animal_kind,
+                                     :animal_sex,
+                                     :animal_age,
+                                     :animal_bodytype,
+                                     :animal_colour,
+                                     :animal_sterilization,
+                                     :adopt_status,
+                                     :content,
+                                     images: [])
+        .merge(animal_area_pkid: current_user.sender_add.slice(0..2), latitude: current_user.latitude, longitude: current_user.longitude)
+    else
+      params.require(:animal).permit(:name,
+                                     :animal_kind,
+                                     :animal_sex,
+                                     :animal_age,
+                                     :animal_bodytype,
+                                     :animal_colour,
+                                     :animal_sterilization,
+                                     :adopt_status,
+                                     :content,
+                                     images: [])
+        .merge(animal_area_pkid: current_user.sender_add.slice(0..2))
+    end
   end
 end
