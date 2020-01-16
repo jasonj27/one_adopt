@@ -25,7 +25,7 @@
                   <span class="pr-1 color-primary-pet">預約時間</span><span class="pr-1"><%= l res.datetime, format: :custom_date_nc %></span><span><%= l res.datetime, format: :custom_time %></span>
                 </div>
               </div>
-              <div class="card-body rounded-lg">
+              <div class="card-body">
                 <% res.reservation_pets.each_with_index do |pet,index| %>
                   <div class="row justify-content-between align-items-center">
                     <span class="col-3 pr-4"><%= image_tag pet.animal.images.first.variant(resize_to_fill: [200, 200]) , class: "rounded-circle" , style: "width: 75px" %>
@@ -40,13 +40,11 @@
                     <div class="col-6">
                       <span class="pr-4">我是<%= pet.animal.name %>
                       </span>
-                      
                       <div class="list-unstyled text-secondary rounded py-2">
                         <%= pet.animal.animal_sterilization %><%= pet.animal.animal_age %><%= pet.animal.animal_bodytype %><%= pet.animal.animal_colour %><%= pet.animal.animal_kind %>
                       </div>
                     </div>
                   </div>
-                  
                 <% end %>
                 <div class="d-flex justify-content-around py-2">
                   <div class="">
