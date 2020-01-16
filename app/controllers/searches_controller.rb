@@ -1,8 +1,12 @@
 class SearchesController < ApplicationController
-  before_action :authenticate_user!
-
+  before_action :authenticate_user!, except: :show
+  
   def show
     @animal = Animal.find(params[:id])
+    respond_to do |format|
+      format.json { render json: @animal }
+      format.html { render :show }
+    end
   end
 
   def lucky_animal
@@ -31,7 +35,7 @@ class SearchesController < ApplicationController
 
     search_params = animals.where.not(id: ids)
 
-    if search_params.empty?
+    if zsearch_params.empty?
       redirect_to searches_path, notice: "沒有匹配的資料！"
     else
       simple_sample(search_params)
