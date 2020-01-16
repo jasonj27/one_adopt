@@ -17,7 +17,7 @@
   <div class="card pt-5 pb-3 m-4" >
     <div class="row">
       <div class="col-12 col-md-6 text-center">
-        <%= image_tag @animal.images.first.variant(resize_to_fill: [500, 500]) , class: "card-img-top w-80"%>
+        <%= image_tag @animal.images.first.variant(resize_to_fill: [600, 800]) , class: "card-img-top w-80"%>
       </div>
       <div class="col-12 col-md-6 col-xl-6">
         <table class="table table-borderless text-center mx-auto my-4">
@@ -78,24 +78,52 @@
               </td>
               <td>
                 <%= @animal.animal_area_pkid %>
-                <a type="button" class="rounded text-white bg-success py-1 px-3 ml-1" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-map-marked-alt"></i></a>
+                <button type="button" class="btn btn-success text-white py-1 px-3 ml-1" data-toggle="modal" data-target="#mapModal"><i class="fas fa-map-marked-alt"></i></button>
+                <!-- <button type="button" class="btn btn-success text-white py-1 px-3 ml-1" data-toggle="modal" data-target="#animaldetail"><i class="fas fa-map-marked-alt"></i></button> -->
               </td>
             </tr>
             <tr>
               <td scope="row" colspan="2">
-                <button class="share-button btn btn-success-pet fz-14 py-2"  data-share="<%= @animal.id %>">分享 <i class="fas fa-share-alt"></i></button>
-                <button class="btn btn-dark-pet fz-14 navbar-toggler py-2 m-2" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">詳細資料 <i class="fas fa-chevron-down"></i></button>
-                <div class="pos-f-t m-2 py-2 rounded">
-                  <div class="collapse" id="navbarToggleExternalContent">
-                    <ul class="bg-light text-center py-2 list-unstyled text-secondary fz-14 rounded">
-                      <li><%= @animal.user.name %></li>
-                      <li><%= @animal.user.sender_add %></li>
-                      <li><%= @animal.user.sender_tel %></li>
-                      <% if !@animal.animal_subid.nil? %>
-                        <li>寵物編號：<%= @animal.animal_subid %></li>
+                <div>
+                  <% if user_signed_in? %>
+                    <div data-controller="favorite" data-favorite-id="<%= @animal.id %>" data-favorite-favorited="<%= @animal.favorited_by?(current_user) %>" class="text-center mt-2">
+                      <%= link_to "#", "data-action": "favorite#toggle", class: "btn btn-primary-pet fz-14 py-2 m-2" do %>
+                        <i class="far fa-heart" data-target="favorite.icon"></i>
                       <% end %>
-                    </ul>
+                    </div>
+                  <% else %>
+                    <div class="text-center mt-2">
+                      <%= link_to root_path, class: "btn btn-primary-pet fz-14 py-2 m-2" do %>
+                        <i class="far fa-heart" data-target="favorite.icon"></i>
+                        <% session[:share_animal_id] = @animal.id
+                        %>
+                      <% end %>
+                    </div>
+                  <% end %>
+                </div>
+                <div>
+                  <button class="share-button btn btn-success-pet fz-14 py-2 m-2"  data-share="<%= @animal.id %>">分享 <i class="fas fa-share-alt"></i></button>
+                </div>
+                <% if !@animal.animal_subid.nil? %>
+                  <div>
+                    <button class="btn btn-dark-pet fz-14 navbar-toggler py-2 m-2" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">詳細資料 <i class="fas fa-chevron-down"></i></button>
                   </div>
+                  <div class="pos-f-t m-2 py-2 rounded">
+                    <div class="collapse" id="navbarToggleExternalContent">
+                      <ul class="bg-light text-center py-2 list-unstyled text-secondary fz-14 rounded">
+                        <li><%= @animal.user.name %></li>
+                        <li><%= @animal.user.sender_add %></li>
+                        <li><%= @animal.user.sender_tel %></li>
+                        <% if !@animal.animal_subid.nil? %>
+                          <li>寵物編號：<%= @animal.animal_subid %></li>
+                        <% end %>
+                      </ul>
+                    </div>
+                  <% else %>
+                    <div>
+                      <button class="btn btn-dark-pet fz-14 navbar-toggler py-2 m-2" data-toggle="modal" data-target="#animaldetail">詳細資料</button>
+                    </div>
+                  <% end %>
                 </div>
               </td>
             </tr>
@@ -103,28 +131,13 @@
         </table>
       </div>
     </div>
-    <% if user_signed_in? %>
-      <div data-controller="favorite" data-favorite-id="<%= @animal.id %>" data-favorite-favorited="<%= @animal.favorited_by?(current_user) %>" class="text-center mt-2">
-        <%= link_to "#", "data-action": "favorite#toggle", class: "btn btn-sm-primary-pet w-25 mb-4" do %>
-          <i class="far fa-heart" data-target="favorite.icon"></i>
-        <% end %>
-      </div>
-    <% else %>
-      <div class="text-center mt-2">
-        <%= link_to root_path, class: "btn btn-sm-primary-pet w-25 mb-4" do %>
-          <i class="far fa-heart" data-target="favorite.icon"></i>
-          <% session[:share_animal_id] = @animal.id
-          %>
-        <% end %>
-      </div>
-    <% end %>
   </div>
 </div>
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="mapModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel"><%= @animal.user.name %></h5>
+        <h5 class="modal-title" id="mapModalLabel"><%= @animal.user.name %></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -139,6 +152,24 @@
             <% end %>
             allowfullscreen></iframe>
         </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="animaldetail" tabindex="-1" role="dialog" aria-labelledby="animaldetailLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="animaldetailLabel"><%= @animal.name %></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= @animal.content %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

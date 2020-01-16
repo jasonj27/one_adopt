@@ -368,3 +368,11 @@ a:hover{
 .bg-dark-50{
   background-color: rgba(0,0,0,.5);
 }
+.card-btn-fav{
+  position: relative;
+}
+.btn-fav{
+  position: absolute;
+  right: -3px;
+  top: 12px;
+}
