@@ -19,6 +19,11 @@ trix-toolbar .trix-button-row {
   flex-wrap: nowrap;
   justify-content: space-between;
 }
+@media (min-device-width: 768px){
+  trix-toolbar .trix-button-row {
+    flex-wrap: wrap;
+  }
+}
 trix-toolbar .trix-button-group {
   display: flex;
   margin-bottom: 10px;
@@ -26,14 +31,6 @@ trix-toolbar .trix-button-group {
   border-top-color: #ccc;
   border-bottom-color: #888;
   border-radius: 3px;
-}
-trix-toolbar .trix-button-group:not(:first-child) {
-  margin-left: 1.5vw;
-}
-@media (max-device-width: 768px) {
-  trix-toolbar .trix-button-group:not(:first-child) {
-    margin-left: 0;
-  }
 }
 trix-toolbar .trix-button-group-spacer {
   flex-grow: 1;

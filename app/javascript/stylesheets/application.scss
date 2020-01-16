@@ -97,7 +97,7 @@ a:hover{
 .bn-txt-1{
   left: 34%;
   top: 50%;
-  font-weight: 700;
+  font-weight: 500;
   font-size: 20px;
 }
 .bn-txt-2{
@@ -367,4 +367,12 @@ a:hover{
 }
 .bg-dark-50{
   background-color: rgba(0,0,0,.5);
+}
+.card-btn-fav{
+  position: relative;
+}
+.btn-fav{
+  position: absolute;
+  right: -3px;
+  top: 12px;
 }
