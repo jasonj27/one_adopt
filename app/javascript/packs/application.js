@@ -15,6 +15,8 @@ require("trix")
 require("@rails/actiontext")
 import './trix-overrides.js'
 import './notification.js'
+
+import 'bootstrap'
 document.addEventListener("DOMContentLoaded", function() {
     $('.toast').toast('show')
 })
