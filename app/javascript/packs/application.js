@@ -1,5 +1,5 @@
 require("@rails/ujs").start()
-// require("turbolinks").start()
+    // require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 
@@ -14,3 +14,7 @@ const imagePath = (name) => images(name, true)
 require("trix")
 require("@rails/actiontext")
 import './trix-overrides.js'
+import './notification.js'
+document.addEventListener("DOMContentLoaded", function() {
+    $('.toast').toast('show')
+})

@@ -12,6 +12,12 @@ Rails.application.routes.draw do
   resources :conversations, only: [:index, :show, :destroy] 
   resources :users, only: [:index]
   resources :personal_messages, only: [:new, :create]
+  resources :notifications do
+    collection do
+      post :mark_as_read
+    end
+  end
+  
 
   
   

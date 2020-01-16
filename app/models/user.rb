@@ -20,6 +20,7 @@ class User < ApplicationRecord
   has_many :notifications, foreign_key: :recipient_id
   has_one :lucky_animal
   has_rich_text :readme
+  has_many :notifications, foreign_key: 'recipient_id'
   # @user.sent_messages
   # @user.received_messages
   validates :name, presence: true, :uniqueness => true
