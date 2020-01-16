@@ -27,31 +27,28 @@
               </div>
               <div class="card-body rounded-lg">
                 <% res.reservation_pets.each_with_index do |pet,index| %>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <span class="pr-4"><%= image_tag pet.animal.images.first.variant(resize_to_fill: [200, 200]) , class: "rounded-circle" , style: "width:40px" %>
+                  <div class="row justify-content-between align-items-center">
+                    <span class="col-3 pr-4"><%= image_tag pet.animal.images.first.variant(resize_to_fill: [200, 200]) , class: "rounded-circle" , style: "width: 75px" %>
                     </span>
-                    <span class="pr-4">我是<%= pet.animal.name %>
-                    </span>
-                    <span class="pr-4">
-                      <% if pet.animal.animal_kind == "狗狗"%>
-                        <i class="fas fa-dog fz-30"></i>
-                      <% else %>
-                        <i class="fas fa-cat fz-30"></i>
-                      <% end %>
-                    </span>
-                    <span class="pr-4">
+                    <span class="col-3">
                       <% if pet.animal.animal_sex == "女生" %>
-                        <i class="fas fa-venus fz-30"></i>
+                        <i class="fas fa-venus fz-40 color-primary-pet"></i>
                       <% else %>
-                        <i class="fas fa-mars fz-30"></i>
+                        <i class="fas fa-mars fz-40 color-secondary-pet"></i>
                       <% end %>
                     </span>
+                    <div class="col-6">
+                      <span class="pr-4">我是<%= pet.animal.name %>
+                      </span>
+                      
+                      <div class="list-unstyled text-secondary rounded py-2">
+                        <%= pet.animal.animal_sterilization %><%= pet.animal.animal_age %><%= pet.animal.animal_bodytype %><%= pet.animal.animal_colour %><%= pet.animal.animal_kind %>
+                      </div>
+                    </div>
                   </div>
-                  <span class="list-unstyled text-secondary rounded py-2">
-                    <%= pet.animal.animal_sterilization %><%= pet.animal.animal_age %><%= pet.animal.animal_bodytype %><%= pet.animal.animal_colour %><%= pet.animal.animal_kind %>
-                  </span>
+                  
                 <% end %>
-                <div class="d-flex">
+                <div class="d-flex justify-content-around py-2">
                   <div class="">
                     <%= link_to "取消預約", cancel_reservation_path(res), method: :delete, data: {confirm: '確認取消!?'} , class: 'btn btn-sm-delete-pet btn-sm' %>
                   </div>
