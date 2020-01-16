@@ -25,9 +25,9 @@ class SearchesController < ApplicationController
 
   def simple
     animals = Animal.where.not(adopt_status: "已領養")
-                          .search_kind(params[:animal_kind])
-                          .search_sex(params[:animal_sex])
-                          .search_age(params[:animal_age])
+      .search_kind(params[:animal_kind])
+      .search_sex(params[:animal_sex])
+      .search_age(params[:animal_age])
 
     ids = animals.joins(:favorites)
                  .where("favorites.user_id = ?", current_user.id)
@@ -43,7 +43,7 @@ class SearchesController < ApplicationController
   end
 
   def advance
-    if params[:distance].to_i == 0
+    if params[:distance].to_i == 0 || params[[:latitude]].empty? || params[:longitude].empty?
       search_params = Animal.with_attached_images
                             .where.not(adopt_status: "已領養", user_id: current_user)
                             .search_kind(params[:animal_kind])
@@ -67,7 +67,7 @@ class SearchesController < ApplicationController
                             .search_sterilization(params[:animal_sterilization])
                             .search_area_pkid(params[:animal_area_pkid])
                             .search_shelter(params[:animal_shelter])
-                            .near([params[:latitude], params[:longitude]], params[:distance].to_i, units: :km)
+                            .near([params[:latitude].to_f, params[:longitude]].to_f, params[:distance].to_i, units: :km)
                             .includes(:user)
                             .page(params[:page]).per(8)
     end
@@ -103,8 +103,8 @@ class SearchesController < ApplicationController
 
   def pick_lucky_animal(kind)
     animal = Animal.where.not(adopt_status: "已領養")
-                         .search_kind(kind)
-                         .sample(1)
+      .search_kind(kind)
+      .sample(1)
 
     if current_user.lucky_animal.nil?
       current_user.create_lucky_animal(animal_id: animal[0].id)
