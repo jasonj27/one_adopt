@@ -20,6 +20,5 @@ module DemoProject
     if ENV["libvips"].present?
       config.active_storage.variant_processor = :vips
     end
-
   end
 end

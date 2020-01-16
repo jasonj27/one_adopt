@@ -69,3 +69,4 @@ gem 'google-cloud-storage', '~> 1.25', require: false
 gem 'mini_magick', '~> 4.10', '>= 4.10.1'
 gem 'paranoia', '~> 2.4', '>= 2.4.2'
 gem 'geocoder', '~> 1.6'
+gem 'activerecord-session_store', '~> 1.1', '>= 1.1.3'
