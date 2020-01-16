@@ -12,7 +12,8 @@ document.addEventListener("DOMContentLoaded", function() {
         lat: 25.0424356, 
         lng: 121.5137072
       },
-        zoom: 17
+        zoom: 17,
+        disableDefaultUI: true
       })
 
     infoWindow = new googleMaps.InfoWindow
