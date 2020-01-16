@@ -111,7 +111,7 @@
       </div>
     <% else %>
       <div class="text-center mt-2">
-        <%= link_to pages_path, class: "btn btn-sm-primary-pet w-25 mb-4" do %>
+        <%= link_to root_path, class: "btn btn-sm-primary-pet w-25 mb-4" do %>
           <i class="far fa-heart" data-target="favorite.icon"></i>
           <% session[:share_animal_id] = @animal.id
           %>
