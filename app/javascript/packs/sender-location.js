@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function() {
     alert('您的位置如下圖所標示')
   })
 
-  if ($('#user_latitude').val()!=="" && $('#user_longitude').val()!==""){
+  if ($('#user_latitude').val()!==="" && $('#user_longitude').val()!===""){
     $('#get-location').html('更新我的地址位置')
     showImg()
   }
