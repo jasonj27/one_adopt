@@ -1,11 +1,6 @@
 class SearchesController < ApplicationController
-<<<<<<< HEAD
-  before_action :authenticate_user!
-
-=======
   before_action :authenticate_user!, except: :show
   
->>>>>>> 完成分享連結（手機瀏覽器預設/桌機複製連結）
   def show
     @animal = Animal.find(params[:id])
     respond_to do |format|
@@ -40,7 +35,7 @@ class SearchesController < ApplicationController
 
     search_params = animals.where.not(id: ids)
 
-    if search_params.empty?
+    if zsearch_params.empty?
       redirect_to searches_path, notice: "沒有匹配的資料！"
     else
       simple_sample(search_params)
