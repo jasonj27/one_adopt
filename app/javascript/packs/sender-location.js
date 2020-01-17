@@ -9,7 +9,6 @@ document.addEventListener("DOMContentLoaded", function() {
     $('#location-img').attr('src', `${imgurl}`).css('width', '100%')
   }
 
-
   $('#get-location').on('click', e => {
     e.preventDefault()
     e.stopPropagation()
@@ -21,6 +20,7 @@ document.addEventListener("DOMContentLoaded", function() {
           $('#user_latitude').val(location.lat)
           $('#user_longitude').val(location.lng)
           showImg()
+          $('.map').show()
          })
          .catch(err=>console.log(err))
     alert('您的位置如下圖所標示')
@@ -29,5 +29,7 @@ document.addEventListener("DOMContentLoaded", function() {
   if ($('#user_latitude').val()!=="" && $('#user_longitude').val()!==""){
     $('#get-location').html('更新我的地址位置')
     showImg()
+  }else{
+    $('.map').hide()
   }
 })
