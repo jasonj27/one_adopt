@@ -7,13 +7,13 @@
   min-height: 100vh;
 }
 .content-wrap{
-  padding-bottom: 2.5rem;
+  /*padding-bottom: 2.5rem;*/
 }
 footer{
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 2.5rem;
+  /*height: 2.5rem;*/
 }
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
   margin-bottom: 0rem;
@@ -23,6 +23,9 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
 }
 .w-80{
   width: 80%;
+}
+.icon-back{
+  padding: 20px 10px;
 }
 .navbar-item-pet{
   display: flex;
@@ -46,7 +49,8 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
   width: 100%;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover; 
+  background-size: cover;
+  background-attachment: fixed; 
   background-image: url(../images/inst-bg-min-2.png);
 }
 @media screen and (max-width:767px) {
@@ -161,6 +165,10 @@ a:hover{
 .btn-primary-pet:hover{
   color: #fff;
 }
+.btn-primary-pet-nsz{
+  color: #e09300;
+  background-color: #ffe600;
+}
 .btn-sm-primary-pet{
   width: 100px;
   height: 35px;
@@ -187,6 +195,10 @@ a:hover{
 }
 .btn-secondary-pet:hover{
   color: #888;
+}
+.btn-secondary-pet-nsz{
+  color: #e09300;
+  border: 1px solid #ffe600;
 }
 .btn-primary-fluid-pet{
   color: #e09300;
