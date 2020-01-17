@@ -2,21 +2,19 @@
 *{
   font-family: 'Noto Sans TC', sans-serif;
 }
-html, body{
-  height: 100%
-}
 .wrap{
   position: relative;
   min-height: 100vh;
 }
 .content-wrap{
-  padding-bottom: 2.5rem;
+  margin-bottom: 90px;
+  padding-bottom: 50px;
 }
 footer{
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 2.5rem;
+  height: 90px;
 }
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
   margin-bottom: 0rem;
@@ -32,12 +30,11 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
   justify-content: flex-end;
   align-items: flex-end;
   position: relative;
-  margin-top: 10px;
 }
 .line{
   position: absolute;
-  width: 40%;
-  border-top: 1px solid rgba(255,255,255,.1);
+  width: 100%;
+  border-top: 1px solid rgba(255,255,255,.5);
 }
 @media screen and (min-width:992px){
   .line{
@@ -87,6 +84,9 @@ a:hover{
 }
 .fz-18{
   font-size: 18px;
+}
+.fz-40{
+  font-size: 40px;
 }
 .bn-txt{
   position:absolute;
@@ -266,6 +266,10 @@ a:hover{
   box-shadow: 1px 1px 3px rgba(0,0,0,.2);
   display: inline-block;
   break-inside: avoid-column;
+}
+.card-footer-pet{
+  padding: .75rem 1.25rem;
+  border-top: 1px solid rgba(0,0,0,.125);
 }
 .btn-delete-outline-pet{
   color: #601407;
