@@ -1,0 +1,47 @@
+<div class="table table-borderless text-center mx-auto my-4">
+  <div>
+    <div class="embed-responsive embed-responsive-4by3">
+      <% q = (s.user.email).ends_with?("@pet.com") ? s.user.name : s.user.sender_add %>
+      <iframe
+        width="600"
+        height="450"
+        class="embed-responsive-item" 
+        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDkzbhgrcZprbdEP9aU0GqRTuKdG9r2zAg&q=<%= q %>"
+        allowfullscreen
+      ></iframe>
+    </div>
+  </div>
+  <div>
+    <% if !s.animal_subid.nil? %>
+      <ul class="bg-light text-center py-2 list-unstyled text-secondary fz-14 rounded">
+        <div class="color-primary-pet">
+          <% if s.animal_sex == "女生" %>
+            <i class="fas fa-venus fz-18 color-primary-pet pl-3"></i>
+          <% else %>
+            <i class="fas fa-mars fz-18 color-secondary-pet pl-3"></i>
+          <% end %>
+        </div>
+        <li><%= s.animal_sterilization %><%= s.animal_age %><%= s.animal_bodytype %><%= s.animal_colour %><%= s.animal_kind %></li>
+        <li><%= s.user.sender_tel %></li>
+        <li>寵物編號：<%= s.animal_subid %></li>
+      </ul>
+    <% else %>
+      <ul class="bg-light text-center py-2 list-unstyled text-secondary fz-14 rounded">
+        <li class="color-primary-pet">
+          <% if s.animal_sex == "女生" %>
+            <i class="fas fa-venus fz-18 color-primary-pet pl-3"></i>
+          <% else %>
+            <i class="fas fa-mars fz-18 color-secondary-pet pl-3"></i>
+          <% end %>
+        </li>
+        <li><%= s.animal_sterilization %><%= s.animal_age %><%= s.animal_bodytype %><%= s.animal_colour %><%= s.animal_kind %></li>
+        <li><%= s.content %></li>
+      </ul>
+    <% end %>
+  </div>
+  <div>
+    <button class="share-button btn btn-success-pet fz-14 py-2 m-2"  data-share="<%= s.id %>">分享 <i class="fas fa-share-alt"></i></button>
+  </div>
+</div>
+
+<%= javascript_pack_tag "search/shareApi"%>
