@@ -38,6 +38,11 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
   width: 100%;
   border-top: 1px solid rgba(255,255,255,.5);
 }
+.line-b{
+  position: absolute;
+  width: 100%;
+  border-top: 1px solid rgba(0,0,0,.3);
+}
 @media screen and (min-width:992px){
   .line{
     display: none;
@@ -369,13 +374,20 @@ a:hover{
   position: relative;
 }
 .btn-close{
-  position: absolute;
+  background-color: #e06b5c;
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  right: -10px;
-  top: -12px;
-  line-height: 26px;
+}
+.btn-close-sender{
+  position: absolute;
+  right: 16px;
+  top: 5px;
+}
+.btn-close-shelter{
+  position: absolute;
+  right: 16px;
+  top: -15px;
 }
 .img-cat{
   background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, .7)),url(../images/cat-5.png);
