@@ -35,7 +35,7 @@
 
         Notifications.prototype.handleSuccess = function(data) {
             for (let i of data.notifications) {
-                console.log(i);
+                // console.log(i);
                 $("#div1").append(`<a href="${i.url}" class="dropdown-item">${i.actor}發送新訊息給你</a>`);
             }
             $("[data-behavior='unread-count']").text(data.unread_count)
