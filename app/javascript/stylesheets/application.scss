@@ -7,14 +7,13 @@
   min-height: 100vh;
 }
 .content-wrap{
-  margin-bottom: 90px;
-  padding-bottom: 50px;
+  padding-bottom: 2.5rem;
 }
 footer{
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 90px;
+  height: 2.5rem;
 }
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
   margin-bottom: 0rem;
@@ -49,6 +48,11 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
   background-repeat: no-repeat;
   background-size: cover; 
   background-image: url(../images/inst-bg-min-2.png);
+}
+@media screen and (max-width:767px) {
+  .bg-img{
+    background-image: url(../images/inst-bg-mobile-1.jpg);
+  }
 }
 .bg-img-backend{
   position: absolute;
