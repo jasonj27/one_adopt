@@ -1,45 +1,55 @@
-<div class="container col-12 mx-auto bg-img">
-  <%= link_to landingpage_pages_path do %>
-  <i class="far fa-arrow-alt-circle-left color-primary-pet h3 p-4"></i>
-  <% end %>
-
-  <div class="instroduction-card w-80 center mx-auto mt-5 text-center">
-    <div class="card-pet w-75 center mx-auto my-4 pt-5 pb-3" style="width: 18rem;">
-      <div class="card-body">
-        <h2 class="color-primary-pet font-weight-bold letter-spacing pb-2">登入</h2>
-
-        <% if flash[:alert] -%>
-          <div class = "alert alert-warning" role="alert"><%= flash[:alert] %></div>
-        <% end %>
-        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-
-        <%= f.label :Email, class: 'text-secondary py-2' %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:'email@example.com', class: 'form-control mx-auto btn-secondary-pet mb-2' %>
-
-        <%= f.label :Password, class: 'text-secondary py-2' %>
-        <%= f.password_field :password, autocomplete: "current-password", class: 'form-control mx-auto btn-secondary-pet' %>
-        
-        <%= f.submit "登入", class:'btn btn-primary-pet btn-sm mx-auto mt-5 mb-2' %>
-
-        <div>
-        <%= link_to '忘記密碼',new_user_password_path, class:'text-secondary'%><br>
-        <%= link_to '重發驗證信',new_user_confirmation_path, class:'text-secondary'%>
-        </div>
-
-
-        <% end%>
-
-        <div class="py-3">
-          <%= link_to "<i class='fab fa-google-plus'></i>".html_safe, user_google_oauth2_omniauth_authorize_path , class: 'color-primary-pet mx-2 h3' %>
-          <%= link_to "<i class='fab fa-facebook'></i>".html_safe, user_facebook_omniauth_authorize_path , class: 'color-primary-pet mx-2 h3' %>
-          <div class="">
-            <% if user_signed_in? %>
-            <%= link_to('登出', destroy_user_session_path, method: :delete)%>
+<div class="wrap">
+  <div class="content-wrap col-12 mx-auto bg-img">
+    <div class="icon-back">
+      <%= link_to root_path do %>
+        <i class="far fa-arrow-alt-circle-left color-primary-pet h3 py-4"></i>
+      <% end %>
+    </div>
+  
+    <div class="row m-auto">
+      <div class="col-12 col-md-6 mx-auto">
+        <div class="card-pet d-flex justify-content-center h-100 shadow">
+          <div class="card-body text-center py-5">
+            <h2 class="color-primary-pet font-weight-bold letter-spacing">帳號登入</h2>
+            <hr>
+            <% if flash[:alert] -%>
+              <div class = "alert alert-warning" role="alert"><%= flash[:alert] %></div>
+            <% end %>
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          
+            <%= f.label :Email, class: 'text-secondary py-2' %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:'email@example.com', class: 'form-control mx-auto btn-secondary-pet-nsz mb-2' %>
+          
+            <%= f.label :Password, class: 'text-secondary py-2' %>
+            <%= f.password_field :password, autocomplete: "current-password", class: 'form-control mx-auto btn-secondary-pet-nsz' %>
+            
+            <%= f.submit "登入", class:'btn btn-primary-pet-nsz mx-auto w-100 my-3' %>
+          
+            <div>
+              <span>
+                <%= link_to '忘記密碼',new_user_password_path, class:'text-secondary'%>
+              </span>
+              <span class="text-secondary fz-14 px-2">|</span>
+              <span>
+                <%= link_to '重發驗證信',new_user_confirmation_path, class:'text-secondary'%>
+              </span>
+            </div>
+          
+          
             <% end%>
-          </div> 
+          
+            <div class="pt-3">
+              <%= link_to "<i class='fab fa-google-plus'></i>".html_safe, user_google_oauth2_omniauth_authorize_path , class: 'color-primary-pet mx-2 h3' %>
+              <%= link_to "<i class='fab fa-facebook'></i>".html_safe, user_facebook_omniauth_authorize_path , class: 'color-primary-pet mx-2 h3' %>
+              <div class="">
+                <% if user_signed_in? %>
+                <%= link_to('登出', destroy_user_session_path, method: :delete)%>
+                <% end%>
+              </div> 
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-

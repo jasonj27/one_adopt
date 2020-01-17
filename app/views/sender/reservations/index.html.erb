@@ -11,7 +11,7 @@
       <% @reservations.each do |res| %>
         <% if res.status != "canceled" && res.datetime >= Time.now %>
         <div class="col-12 col-md-6 col-xl-4 my-4">
-          <div class="card-pet searchimg d-flex justify-content-center h-100 shadow">
+          <div class="card-pet d-flex justify-content-center h-100 shadow">
             <div class="card-header">
               <div class="py-2">
                 <h4 class="text-secondary font-weight-bold"><%= res.receiver.name %><%=t res.status, locale: "zh-TW" %></h4>
@@ -27,9 +27,9 @@
                   </span>
                   <span class="col-3">
                     <% if pet.animal.animal_sex == "女生" %>
-                      <i class="fas fa-venus fz-40 color-primary-pet"></i>
+                      <i class="fas fa-venus fz-40 color-primary-pet pl-3"></i>
                     <% else %>
-                      <i class="fas fa-mars fz-40 color-secondary-pet"></i>
+                      <i class="fas fa-mars fz-40 color-secondary-pet pl-3"></i>
                     <% end %>
                   </span>
                   <div class="col-6">
@@ -41,7 +41,7 @@
                   </div>
                 </div>
               <% end %>
-              <div class="d-flex justify-content-around py-2">
+              <div class="d-flex justify-content-around py-3">
                 <% if res.status != "confirmed" %>  
                   <div>
                     <%= link_to '確認預約', confirm_sender_reservation_path(res),  method: :post, data: {confirm: '確認預約!?'}, class: "btn btn-sm btn-sm-primary-pet" %>

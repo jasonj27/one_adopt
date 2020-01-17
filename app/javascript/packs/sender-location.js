@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
     let lat = $('#user_latitude').val()
     let lng = $('#user_longitude').val()
     let imgurl = `https://maps.googleapis.com/maps/api/staticmap?center=${lat},${lng}&zoom=18&size=400x250&scale=2&maptype=roadmap&markers=color:red|${lat},${lng}&key=AIzaSyDkzbhgrcZprbdEP9aU0GqRTuKdG9r2zAg`
-    $('#location-img').attr('src', `${imgurl}`).css('width', '400px').css('height', '250px')
+    $('#location-img').attr('src', `${imgurl}`).css('width', '100%')
   }
 
 
