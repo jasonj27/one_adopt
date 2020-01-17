@@ -1,70 +1,72 @@
-<div class="container">
-  <%= image_pack_tag 'dog-3.jpg', class: 'img-fluid py-1 rounded'%>
-  <div class="row mb-4">
-    
-    <%= form_with url: advance_searches_path, local: true, method: :get, class: "w-100" do |f| %>
-      <div class="d-flex flex-wrap">
-        <div class="col-12 col-md-6">
-          <%= f.select(:animal_kind,
-          options_for_select(Animal::ANIMAL_KIND_CLASS),
-          { include_blank: "種類"},
-          { class: 'form-control mt-2 mb-2' }) %>
-        </div>
-        <div class="col-12 col-md-6">
-            <%= f.select(:animal_sex,
-            options_for_select(Animal::ANIMAL_SEX_CLASS),
-            { include_blank: "性別" },
+<div class="wrap">
+  <div class="container col-12 mx-auto">
+    <%= image_pack_tag 'dog-3.jpg', class: 'col-12 img-fluid py-1 rounded'%>
+    <div class="row m-auto">
+      
+      <%= form_with url: advance_searches_path, local: true, method: :get, class: "w-100" do |f| %>
+        <div class="d-flex flex-wrap">
+          <div class="col-12 col-md-6">
+            <%= f.select(:animal_kind,
+            options_for_select(Animal::ANIMAL_KIND_CLASS),
+            { include_blank: "種類"},
             { class: 'form-control mt-2 mb-2' }) %>
+          </div>
+          <div class="col-12 col-md-6">
+              <%= f.select(:animal_sex,
+              options_for_select(Animal::ANIMAL_SEX_CLASS),
+              { include_blank: "性別" },
+              { class: 'form-control mt-2 mb-2' }) %>
+          </div>
+          <div class="col-12 col-md-6">
+              <%= f.select(:animal_age,
+              options_for_select(Animal::ANIMAL_AGE_CLASS),
+              { include_blank: "年紀" },
+              { class: 'form-control mt-2 mb-2' }) %>
+          </div>
+          <div class="col-12 col-md-6">
+              <%= f.select(:animal_bodytype,
+              options_for_select(Animal::ANIMAL_BODYTYPE_CLASS),
+              { include_blank: "體型" },
+              { class: 'form-control mt-2 mb-2' }) %>
+          </div>
+          <div class="col-12 col-md-6">
+              <%= f.select(:animal_colour,
+              options_for_select(Animal::ANIMAL_COLOUR_CLASS),
+              { include_blank: "毛色" },
+              { class: 'form-control mt-2 mb-2' }) %>
+          </div>
+          <div class="col-12 col-md-6">
+              <%= f.select(:animal_sterilization,
+              options_for_select(Animal::ANIMAL_STERILIZATION_CLASS),
+              { include_blank: "結紮" },
+              { class: 'form-control mt-2 mb-2' }) %>
+          </div>
+          <div class="col-12 col-md-6">
+              <%= f.select(:animal_area_pkid,
+              options_for_select(Animal::ANIMAL_AREA_PKID_CLASS),
+              { include_blank: "縣市" },
+              { class: 'form-control mt-2 mb-2' }) %>
+          </div>
+          <div class="col-12 col-md-6">
+              <%= f.select(:animal_shelter,
+              options_for_select(Animal::ANIMAL_SHELTER_CLASS),
+              { include_blank: "是否包含政府收容所?" },
+              { class: 'form-control mt-2 mb-2' }) %>
+          </div>
+          <div class="col-12 col-md-6">
+              <%= f.select(:distance,
+              options_for_select([["5公里","5"],["10公里","10"],["20公里","10"],["50公里","50"],]),
+              { include_blank: "距離目前位置距離" },
+              { class: 'form-control mt-2 mb-2' }) %>
+          </div>
+           <%= f.hidden_field :latitude %>
+           <%= f.hidden_field :longitude %>
         </div>
-        <div class="col-12 col-md-6">
-            <%= f.select(:animal_age,
-            options_for_select(Animal::ANIMAL_AGE_CLASS),
-            { include_blank: "年紀" },
-            { class: 'form-control mt-2 mb-2' }) %>
+  
+        <div class="d-flex justify-content-center">        
+            <%= f.submit "進行搜尋", class: 'mx-3 btn btn-primary-fluid-pet my-2 px-5 text-nowrap btn-set' %>
         </div>
-        <div class="col-12 col-md-6">
-            <%= f.select(:animal_bodytype,
-            options_for_select(Animal::ANIMAL_BODYTYPE_CLASS),
-            { include_blank: "體型" },
-            { class: 'form-control mt-2 mb-2' }) %>
-        </div>
-        <div class="col-12 col-md-6">
-            <%= f.select(:animal_colour,
-            options_for_select(Animal::ANIMAL_COLOUR_CLASS),
-            { include_blank: "毛色" },
-            { class: 'form-control mt-2 mb-2' }) %>
-        </div>
-        <div class="col-12 col-md-6">
-            <%= f.select(:animal_sterilization,
-            options_for_select(Animal::ANIMAL_STERILIZATION_CLASS),
-            { include_blank: "結紮" },
-            { class: 'form-control mt-2 mb-2' }) %>
-        </div>
-        <div class="col-12 col-md-6">
-            <%= f.select(:animal_area_pkid,
-            options_for_select(Animal::ANIMAL_AREA_PKID_CLASS),
-            { include_blank: "縣市" },
-            { class: 'form-control mt-2 mb-2' }) %>
-        </div>
-        <div class="col-12 col-md-6">
-            <%= f.select(:animal_shelter,
-            options_for_select(Animal::ANIMAL_SHELTER_CLASS),
-            { include_blank: "是否包含政府收容所?" },
-            { class: 'form-control mt-2 mb-2' }) %>
-        </div>
-        <div class="col-12 col-md-6">
-            <%= f.select(:distance,
-            options_for_select([["5公里","5"],["10公里","10"],["20公里","10"],["50公里","50"],]),
-            { include_blank: "距離目前位置距離" },
-            { class: 'form-control mt-2 mb-2' }) %>
-        </div>
-         <%= f.hidden_field :latitude %>
-         <%= f.hidden_field :longitude %>
-      </div>
-
-      <div class="d-flex justify-content-center">        
-          <%= f.submit "進行搜尋", class: 'mx-3 btn btn-primary-fluid-pet my-2 px-5 text-nowrap btn-set' %>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>

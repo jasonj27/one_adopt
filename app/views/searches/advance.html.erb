@@ -13,44 +13,67 @@
   </ol>
 </nav>
 
-<div class="row w-80 m-auto">
-  <% @search_params.each do |s| %>
-    <div class="col-12 col-md-6 col-xl-4 mt-4 card-btn-fav">
-      <div class="card searchimg">
-        <%= link_to search_path(s) do%>
-          <%= image_tag s.images.first.variant(resize_to_fill: [500, 400]) , class: "card-img-top"%>
-        <% end %>
-        <div class="card-body">
-          <p class="card-text d-flex">
-            <span class="text-secondary border-left-pet pr-2">
-              <%= s.animal_kind%>
-              <%= s.animal_bodytype%>
-              <%= s.animal_colour%>
-            </span>
-            <span class="border-left-pet pr-2"><%= s.animal_age %></span>
-          </p>
-          <span class="card-text border-left-pet pr-2"><%= s.user.name%></span>
-          <div class="btn-fav">
-            <span data-controller="favorite" data-favorite-id="<%= s.id %>" data-favorite-favorited="<%= s.favorited_by?(current_user) %>" class="col-4 col-md-4">
-              <%= link_to "#", "data-action": "favorite#toggle", class: "btn bg-primary-pet color-primary-pet px-3 pt-1" do %>
-                <i class="far fa-heart" data-target="favorite.icon"></i>
-              <% end %>
-            </span>
-          </div>          
-          <div class="row justify-content-center">
-            <span class="col-6">
-              <button class="share-button btn btn-sm-success-pet fz-14 mb-3 mt-4" data-share="<%= s.id %>">分享 <i class="fas fa-share-alt"></i></button>
-            </span>
-            <span class="col-6">
-              <%= link_to search_path(s) do%>
-                <button class="btn btn-sm-secondary-pet fz-14 mb-3 mt-4">詳細資料</button>
-              <% end %>
-            </span>
+<div class="wrap">
+  <div class="container col-12 mx-auto">
+    <div class="row m-auto">
+      <% @search_params.each do |s| %>
+        <div class="col-12 col-md-6 col-xl-4 mt-4 card-btn-fav">
+          <div class="card searchimg">
+            <%= image_tag s.images.first.variant(resize_to_fill: [500, 400]) , class: "card-img-top"%>
+            <div class="card-body">
+              <h5 class="text-secondary py-1"> 
+                <%= s.animal_age %>
+                <%= s.animal_bodytype%>
+                <%= s.animal_colour%>
+                <%= s.animal_kind%>
+              </h5>
+              <div><%= s.user.name%></div>
+              <div class="btn-fav">
+                <span data-controller="favorite" data-favorite-id="<%= s.id %>" data-favorite-favorited="<%= s.favorited_by?(current_user) %>" class="col-4 col-md-4">
+                  <%= link_to "#", "data-action": "favorite#toggle", class: "btn bg-primary-pet color-primary-pet px-3 pt-1" do %>
+                    <i class="far fa-heart" data-target="favorite.icon"></i>
+                  <% end %>
+                </span>
+              </div>          
+              <div class="row justify-content-center">
+                <span class="col-6">
+                  <button class="share-button btn btn-sm-success-pet fz-14 mb-3 mt-4" data-share="<%= s.id %>">分享 <i class="fas fa-share-alt"></i></button>
+                </span>
+                <span>
+                  <button type="button" class="btn btn-sm-secondary-pet fz-14 mb-3 mt-4" data-toggle="modal" data-target="#pet-detail<%= s.id %>">詳細資料
+                  </button>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="modal fade" id="pet-detail<%= s.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <div class="d-flex align-items-center">
+                    <h5 class="modal-title" id="exampleModalScrollableTitle">
+                      <% if s.animal_subid.nil? %>
+                        <div scope="row" class="color-primary-pet">我是<%= s.name %></div>
+                      <% else %>
+                        <div scope="row" class="color-primary-pet"><%= s.user.name %></div>
+                      <% end %>
+                    </h5>
+                  </div>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <%= render 'detail', s: s %>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      <% end %>
+      <%= paginate @search_params %>
     </div>
-  <% end %>
-  <%= paginate @search_params %>
+  </div>
 </div>
+
 <%= javascript_pack_tag "search/shareApi"%>
