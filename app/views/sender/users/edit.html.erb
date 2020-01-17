@@ -19,40 +19,46 @@
 <div class="wrap">
   <div class="content-wrap col-12 mx-auto">
     <div class="row m-auto">
-      <div class="col-12 col-md-6 my-4 mx-auto">
+      <div class="col-xl-6 col-md-10 my-4 mx-auto">
         <div class="card-pet d-flex justify-content-center h-100 shadow">
           <div class="card-body text-center py-5">
             <h2 class="color-primary-pet font-weight-bold letter-spacing pb-2">管理預約資料</h2>
             <%= form_with model: @user, url: sender_user_path(@user),local: true do |f| %>
-              <%= f.label :sender_tel, '電話', class: 'text-secondary py-2 mt-2' %>
-              <% if current_user.is_sender%>
-                <%= f.text_field :sender_tel, required: true, value:current_user.sender_tel, class: 'form-control mx-auto btn-secondary-pet-nsz mb-2' %>
-              <% end %>
+              <div class="col-12">
+                <%= f.label :sender_tel, '電話', class: 'text-secondary py-2 mt-2' %>
+                <% if current_user.is_sender%>
+                  <%= f.text_field :sender_tel, required: true, value:current_user.sender_tel, class: 'form-control mx-auto btn-secondary-pet-nsz mb-2' %>
+                <% end %>
         
-              <% if !current_user.is_sender%>
-                <%= f.text_field :sender_tel, required: true, class: 'form-control mx-auto btn-secondary-pet-nsz mb-2' %>
-              <% end %>
+                <% if !current_user.is_sender%>
+                  <%= f.text_field :sender_tel, required: true, class: 'form-control mx-auto btn-secondary-pet-nsz mb-2' %>
+                <% end %>
+              </div>
         
-              <%= f.label :sender_add, '地址', class: 'text-secondary py-2 mt-2' %>
-              <% if current_user.is_sender%>
-                <%= f.select(:sender_area,
-                             options_for_select(Animal::ANIMAL_AREA_PKID_CLASS, current_user.sender_add.slice(0..2)),
-                             {},
-                             { class: 'form-control mx-auto btn-secondary-pet-nsz mb-2' }) %>
-                <%= f.text_field :sender_add, 
-                                 required: true,
-                                 value: current_user.sender_add.slice(3..50),
-                                 class: 'form-control mx-auto btn-secondary-pet-nsz mb-2' %>
-              <% end %>
+              <div class="col-12">
+                <%= f.label :sender_add, '地址', class: 'text-secondary py-2 mt-2' %>
+                <% if current_user.is_sender%>
+                  <%= f.select(:sender_area,
+                               options_for_select(Animal::ANIMAL_AREA_PKID_CLASS, current_user.sender_add.slice(0..2)),
+                               {},
+                               { class: 'form-control mx-auto btn-secondary-pet-nsz mb-2' }) %>
+                  <%= f.text_field :sender_add, 
+                                   required: true,
+                                   value: current_user.sender_add.slice(3..50),
+                                   class: 'form-control mx-auto btn-secondary-pet-nsz mb-2' %>
+                <% end %>
+              </div>
         
-              <% if !current_user.is_sender%>
-                <%= f.select(:sender_area,
-                              options_for_select(Animal::ANIMAL_AREA_PKID_CLASS),
-                              {},
-                              { class: 'form-control mx-auto btn-secondary-pet-nsz mb-2' }) %>
-                <%= f.text_field :sender_add, required: true, class: 'form-control mx-auto btn-secondary-pet-nsz mb-2' %>
-              <% end %>
-              <div class="location">
+              <div class="col-12">
+                <% if !current_user.is_sender%>
+                  <%= f.select(:sender_area,
+                               options_for_select(Animal::ANIMAL_AREA_PKID_CLASS),
+                               {},
+                               { class: 'form-control mx-auto btn-secondary-pet-nsz mb-2 option-select' }) %>
+                  <%= f.text_field :sender_add, required: true, class: 'form-control mx-auto btn-secondary-pet-nsz mb-2' %>
+                <% end %>
+              </div>
+              <div class="location col-12">
                 <button id="get-location" class="btn btn-primary-pet-nsz w-100 mb-2">取得我的地址位置</button>
                 <%= f.hidden_field :latitude %>
                 <%= f.hidden_field :longitude %>
@@ -61,7 +67,7 @@
                 </div>
               </div>
               <%= f.label :days, '一周中有空的星期', class: 'text-secondary py-2 mt-2' %>
-              <div id="days-select" value:<% current_user.days %> >
+              <div id="days-select" value:<% current_user.days %> class="col-12" >
                 <select>
                   <option value="1">星期一</option>
                   <option value="2">星期二</option>
@@ -74,7 +80,7 @@
                 <%= f.hidden_field :days%>
               </div>
               <%= f.label :w1, '星期一有空的時間', class: 'text-secondary py-2 mt-2' %>
-              <div id="w1-select" value: <% current_user.w1 %> >
+              <div id="w1-select" value: <% current_user.w1 %> class="col-12">
                 <select>
                   <option value="0">12:00 AM</option>
                   <option value="1">01:00 AM</option>
@@ -104,7 +110,7 @@
                 <%= f.hidden_field :w1%>
               </div>
               <%= f.label :w2, '星期二有空的時間', class: 'text-secondary py-2 mt-2' %>
-              <div id="w2-select" value: <% current_user.w2 %> >
+              <div id="w2-select" value: <% current_user.w2 %> class="col-12">
                 <select>
                   <option value="0">12:00 AM</option>
                   <option value="1">01:00 AM</option>
@@ -134,7 +140,7 @@
                 <%= f.hidden_field :w2%>
               </div>
               <%= f.label :w3, '星期三有空的時間', class: 'text-secondary py-2 mt-2' %>
-              <div id="w3-select" value: <%current_user.w3 %> >
+              <div id="w3-select" value: <%current_user.w3 %> class="col-12">
                 <select>
                   <option value="0">12:00 AM</option>
                   <option value="1">01:00 AM</option>
@@ -164,7 +170,7 @@
                 <%= f.hidden_field :w3%>
               </div>
               <%= f.label :w4, '星期四有空的時間', class: 'text-secondary py-2 mt-2' %>
-              <div id="w4-select" value: <%current_user.w4 %> >
+              <div id="w4-select" value: <%current_user.w4 %> class="col-12">
                 <select>
                   <option value="0">12:00 AM</option>
                   <option value="1">01:00 AM</option>
@@ -194,7 +200,7 @@
                 <%= f.hidden_field :w4%>
               </div>
               <%= f.label :w5, '星期五有空的時間', class: 'text-secondary py-2 mt-2' %>
-              <div id="w5-select"  value: <%current_user.w5 %> >
+              <div id="w5-select"  value: <%current_user.w5 %> class="col-12">
                 <select>
                   <option value="0">12:00 AM</option>
                   <option value="1">01:00 AM</option>
@@ -224,7 +230,7 @@
                 <%= f.hidden_field :w5%>
               </div>
               <%= f.label :w6, '星期六有空的時間', class: 'text-secondary py-2 mt-2' %>
-              <div id="w6-select"  value: <%current_user.w6 %> >
+              <div id="w6-select" value: <%current_user.w6 %> class="col-12" >
                 <select>
                   <option value="0">12:00 AM</option>
                   <option value="1">01:00 AM</option>
@@ -254,7 +260,7 @@
                 <%= f.hidden_field :w6%>
               </div>
               <%= f.label :w0, '星期日有空的時間', class: 'text-secondary py-2 mt-2' %>
-              <div id="w0-select"  value: <%current_user.w0 %> class= "py-2">
+              <div id="w0-select"  value: <%current_user.w0 %> class= "py-2 col-12">
                 <select>
                   <option value="0">12:00 AM</option>
                   <option value="1">01:00 AM</option>

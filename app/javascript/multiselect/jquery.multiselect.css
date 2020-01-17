@@ -2,7 +2,6 @@
     width: 100%;
     min-height: 35px;
     display: block;
-    max-width: 300px;
     border: 1px solid #ffe600;
     border-radius: 0.25rem;
     padding: 5px;
@@ -17,6 +16,7 @@
     cursor: pointer;
     display: flex;
     align-items: center;
+    justify-content: center;
     flex-wrap: wrap;
 }
 .multiselect-list {
