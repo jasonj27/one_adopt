@@ -6,8 +6,8 @@
     </ol>
   </nav>
   <div class="wrap">
-    <div class="container">
-      <div class="row">
+    <div class="container col-12 mx-auto">
+      <div class="row m-auto">
 
           <% if @favorites.empty? %>
             <p class="p-4">趕快去收藏</p>
@@ -17,76 +17,71 @@
             <div class="col-12 col-md-6 col-xl-4 py-4">
               <div class="card-pet h-100 w-100">
                 <div class="center">
-                  <div class="card-header font-weight-bold letter-spacing text-secondary">
-                    <i class="fas fa-home"></i>
-                    <%= user %>
+                  <div class="card-header">
+                    <h5 class="py-2 text-secondary font-weight-bold">
+                      <i class="fas fa-home"></i>
+                      <%= user %>
+                    </h5>
                   </div>
                           
                   <div class="card-body">
                     <% for fav in favorites %>
                       <% if fav.animal.user.email.end_with?("@pet.com") %>
-                        <div class="d-flex align-items-center fav-card-item py-2 px-3 my-3">
-                          <span class="pr-2"><%= image_tag fav.animal.images.first.variant(resize_to_fill: [200, 200]) , class: "rounded-circle" , style: "width:40px" %></span>
-                          <span class="pl-2">
-                            <%= link_to "https://asms.coa.gov.tw/Amlapp/App/AnnounceList.aspx?Id=#{fav.animal.animal_id}&AcceptNum=#{fav.animal.animal_subid}&PageType=Adopt", target: "_blank", class: "color-primary-pet", data: { confirm: "確認要連結至收容所預約頁面?"} do %>預約<i class="fas fa-external-link-alt pl-1"></i>
-                            <% end %>
+                        <div class="row justify-content-between align-items-center fav-card-item py-3">
+                          <span class="col-4">
+                            <%= image_tag fav.animal.images.first.variant(resize_to_fill: [200, 200]) , class: "rounded-circle" , style: "width: 75px" %>
                           </span>
-                          <span class="pl-5">
-                            <button class="btn-pet text-secondary text-secondary navbar-toggler" data-toggle="collapse" data-target="#a<%= "#{ fav.created_at.to_i }#{ fav.animal.animal_subid }" %>" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation"><i class="fas fa-chevron-down"></i></button>
-                          </span>
-                          <span class="pl-3">
-                            <%= link_to favorite_path(fav.animal), method: :delete , data: { confirm: "確認刪除?!" } , class: 'btn btn-conversation-del' do %>
-                                <i class="fas fa-trash-alt"></i>
+                          <span class="col-8">
+                            <%= link_to "https://asms.coa.gov.tw/Amlapp/App/AnnounceList.aspx?Id=#{fav.animal.animal_id}&AcceptNum=#{fav.animal.animal_subid}&PageType=Adopt", target: "_blank", class: "color-primary-pet h5", data: { confirm: "確認要連結至收容所預約頁面?"} do %>預約<i class="fas fa-external-link-alt pl-1"></i>
                             <% end %>
+                            <%= link_to "x" , favorite_path(fav.animal), method: :delete , data: { confirm: "確認刪除?!" } , class: "text-white text-center btn-close btn-close-shelter" %>
+                            <div class="list-unstyled text-secondary">
+                              <%= fav.animal.animal_sterilization %>
+                              <%= fav.animal.animal_age %>
+                              <%= fav.animal.animal_bodytype %>
+                              <%= fav.animal.animal_colour %>
+                              <%= fav.animal.animal_kind %>
+                            </div>
                           </span>
                         </div>
-                        <div class="pos-f-t rounded">
-                          <div class="collapse" id="a<%= "#{ fav.created_at.to_i }#{ fav.animal.animal_subid }" %>">
-                            <ul class="text-center py-2 list-unstyled text-secondary fz-14 rounded">
-                              <li><%= fav.animal.animal_sex %></li>
-                              <li><%= fav.animal.animal_age %></li>
-                              <li><%= fav.animal.animal_bodytype %></li>
-                              <li><%= fav.animal.animal_colour %></li>
-                              <li><%= fav.animal.animal_sterilization %></li>
-                            </ul>
-                          </div>
-                        </div>
+                        
+                        
                       <% else %>
-                        <div class="d-flex align-items-center fav-card-item  py-2 px-3 my-3">
-                          <span class="pr-2"><%= image_tag fav.animal.images.first.variant(resize_to_fill: [200, 200])  , class: "rounded-circle" , style: "width:40px" %></span>
-                          <span class="pr-2"><%= fav.animal.name %></span>
-                          <span class="pr-2"><%= fav.animal.animal_kind %></span>
-                          <span class="pl-5">
-                            <button class="btn-pet text-secondary navbar-toggler" data-toggle="collapse" data-target="#a<%= "#{ fav.created_at.to_i }" %>" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation"><i class="fas fa-chevron-down"></i>
-                            </button>
+                        <div class="row justify-content-between align-items-center fav-card-item py-2">
+                          <span class="col-4">
+                            <%= image_tag fav.animal.images.first.variant(resize_to_fill: [200, 200]) , class: "rounded-circle" , style: "width: 75px" %>
                           </span>
-                          <span class="pl-3">
-                            <%= link_to favorite_path(fav.animal), method: :delete , data: { confirm: "確認刪除?!" } , class: 'btn btn-conversation-del' do %>
-                                <i class="fas fa-trash-alt"></i>
-                            <% end %>
-                          </span>
-                        </div>
-                        <div class="pos-f-t rounded">
-                          <div class="collapse" id="a<%= "#{ fav.created_at.to_i }" %>">
-                            <ul class="text-center py-2 list-unstyled text-secondary fz-14 rounded">
-                              <li><%= fav.animal.animal_sex %></li>
-                              <li><%= fav.animal.animal_age %></li>
-                              <li><%= fav.animal.animal_bodytype %></li>
-                              <li><%= fav.animal.animal_colour %></li>
-                              <li><%= fav.animal.animal_sterilization %></li>
-                            </ul>
+                          <div class="col-8">
+                            <span class="h5">我是<%= fav.animal.name %>
+                              <% if fav.animal.animal_sex == "女生" %>
+                                <i class="fas fa-venus color-primary-pet"></i>
+                              <% else %>
+                                <i class="fas fa-mars color-secondary-pet"></i>
+                              <% end %>
+                            </span>
+                            <div class="list-unstyled text-secondary py-2">
+                              <%= fav.animal.animal_sterilization %>
+                              <%= fav.animal.animal_age %>
+                              <%= fav.animal.animal_bodytype %>
+                              <%= fav.animal.animal_colour %>
+                              <%= fav.animal.animal_kind %>
+                            </div>
                           </div>
+                          <span class="">
+                            <%= link_to "x" ,favorite_path(fav.animal), method: :delete , data: { confirm: "確認刪除?!" } , class: "text-white text-center btn-close btn-close-sender" %>
+                          </span>
                         </div>
+                        
                         <% if favorites.last == fav %>
-                          <div class="row py-4 justify-content-around">
+                          <div class="row justify-content-around">
                             <div class="col-6">
                               <div class="p-2">
-                                <%= link_to "我要預約", new_reservation_path(:sender => (fav.animal.user.id)), class: "btn btn-sm-primary-pet btn-sm" %>
+                                <%= link_to "我要預約", new_reservation_path(:sender => (fav.animal.user.id)), class: "btn btn-sm-primary-pet" %>
                               </div>
                             </div>
                             <div class="col-6">
                               <div class="p-2">
-                                <%= link_to "寄信給他", new_personal_message_path(:receiver_id =>(fav.animal.user.id)), class: "btn btn-sm-primary-pet btn-sm"%>
+                                <%= link_to "寄信給他", new_personal_message_path(:receiver_id =>(fav.animal.user.id)), class: "btn btn-sm-primary-pet"%>
                               </div>
                             </div>
                           </div>
@@ -98,7 +93,6 @@
               </div>
             </div>  
           <% end %>
-
       </div>
     </div>
   </div>
