@@ -12,7 +12,7 @@
           <div class="card-body text-center py-5">
             <h2 class="color-primary-pet font-weight-bold letter-spacing">帳號登入</h2>
             <hr>
-            <% if flash[:alert] -%>
+            <% if flash[:alert] %>
               <div class = "alert alert-warning" role="alert"><%= flash[:alert] %></div>
             <% end %>
             <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -20,7 +20,7 @@
             <%= f.label :Email, class: 'text-secondary py-2' %>
             <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:'email@example.com', class: 'form-control mx-auto btn-secondary-pet-nsz mb-2' %>
           
-            <%= f.label :Password, class: 'text-secondary py-2' %>
+            <%= f.label :Password,"密碼", class: 'text-secondary py-2' %>
             <%= f.password_field :password, autocomplete: "current-password", class: 'form-control mx-auto btn-secondary-pet-nsz' %>
             
             <%= f.submit "登入", class:'btn btn-primary-pet-nsz mx-auto w-100 my-3' %>

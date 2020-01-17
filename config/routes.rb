@@ -1,15 +1,13 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { 
-    omniauth_callbacks: "users/omniauth_callbacks",
-    sessions: "users/sessions" ,
-    confirmations: "users/confirmations"
-  }
+  devise_for :users, controllers: {
+                       omniauth_callbacks: "users/omniauth_callbacks",
+                       sessions: "users/sessions",
+                       confirmations: "users/confirmations",
+                     }
 
   root "pages#introduction"
 
-
-
-  resources :conversations, only: [:index, :show, :destroy] 
+  resources :conversations, only: [:index, :show, :destroy]
   resources :users, only: [:index]
   resources :personal_messages, only: [:new, :create]
   resources :notifications do
@@ -17,13 +15,9 @@ Rails.application.routes.draw do
       post :mark_as_read
     end
   end
-  
 
-  
-  
   resources :pages, only: [:index] do
     collection do
-      get :newfav
       get :landingpage
       get :introduction
     end
@@ -46,39 +40,31 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :favorites do #for favorite function
+  resources :favorites, only: [:index, :destroy] do
     collection do
       delete :destroy_all
     end
   end
 
-  resources :reservations do
-    collection do
-      get :testfav
-    end
+  resources :reservations, only: [:index, :new, :create] do
     member do
       delete :cancel
     end
   end
 
-  resource :calander
-  resources :messages
-
   namespace :sender do
     root "pages#index"
-    resources :reservations do
+    resources :reservations, only: [:index] do
       member do
         delete :cancel
         post :confirm
         post :cancel_adopt
         post :adopt
       end
-      resources :reservation_pets
     end
-    resources :animals do
+    resources :animals, only: [:index, :new, :create, :edit, :update, :destroy] do
       delete "/images/:image_id" => "animals#destroy_image", as: :destroy_image, on: :member
     end
-    resource :user
-    resource :calander
+    resource :user, only: [:edit, :update]
   end
 end

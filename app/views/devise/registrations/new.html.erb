@@ -16,19 +16,19 @@
             
             <%= render "devise/shared/error_messages", resource: resource %>
           
-            <%= f.label :name, class: 'text-secondary py-2' %>
+            <%= f.label :name,"姓名" ,class: 'text-secondary py-2' %>
             <%= f.text_field :name, autofocus: true, autocomplete: "name", class: 'form-control mx-auto btn-secondary-pet-nsz mb-2' %>
           
             <%= f.label :Email, class: 'text-secondary py-2' %>
             <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:'email@example.com', class: 'form-control mx-auto btn-secondary-pet-nsz mb-2' %>
           
-            <%= f.label :Password, class: 'text-secondary py-2' %>
+            <%= f.label :Password,"密碼", class: 'text-secondary py-2' %>
             <% if @minimum_password_length %>
-            <span class="text-secondary">(<%= @minimum_password_length %> characters minimum)</span>
+            <span class="text-secondary">(最少輸入<%= @minimum_password_length %>個字元)</span>
             <% end %>
             <%= f.password_field :password, autocomplete: "new-password", class: 'form-control mx-auto btn-secondary-pet-nsz'%>
           
-            <%= f.label :password_confirmation, class: 'text-secondary py-2'  %>
+            <%= f.label :password_confirmation, "確認密碼",class: 'text-secondary py-2'  %>
             <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control mx-auto btn-secondary-pet-nsz'%>
           
             <%= f.submit "下一步", class:'btn btn-primary-pet-nsz mx-auto w-100 my-3' %>

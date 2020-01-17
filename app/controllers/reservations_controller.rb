@@ -1,27 +1,10 @@
 class ReservationsController < ApplicationController
-  def testfav
-    if not user_signed_in?
-      redirect_to user_session_path
-    end
-
-    @favorites = current_user.favorites.includes({ animal: :user }, :animal)
-    @sort_fav = {}
-    @favorites.each do |fav|
-      if @sort_fav.has_key?(fav.animal.user.name)
-        @sort_fav[fav.animal.user.name]["animals"].push([fav.animal.name, fav.animal.id])
-      else
-        @sort_fav.store(fav.animal.user.name, { "id" => fav.animal.user.id, "animals" => [[fav.animal.name, fav.animal.id]] })
-      end
-    end
-  end
-
   def index
     @reservations = current_user.receiver_reservations.includes(:sender, { reservation_pets: :animal }).order(:datetime)
 
     if @reservations.count == @reservations.where(status: "canceled").count
-      redirect_to root_path, notice: '趕快去收藏寵物，進行預約吧！'
+      redirect_to root_path, notice: "趕快去收藏寵物，進行預約吧！"
     end
-    
   end
 
   def new
