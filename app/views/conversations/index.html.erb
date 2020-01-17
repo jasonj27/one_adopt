@@ -26,7 +26,11 @@
             </div>
 
             <div class="text-black-50 pl-4 py-2">
-              <%= truncate(strip_tags(conversation.personal_messages.last.message_body.to_s), length: 25) %>
+              <% if strip_tags(conversation.personal_messages.last.message_body.to_s).blank? %>
+                <span class="h6">圖片已傳送</span>
+              <% else %>
+                <%= truncate(strip_tags(conversation.personal_messages.last.message_body.to_s), length: 25) %>
+              <% end %>
             </div>
 
             <div class="text-right pt-2">
