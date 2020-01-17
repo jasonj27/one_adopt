@@ -10,10 +10,6 @@ class PagesController < ApplicationController
     end
   end
 
-  def newfav
-    @animals = Animal.all
-  end
-
   def landingpage
   end
 end

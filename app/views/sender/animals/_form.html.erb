@@ -17,7 +17,7 @@
         <%= f.hidden_field :images, multiple: true, value: img.signed_id %>
       <% end %>
     <% end %>
-    <%= f.label :images, class: "text-secondary py-2 mt-2" %>
+    <%= f.label :images,"寵物大頭照", class: "text-secondary py-2 mt-2" %>
     <div class="dropzone dropzone-default dz-clickable " data-controller="dropzone" data-dropzone-max-file-size="2" data-dropzone-max-files="16">
       <%= f.file_field :images, multiple: true, direct_upload: true, data: { target: 'dropzone.input' } %>
       <div class="dropzone-msg dz-message needsclick text-gray-600">

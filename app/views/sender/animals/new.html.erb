@@ -1,11 +1,11 @@
+<nav aria-label="breadcrumb-pet mt-4">
+  <ol class="breadcrumb-pet">
+    <li class="breadcrumb-pet-item"><%= link_to "送養首頁" , sender_root_path,class:'bc-item-sender' %></li>
+    <li class="breadcrumb-pet-item"><%= link_to "動物管理" , sender_animals_path,class:'bc-item-sender' %></li>
+    <li class="breadcrumb-pet-item active" aria-current="page">新增動物資料</li>
+  </ol>
+</nav>
 <div class="container">
-  <nav aria-label="breadcrumb-pet mt-4">
-    <ol class="breadcrumb-pet">
-      <li class="breadcrumb-pet-item"><%= link_to "送養首頁" , sender_root_path,class:'bc-item-sender' %></li>
-      <li class="breadcrumb-pet-item"><%= link_to "動物管理" , sender_animals_path,class:'bc-item-sender' %></li>
-      <li class="breadcrumb-pet-item active" aria-current="page">新增動物資料</li>
-    </ol>
-  </nav>
   <% if @animal.errors.any? %>
   <ul>
     <% @animal.errors.full_messages.each do |msg| %>
