@@ -1,86 +1,56 @@
 <div class="col">
-  <div class="card pt-5 pb-3 m-4" >
+  <div class="card pt-5 pb-3 m-2" >
     <div class="row">
         <div class="col-12 col-md-6 text-center">
           <%= image_tag @animal.images.first.variant(resize_to_fill: [500, 500]) , class: "card-img-top w-80"%>
         </div>
         <div class="col-12 col-md-6 col-xl-6">
-          <table class="table table-borderless text-center mx-auto my-4">
-            <tr>
-              <td scope="row" class="color-primary-pet pl-4">名字
-              </td>
-              <td>
-                <%= @animal.animal_kind %>
-              </td>
-            </tr>
-            <tr>
-              <td scope="row" class="color-primary-pet pl-4">種類
-              </td>
-              <td>
-                <%= @animal.animal_sex %>
-              </td>
-            </tr>
-            <tr>
-              <td scope="row" class="color-primary-pet pl-4">年紀
-              </td>
-              <td>
-                <%= @animal.animal_age %>
-              </td>
-            </tr>
-            <tr>
-              <td scope="row" class="color-primary-pet pl-4">體型
-              </td>
-              <td>
-                <%= @animal.animal_bodytype %>
-              </td>
-            </tr>
-            <tr>
-              <td scope="row" class="color-primary-pet pl-4">毛色
-              </td>
-              <td>
-                <%= @animal.animal_colour %>
-              </td>
-            </tr>
-            <tr>
-              <td scope="row" class="color-primary-pet pl-4">結紮
-              </td>
-              <td>
-                <%= @animal.animal_sterilization %>
-              </td>
-            </tr>
-            <tr>
-              <td scope="row" class="color-primary-pet pl-4">縣市
-              </td>
-              <td>
-                <%= @animal.animal_area_pkid %>
-                <a type="button" class="rounded text-white bg-success py-1 px-3 ml-1" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-map-marked-alt"></i></a>
-              </td>
-            </tr>
-            <tr>
-              <td scope="row" colspan="2">
-                <button class="btn btn-dark-pet fz-14 navbar-toggler py-2" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">詳細資料 <i class="fas fa-chevron-down"></i>
-                </button>
-                <div class="pos-f-t m-2 py-2 rounded">
-                  <div class="collapse" id="navbarToggleExternalContent">
-                    <ul class="bg-light text-center py-2 list-unstyled text-secondary fz-14 rounded">
-                      <li><%= @animal.user.name %></li>
-                      <li><%= @animal.user.sender_add %></li>
-                      <li><%= @animal.user.sender_tel %></li>
-                      <% if !@animal.animal_subid.nil? %>
-                        <li>寵物編號：<%= @animal.animal_subid %></li>
-                      <% end %>
-                    </ul>
-                  </div>
-                </div>
-              </td>
-            </tr>
+          <table class="table table-borderless text-center mx-auto">
+            <tr class="">
+              <div class="color-primary-pet text-center py-3 px-1">
+                <% if @animal.animal_sex == "女生" %>
+                  <i class="fas fa-venus fz-18 color-primary-pet"></i>
+                <% else %>
+                  <i class="fas fa-mars fz-18 color-secondary-pet"></i>
+                <% end %>
+                <%= @animal.animal_sterilization %><%= @animal.animal_age %><%= @animal.animal_bodytype %><%= @animal.animal_colour %><%= @animal.animal_kind %>
+              </div>
           </table>
         </div>
     </div>
     <div data-controller="favorite" data-favorite-id="<%= @animal.id %>" data-favorite-favorited="<%= @animal.favorited_by?(current_user) %>" class="text-center">
-      <%= link_to "#", "data-action": "favorite#toggle", class: "btn btn-sm-primary-pet w-25 mb-4" do %>
+      <%= link_to "#", "data-action": "favorite#toggle", class: "btn btn-sm-primary-pet" do %>
         <i class="far fa-heart" data-target="favorite.icon"></i>
       <% end %>
+      <a type="button" class="rounded text-white btn-sm-success-pet py-1 px-3 ml-1" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-map-marked-alt"></i></a>
+      <div>
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle"><%= @animal.user.name %></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="embed-responsive embed-responsive-4by3">
+              <% q = (@animal.user.email).ends_with?("@pet.com") ? @animal.user.name : @animal.user.sender_add %>
+              <iframe
+                width="600"
+                height="450"
+                class="embed-responsive-item" 
+                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDkzbhgrcZprbdEP9aU0GqRTuKdG9r2zAg&q=<%= q %>"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    </div>
+    <div>
     </div>
   </div>
 </div>
