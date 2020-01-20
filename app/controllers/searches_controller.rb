@@ -43,7 +43,7 @@ class SearchesController < ApplicationController
   end
 
   def advance
-    if params[:distance].to_i == 0 || params[:latitude].nil? || params[:longitude].nil?
+    if params[:distance].to_i == 0 || params[:latitude].blank? || params[:longitude].blank?
       search_params = Animal.with_attached_images
                             .where.not(adopt_status: "已領養", user_id: current_user)
                             .search_kind(params[:animal_kind])
