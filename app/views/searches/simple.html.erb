@@ -4,7 +4,11 @@
 
 <% @simple_search.each do |s| %>
   <div class="card pt-5 pb-3 m-4">
-    <%= image_tag s.images.first.variant(resize: "500x400!") , class: "card-img-top w-75 m-auto"%>
+    <% if s.images.attached? %>
+      <%= image_tag s.images.first.variant(resize: "500x400!"), class: "card-img-top w-75 m-auto" %>
+    <% else %>
+      <img src="https://fakeimg.pl/500x400/?text=NoPhoto" class="card-img-top w-75 m-auto">
+    <% end %>
     <div class="card-body text-center">
       <h5 class="card-title h4 py-1 color-primary-pet"><%= s.animal_subid %></h5>
       <p class="card-text py-1 mt-2"><%= s.user.name %></p>
@@ -17,9 +21,9 @@
     <%= link_to "#", "data-action": "favorite#toggle", class: "btn btn-warning w-25 mb-4" do %>
       <i class="far fa-heart" data-target="favorite.icon"></i>
     <% end %>
-    <%= link_to '下一隻', simple_searches_path(animal_kind: params[:animal_kind],
-                                          animal_age: params[:animal_age],
-                                          animal_sex: params[:animal_sex],),
-                                          id:"next", class:"btn btn-secondary w-25 ml-4 mb-4",:"data-turbolinks" => false %>
+    <%= link_to "下一隻", simple_searches_path(animal_kind: params[:animal_kind],
+                                            animal_age: params[:animal_age],
+                                            animal_sex: params[:animal_sex]),
+                id: "next", class: "btn btn-secondary w-25 ml-4 mb-4", :"data-turbolinks" => false %>
   </div>
 <% end %>

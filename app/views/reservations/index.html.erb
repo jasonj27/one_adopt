@@ -1,6 +1,6 @@
 <nav aria-label="breadcrumb-pet mt-4">
   <ol class="breadcrumb-pet">
-    <li class="breadcrumb-pet-item"><%= link_to "首頁" , pages_path ,class:'bc-item' %></li>
+    <li class="breadcrumb-pet-item"><%= link_to "首頁", pages_path, class: "bc-item" %></li>
     <li class="breadcrumb-pet-item active" aria-current="page">預約記錄</li>
   </ol>
 </nav>
@@ -26,9 +26,14 @@
                 </div>
               </div>
               <div class="card-body">
-                <% res.reservation_pets.each_with_index do |pet,index| %>
+                <% res.reservation_pets.each_with_index do |pet, index| %>
                   <div class="row justify-content-between align-items-center">
-                    <span class="col-3 pr-4"><%= image_tag pet.animal.images.first.variant(resize_to_fill: [200, 200]) , class: "rounded-circle" , style: "width: 75px" %>
+                    <span class="col-3 pr-4">
+                      <% if pet.animal.images.attached? %>
+                        <%= image_tag pet.animal.images.first.variant(resize_to_fill: [200, 200]), class: "rounded-circle", style: "width: 75px" %>
+                      <% else %>
+                        <img src="https://fakeimg.pl/200x200/?text=NoPhoto" class="rounded-circle" style="width: 75px;">
+                      <% end %>
                     </span>
                     <span class="col-3">
                       <% if pet.animal.animal_sex == "女生" %>
@@ -53,10 +58,10 @@
                 <% end %>
                 <div class="d-flex justify-content-around py-3">
                   <div class="">
-                    <%= link_to "取消預約", cancel_reservation_path(res), method: :delete, data: {confirm: '確認取消!?'} , class: 'btn btn-sm-delete-pet' %>
+                    <%= link_to "取消預約", cancel_reservation_path(res), method: :delete, data: { confirm: "確認取消!?" }, class: "btn btn-sm-delete-pet" %>
                   </div>
                   <div class="">
-                    <%= link_to "寄信給他", new_personal_message_path(:receiver_id =>(User.find_by(name: res.sender.name).id)), class: 'btn btn-sm-primary-pet'%>
+                    <%= link_to "寄信給他", new_personal_message_path(:receiver_id => (User.find_by(name: res.sender.name).id)), class: "btn btn-sm-primary-pet" %>
                   </div>
                 </div>
               </div>

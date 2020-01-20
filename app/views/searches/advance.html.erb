@@ -7,8 +7,8 @@
 
 <nav aria-label="breadcrumb-pet mt-4">
   <ol class="breadcrumb-pet">
-    <li class="breadcrumb-pet-item"><%= link_to "首頁" , pages_path ,class:'bc-item' %></li>
-    <li class="breadcrumb-pet-item"><%= link_to "搜尋" , searches_path ,class:'bc-item' %></li>
+    <li class="breadcrumb-pet-item"><%= link_to "首頁", pages_path, class: "bc-item" %></li>
+    <li class="breadcrumb-pet-item"><%= link_to "搜尋", searches_path, class: "bc-item" %></li>
     <li class="breadcrumb-pet-item active" aria-current="page">進階搜尋</li>
   </ol>
 </nav>
@@ -19,15 +19,19 @@
       <% @search_params.each do |s| %>
         <div class="col-12 col-md-6 col-xl-4 mt-4 card-btn-fav">
           <div class="card searchimg">
-            <%= image_tag s.images.first.variant(resize_to_fill: [500, 400]) , class: "card-img-top"%>
+            <% if s.images.attached? %>
+              <%= image_tag s.images.first.variant(resize_to_fill: [500, 400]), class: "card-img-top" %>
+            <% else %>
+              <img src="https://fakeimg.pl/500x400/?text=NoPhoto" class="card-img-top">
+            <% end %>
             <div class="card-body">
               <h5 class="text-secondary py-1"> 
                 <%= s.animal_age %>
-                <%= s.animal_bodytype%>
-                <%= s.animal_colour%>
-                <%= s.animal_kind%>
+                <%= s.animal_bodytype %>
+                <%= s.animal_colour %>
+                <%= s.animal_kind %>
               </h5>
-              <div><%= s.user.name%></div>
+              <div><%= s.user.name %></div>
               <div class="btn-fav">
                 <span data-controller="favorite" data-favorite-id="<%= s.id %>" data-favorite-favorited="<%= s.favorited_by?(current_user) %>" class="col-4 col-md-4">
                   <%= link_to "#", "data-action": "favorite#toggle", class: "btn bg-primary-pet color-primary-pet px-3 pt-1" do %>
@@ -64,7 +68,7 @@
                   </button>
                 </div>
                 <div class="modal-body">
-                  <%= render 'detail', s: s %>
+                  <%= render "detail", s: s %>
                 </div>
               </div>
             </div>
@@ -76,4 +80,4 @@
   </div>
 </div>
 
-<%= javascript_pack_tag "search/shareApi"%>
+<%= javascript_pack_tag "search/shareApi" %>
