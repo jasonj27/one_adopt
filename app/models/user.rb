@@ -20,10 +20,10 @@ class User < ApplicationRecord
   has_many :notifications, foreign_key: :recipient_id
   has_one :lucky_animal
   has_rich_text :readme
-  has_many :notifications, foreign_key: 'recipient_id'
+  has_many :notifications, foreign_key: "recipient_id"
   # @user.sent_messages
   # @user.received_messages
-  validates :name, presence: true, :uniqueness => true
+  validates :name, presence: true
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
