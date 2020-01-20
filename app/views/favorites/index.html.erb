@@ -1,7 +1,7 @@
 <div class="bg-favorites">
   <nav aria-label="breadcrumb-pet mt-4">
     <ol class="breadcrumb-pet">
-      <li class="breadcrumb-pet-item"><%= link_to "首頁" , pages_path ,class:"bc-item" %></li>
+      <li class="breadcrumb-pet-item"><%= link_to "首頁", pages_path, class: "bc-item" %></li>
       <li class="breadcrumb-pet-item active" aria-current="page">收藏動物</li>
     </ol>
   </nav>
@@ -29,12 +29,16 @@
                       <% if fav.animal.user.email.end_with?("@pet.com") %>
                         <div class="row justify-content-between align-items-center fav-card-item py-3">
                           <span class="col-4">
-                            <%= image_tag fav.animal.images.first.variant(resize_to_fill: [200, 200]) , class: "rounded-circle" , style: "width: 75px" %>
+                            <% if fav.animal.images.attached? %>
+                              <%= image_tag fav.animal.images.first.variant(resize_to_fill: [200, 200]), class: "rounded-circle", style: "width: 75px" %>
+                            <% else %>  
+                              <img src="https://fakeimg.pl/200x200/?text=NoPhoto" class="rounded-circle" style="width: 75px;">
+                            <% end %>
                           </span>
                           <span class="col-8">
-                            <%= link_to "https://asms.coa.gov.tw/Amlapp/App/AnnounceList.aspx?Id=#{fav.animal.animal_id}&AcceptNum=#{fav.animal.animal_subid}&PageType=Adopt", target: "_blank", class: "color-primary-pet h5", data: { confirm: "確認要連結至收容所預約頁面?"} do %>預約<i class="fas fa-external-link-alt pl-1"></i>
+                            <%= link_to "https://asms.coa.gov.tw/Amlapp/App/AnnounceList.aspx?Id=#{fav.animal.animal_id}&AcceptNum=#{fav.animal.animal_subid}&PageType=Adopt", target: "_blank", class: "color-primary-pet h5", data: { confirm: "確認要連結至收容所預約頁面?" } do %>預約<i class="fas fa-external-link-alt pl-1"></i>
                             <% end %>
-                            <%= link_to "x" , favorite_path(fav.animal), method: :delete , data: { confirm: "確認刪除?!" } , class: "text-white text-center btn-close btn-close-shelter" %>
+                            <%= link_to "x", favorite_path(fav.animal), method: :delete, data: { confirm: "確認刪除?!" }, class: "text-white text-center btn-close btn-close-shelter" %>
                             <div class="list-unstyled text-secondary">
                               <%= fav.animal.animal_sterilization %>
                               <%= fav.animal.animal_age %>
@@ -49,7 +53,11 @@
                       <% else %>
                         <div class="row justify-content-between align-items-center fav-card-item py-2">
                           <span class="col-4">
-                            <%= image_tag fav.animal.images.first.variant(resize_to_fill: [200, 200]) , class: "rounded-circle" , style: "width: 75px" %>
+                            <% if fav.animal.images.attached? %>
+                              <%= image_tag fav.animal.images.first.variant(resize_to_fill: [200, 200]), class: "rounded-circle", style: "width: 75px" %>
+                            <% else %>  
+                              <img src="https://fakeimg.pl/200x200/?text=NoPhoto" class="rounded-circle" style="width: 75px;">
+                            <% end %>
                           </span>
                           <div class="col-8">
                             <span class="h5">我是<%= fav.animal.name %>
@@ -68,7 +76,7 @@
                             </div>
                           </div>
                           <span class="">
-                            <%= link_to "x" ,favorite_path(fav.animal), method: :delete , data: { confirm: "確認刪除?!" } , class: "text-white text-center btn-close btn-close-sender" %>
+                            <%= link_to "x", favorite_path(fav.animal), method: :delete, data: { confirm: "確認刪除?!" }, class: "text-white text-center btn-close btn-close-sender" %>
                           </span>
                         </div>
                         
@@ -81,7 +89,7 @@
                             </div>
                             <div class="col-6">
                               <div class="p-2">
-                                <%= link_to "寄信給他", new_personal_message_path(:receiver_id =>(fav.animal.user.id)), class: "btn btn-sm-primary-pet"%>
+                                <%= link_to "寄信給他", new_personal_message_path(:receiver_id => (fav.animal.user.id)), class: "btn btn-sm-primary-pet" %>
                               </div>
                             </div>
                           </div>
